@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#55633b",
+            "secondary-fixed-dim": "#bdcc9f",
+            "primary-fixed": "#d8e9b6",
+            "on-tertiary-fixed": "#121f03",
+            "tertiary": "#51613c",
+            "secondary-fixed": "#d9e9b9",
+            "inverse-on-surface": "#eaf1ff",
+            "error-container": "#ffdad6",
+            "on-surface": "#121c2a",
+            "primary-container": "#6b7a50",
+            "tertiary-fixed-dim": "#bacd9f",
+            "on-surface-variant": "#45483e",
+            "tertiary-container": "#697a52",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed": "#d6e9b9",
+            "surface-container-low": "#eff4ff",
+            "secondary-container": "#d9e9b9",
+            "on-primary-fixed-variant": "#3e4b26",
+            "secondary": "#55633e",
+            "on-tertiary-container": "#f9ffea",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#d9e3f6",
+            "on-secondary-container": "#5b6943",
+            "inverse-primary": "#bccd9c",
+            "on-tertiary-fixed-variant": "#3c4c28",
+            "primary": "#536139",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "inverse-surface": "#27313f",
+            "surface-dim": "#d0dbed",
+            "on-primary": "#ffffff",
+            "background": "#f8f9ff",
+            "surface": "#f8f9ff",
+            "surface-container-high": "#dee9fc",
+            "on-secondary-fixed": "#141f03",
+            "outline": "#76786d",
+            "on-primary-fixed": "#141f01",
+            "on-secondary-fixed-variant": "#3e4b28",
+            "on-background": "#121c2a",
+            "outline-variant": "#c6c8ba",
+            "on-primary-container": "#faffe8",
+            "primary-fixed-dim": "#bccd9c",
+            "surface-container": "#e6eeff",
+            "surface-variant": "#d9e3f6",
+            "surface-bright": "#f8f9ff",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "base": "8px",
+            "gutter": "24px",
+            "margin-desktop": "40px",
+            "margin-mobile": "16px",
+            "xs": "4px",
+            "xl": "32px",
+            "md": "16px",
+            "sm": "12px",
+            "lg": "24px",
+            "xxl": "48px"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "label-md": ["14px", { "lineHeight": "16px", "fontWeight": "500" }],
+            "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      background-color: #f8f9ff;
+    }
+    .drawer-open {
+      overflow: hidden;
+    }
+    .modal-backdrop {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .drawer-content {
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .drawer-content.active {
+      transform: translateX(0);
+    }
+    .bottom-sheet {
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .bottom-sheet.active {
+      transform: translateY(0);
+    }
+    .fade-scale {
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
+      transition: all 0.2s ease;
+    }
+    .fade-scale.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- Navigation Drawer -->
+<div class="fixed inset-0 bg-on-surface/50 z-50 modal-backdrop" id="nav-drawer-backdrop" onclick="closeNavDrawer()">
+<div class="fixed top-0 left-0 bottom-0 w-[280px] bg-surface flex flex-col z-50 drawer-content shadow-xl" id="nav-drawer" onclick="event.stopPropagation()">
+<div class="h-16 flex items-center justify-between px-margin-mobile border-b border-outline-variant/20">
+<div class="flex items-center gap-xs">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-primary text-[20px]">eco</span>
+</div>
+<span class="font-headline-sm text-primary tracking-tight">Sleec</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" onclick="closeNavDrawer()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto py-md px-sm">
+<div class="mb-lg">
+<p class="font-label-sm text-on-surface-variant px-sm mb-xs">BUSINESS</p>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg bg-surface-container-high text-on-surface mb-1 font-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+        </a>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg hover:bg-surface-container text-on-surface-variant mb-1 font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span> Products
+        </a>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg hover:bg-surface-container text-on-surface-variant mb-1 font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">local_shipping</span> Orders
+        </a>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg hover:bg-surface-container text-on-surface-variant mb-1 font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">group</span> Customers
+        </a>
+</div>
+<div class="mb-lg">
+<p class="font-label-sm text-on-surface-variant px-sm mb-xs">GROWTH</p>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg hover:bg-surface-container text-on-surface-variant mb-1 font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span> Analytics
+        </a>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg hover:bg-surface-container text-on-surface-variant mb-1 font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">campaign</span> Marketing
+        </a>
+</div>
+<div class="mb-lg">
+<p class="font-label-sm text-on-surface-variant px-sm mb-xs">MONEY</p>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg hover:bg-surface-container text-on-surface-variant mb-1 font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span> Wallet
+        </a>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg hover:bg-surface-container text-on-surface-variant mb-1 font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span> Payouts
+        </a>
+</div>
+<div class="mb-lg">
+<p class="font-label-sm text-on-surface-variant px-sm mb-xs">STORE</p>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg hover:bg-surface-container text-on-surface-variant mb-1 font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">storefront</span> My Shop
+        </a>
+<a class="flex items-center gap-md px-sm py-2 rounded-lg hover:bg-surface-container text-on-surface-variant mb-1 font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+        </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Search Modal -->
+<div class="fixed inset-0 bg-surface z-50 fade-scale flex flex-col" id="search-modal">
+<div class="px-margin-mobile py-sm border-b border-outline-variant/20 flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" onclick="closeModal('search-modal')">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex-1 bg-surface-container rounded-full px-sm py-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input autofocus="" class="bg-transparent border-none p-0 focus:ring-0 font-body-md w-full outline-none" placeholder="Search orders, products, customers..." type="text"/>
+</div>
+</div>
+<div class="flex-1 p-margin-mobile">
+<p class="font-label-sm text-on-surface-variant mb-md">Recent Searches</p>
+<div class="flex flex-col gap-sm">
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<span class="font-body-md text-on-surface">ORD-2489</span>
+</div>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<span class="font-body-md text-on-surface">Jameson Brown</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Notifications Drawer -->
+<div class="fixed inset-0 bg-on-surface/50 z-50 modal-backdrop" id="notifications-drawer-backdrop" onclick="closeDrawer('notifications-drawer')">
+<div class="fixed top-0 right-0 bottom-0 w-[85%] max-w-[360px] bg-surface flex flex-col z-50 drawer-content shadow-xl right-drawer" id="notifications-drawer" onclick="event.stopPropagation()">
+<div class="h-16 flex items-center justify-between px-margin-mobile border-b border-outline-variant/20">
+<h2 class="font-headline-sm text-on-surface">Notifications</h2>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" onclick="closeDrawer('notifications-drawer')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto">
+<div class="p-md border-b border-outline-variant/20 bg-surface-container-low">
+<div class="flex justify-between items-start mb-1">
+<p class="font-label-md text-on-surface">New Order: ORD-2489</p>
+<span class="text-[12px] text-primary">Just now</span>
+</div>
+<p class="font-body-sm text-on-surface-variant">Jameson Brown placed an order for ₦24,500.</p>
+</div>
+<div class="p-md border-b border-outline-variant/20">
+<div class="flex justify-between items-start mb-1">
+<p class="font-label-md text-on-surface">Low Stock Alert</p>
+<span class="text-[12px] text-on-surface-variant">2h ago</span>
+</div>
+<p class="font-body-sm text-on-surface-variant">Premium Nike Sneakers is running low (3 left).</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Profile Menu -->
+<div class="fixed inset-0 z-50 modal-backdrop" id="profile-menu-backdrop" onclick="closeModal('profile-menu')">
+<div class="absolute top-16 right-margin-mobile w-56 bg-surface-container-lowest rounded-xl shadow-lg border border-outline-variant/20 py-sm fade-scale z-50 origin-top-right" id="profile-menu" onclick="event.stopPropagation()">
+<div class="px-md py-sm border-b border-outline-variant/20 mb-sm">
+<p class="font-label-md text-on-surface">Jameson Doe</p>
+<p class="font-body-sm text-on-surface-variant">jameson@sleec.pro</p>
+</div>
+<a class="flex items-center gap-md px-md py-2 hover:bg-surface-container text-on-surface-variant font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">person</span> Profile
+    </a>
+<a class="flex items-center gap-md px-md py-2 hover:bg-surface-container text-on-surface-variant font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span> Settings
+    </a>
+<a class="flex items-center gap-md px-md py-2 hover:bg-surface-container text-on-surface-variant font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">link</span> Copy Store Link
+    </a>
+<div class="border-t border-outline-variant/20 my-sm"></div>
+<a class="flex items-center gap-md px-md py-2 hover:bg-error-container text-error font-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span> Log Out
+    </a>
+</div>
+</div>
+<!-- Generic Modal / Detail View (Bottom Sheet style for mobile) -->
+<div class="fixed inset-0 bg-on-surface/50 z-50 modal-backdrop flex items-end justify-center sm:items-center" id="generic-modal-backdrop" onclick="closeModal('generic-modal-wrapper')">
+<div class="w-full max-w-[440px] bg-surface rounded-t-2xl sm:rounded-2xl max-h-[90vh] flex flex-col bottom-sheet sm:fade-scale z-50" id="generic-modal-wrapper" onclick="event.stopPropagation()">
+<div class="h-14 flex items-center justify-between px-md border-b border-outline-variant/20">
+<h2 class="font-headline-sm text-on-surface" id="generic-modal-title">Details</h2>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" onclick="closeModal('generic-modal-wrapper')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-md" id="generic-modal-content">
+<!-- Content injected by JS -->
+</div>
+</div>
+</div>
+<div class="max-w-[440px] mx-auto min-h-screen flex flex-col bg-background relative shadow-[0_0_15px_rgba(0,0,0,0.1)]">
+<!-- Header -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-margin-mobile h-16 flex items-center justify-between border-b border-outline-variant/20 shadow-sm">
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" onclick="openNavDrawer()">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center gap-xs">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-primary text-[20px]">eco</span>
+</div>
+<span class="font-headline-sm text-primary tracking-tight">Sleec</span>
+</div>
+</div>
+<div class="flex items-center gap-xs">
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" onclick="openModal('search-modal')">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container rounded-full transition-colors relative" onclick="openDrawer('notifications-drawer')">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2.5 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm ml-xs cursor-pointer" onclick="openModal('profile-menu', 'profile-menu-backdrop')">
+<span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 pb-xl">
+<div class="flex flex-col w-full">
+<div class="px-margin-mobile py-lg">
+<!-- Greeting -->
+<div class="flex flex-col gap-xs mb-lg">
+<h1 class="font-headline-lg-mobile text-on-surface">Good morning, Jameson 👋</h1>
+<p class="font-body-md text-on-surface-variant">Here’s what’s happening with your business today.</p>
+</div>
+<!-- 2x2 Grid Metrics -->
+<div class="grid grid-cols-2 gap-sm mb-lg">
+<div class="bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant/20 cursor-pointer hover:bg-surface-container-high transition-colors active:scale-95" onclick="showMetricDetail('Today\'s Sales', '₦452.5K', 'analytics overlay details here...')">
+<div class="flex justify-between items-start mb-xs">
+<p class="font-label-sm text-on-surface-variant">Today's Sales</p>
+<span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+</div>
+<p class="font-headline-sm text-on-surface">₦452.5K</p>
+<p class="font-label-sm text-primary mt-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> 12.5%
+    </p>
+</div>
+<div class="bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant/20 cursor-pointer hover:bg-surface-container-high transition-colors active:scale-95" onclick="showMetricDetail('Today\'s Profit', '₦138.2K', 'analytics overlay details here...')">
+<div class="flex justify-between items-start mb-xs">
+<p class="font-label-sm text-on-surface-variant">Today's Profit</p>
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+</div>
+<p class="font-headline-sm text-on-surface">₦138.2K</p>
+<p class="font-label-sm text-primary mt-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> 8.4%
+    </p>
+</div>
+<div class="bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant/20 cursor-pointer hover:bg-surface-container-high transition-colors active:scale-95" onclick="showMetricDetail('Orders', '42', 'Navigate to Orders view...')">
+<div class="flex justify-between items-start mb-xs">
+<p class="font-label-sm text-on-surface-variant">Orders</p>
+<span class="material-symbols-outlined text-primary text-[20px]">local_shipping</span>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-headline-sm text-on-surface">42</p>
+<div class="flex items-center gap-1 text-error bg-error-container w-fit px-1.5 py-0.5 rounded-md font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+<span>8 pending</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant/20 cursor-pointer hover:bg-surface-container-high transition-colors active:scale-95" onclick="showMetricDetail('Customers', '128', 'Navigate to Customers view...')">
+<div class="flex justify-between items-start mb-xs">
+<p class="font-label-sm text-on-surface-variant">Customers</p>
+<span class="material-symbols-outlined text-primary text-[20px]">group</span>
+</div>
+<p class="font-headline-sm text-on-surface">128</p>
+<p class="font-label-sm text-primary mt-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +5.2%
+    </p>
+</div>
+</div>
+<!-- Sales Overview -->
+<div class="bg-surface-container rounded-xl p-md shadow-sm mb-lg border border-outline-variant/20 cursor-pointer hover:bg-surface-container-high transition-colors" onclick="showMetricDetail('Sales Overview Analytics', '', 'Detailed chart view here...')">
+<div class="flex justify-between items-center mb-md" onclick="event.stopPropagation()">
+<div class="flex bg-surface-container-high p-1 rounded-lg" id="sales-orders-toggle">
+<button class="px-3 py-1 bg-surface rounded-md font-label-sm text-primary shadow-sm" onclick="toggleChartType(this, 'Sales')">Sales</button>
+<button class="px-3 py-1 font-label-sm text-on-surface-variant" onclick="toggleChartType(this, 'Orders')">Orders</button>
+</div>
+<select class="bg-transparent border-none text-on-surface-variant font-label-sm focus:ring-0 cursor-pointer hover:text-primary transition-colors">
+<option>7 Days</option>
+<option>30 Days</option>
+<option>This Year</option>
+</select>
+</div>
+<div class="mb-md">
+<h3 class="font-headline-md text-on-surface" id="chart-total">₦1.8M</h3>
+<p class="font-label-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> 18.4%
+    </p>
+</div>
+<div class="h-40 flex items-end justify-between gap-1 mt-4">
+<div class="w-full bg-primary/20 rounded-t-sm h-[40%] cursor-pointer hover:bg-primary/40 transition-colors"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[60%] cursor-pointer hover:bg-primary/40 transition-colors"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[30%] cursor-pointer hover:bg-primary/40 transition-colors"></div>
+<div class="w-full bg-primary rounded-t-sm h-[90%] relative cursor-pointer">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-on-surface text-surface text-[10px] px-1 py-0.5 rounded">₦45k</div>
+</div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[50%] cursor-pointer hover:bg-primary/40 transition-colors"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[70%] cursor-pointer hover:bg-primary/40 transition-colors"></div>
+<div class="w-full bg-primary/20 rounded-t-sm h-[80%] cursor-pointer hover:bg-primary/40 transition-colors"></div>
+</div>
+</div>
+<!-- Needs Your Attention -->
+<div class="mb-lg">
+<h2 class="font-headline-sm text-on-surface mb-sm">Needs Your Attention</h2>
+<div class="bg-surface-container rounded-xl overflow-hidden shadow-sm flex flex-col gap-[1px] bg-outline-variant/20"><div class="bg-surface-container-lowest p-md flex items-center justify-between hover:bg-surface-container-low cursor-pointer transition-colors active:bg-surface-container" onclick="showMetricDetail('Low Stock', '3 Products', 'List of low stock products...')">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-error">inventory_2</span>
+<span class="font-label-md text-on-surface">3 Products Low in Stock</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<div class="bg-surface-container-lowest p-md flex items-center justify-between hover:bg-surface-container-low cursor-pointer transition-colors active:bg-surface-container" onclick="showMetricDetail('Processing Orders', '8 Orders', 'List of processing orders...')">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<span class="font-label-md text-on-surface">8 Orders Processing</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<div class="bg-surface-container-lowest p-md flex items-center justify-between hover:bg-surface-container-low cursor-pointer transition-colors active:bg-surface-container" onclick="showMetricDetail('Pending Payments', '2 Payments', 'List of pending payments...')">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary">schedule</span>
+<span class="font-label-md text-on-surface">2 Payments Pending</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div>
+<div class="bg-surface-container-lowest p-md flex items-center justify-between hover:bg-surface-container-low cursor-pointer transition-colors active:bg-surface-container" onclick="showMetricDetail('Abandoned Checkouts', '5 Customers', 'List of abandoned checkouts...')">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">shopping_cart_checkout</span>
+<span class="font-label-md text-on-surface">5 Customers Abandoned Checkout</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</div></div>
+</div>
+<!-- Wallet -->
+<div class="bg-[#728156] rounded-xl p-md shadow-sm mb-lg text-white cursor-pointer hover:opacity-95 transition-opacity" onclick="showMetricDetail('Wallet Details', '₦782,450', 'Transaction history and wallet settings...')">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-white">account_balance_wallet</span>
+<h2 class="font-headline-sm text-white">Wallet</h2>
+</div>
+<div class="mb-lg">
+<p class="font-label-sm text-white/80 mb-xs">Available Balance</p>
+<h3 class="font-headline-lg-mobile text-white">₦782,450</h3>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px] text-white/80">hourglass_empty</span>
+<span class="font-label-sm text-white/80">₦145,400 Pending</span>
+</div>
+</div>
+<div class="flex gap-sm" onclick="event.stopPropagation()">
+<button class="flex-1 bg-white text-[#728156] py-sm rounded-lg font-label-md shadow-sm transition-all active:scale-95" onclick="showMetricDetail('Withdraw Funds', '', 'Withdrawal form step 1...')">Withdraw</button>
+<button class="flex-1 border border-white text-white py-sm rounded-lg font-label-md hover:bg-white/10 transition-all active:scale-95" onclick="showMetricDetail('Wallet Details', '₦782,450', 'Transaction history and wallet settings...')">View Wallet</button>
+</div>
+</div>
+<!-- Your Store -->
+<div class="bg-surface-container-low rounded-xl p-md shadow-sm mb-lg border border-outline-variant/20">
+<div class="flex justify-between items-center mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">storefront</span>
+<h2 class="font-headline-sm text-on-surface">Fuad Supermarket</h2>
+<span class="bg-secondary-container text-on-secondary-container font-label-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>Live
+      </span>
+</div>
+<button class="text-primary font-label-md hover:opacity-80 transition-opacity" onclick="showMetricDetail('Edit Store', '', 'Store settings form...')">Edit</button>
+</div>
+<div class="grid grid-cols-4 gap-xs mb-md text-center">
+<div class="cursor-pointer hover:bg-surface-container p-1 rounded transition-colors" onclick="showMetricDetail('Store Visits', '1.2K', 'Detailed traffic analytics...')">
+<p class="font-headline-sm text-on-surface">1.2K</p>
+<p class="font-label-sm text-on-surface-variant">Visits</p>
+</div>
+<div class="cursor-pointer hover:bg-surface-container p-1 rounded transition-colors" onclick="showMetricDetail('Store Orders', '84', 'Detailed order analytics...')">
+<p class="font-headline-sm text-on-surface">84</p>
+<p class="font-label-sm text-on-surface-variant">Orders</p>
+</div>
+<div class="cursor-pointer hover:bg-surface-container p-1 rounded transition-colors" onclick="showMetricDetail('Store Views', '3.4K', 'Detailed view analytics...')">
+<p class="font-headline-sm text-on-surface">3.4K</p>
+<p class="font-label-sm text-on-surface-variant">Views</p>
+</div>
+<div class="cursor-pointer hover:bg-surface-container p-1 rounded transition-colors" onclick="showMetricDetail('Conversion Rate', '2.4%', 'Detailed conversion analytics...')">
+<p class="font-headline-sm text-on-surface">2.4%</p>
+<p class="font-label-sm text-on-surface-variant">Conv.</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="flex-1 bg-primary text-on-primary py-sm rounded-lg font-label-md flex justify-center items-center gap-xs shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span> Open Shop
+    </button>
+<button class="flex-1 border border-outline text-on-surface py-sm rounded-lg font-label-md flex justify-center items-center gap-xs hover:bg-surface-container-high transition-all active:scale-95" onclick="showMetricDetail('Share Store', '', 'Share options modal...')">
+<span class="material-symbols-outlined text-[18px]">share</span> Share
+    </button>
+</div>
+</div>
+<!-- Quick Actions Grid -->
+<div class="mb-lg">
+<h2 class="font-headline-sm text-on-surface mb-sm">Quick Actions</h2>
+<div class="grid grid-cols-2 gap-sm">
+<button class="bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant/20 flex flex-col items-center justify-center gap-2 hover:bg-surface-container-high transition-colors active:scale-95" onclick="showMetricDetail('Record Sale', '', 'Record sale form overlay...')">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">point_of_sale</span>
+</div>
+<span class="font-label-sm text-on-surface">Record Sale</span>
+</button>
+<button class="bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant/20 flex flex-col items-center justify-center gap-2 hover:bg-surface-container-high transition-colors active:scale-95" onclick="showMetricDetail('Add Product', '', 'Add product form overlay...')">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">add_box</span>
+</div>
+<span class="font-label-sm text-on-surface">Add Product</span>
+</button>
+<button class="bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant/20 flex flex-col items-center justify-center gap-2 hover:bg-surface-container-high transition-colors active:scale-95" onclick="showMetricDetail('Add Customer', '', 'Add customer form overlay...')">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person_add</span>
+</div>
+<span class="font-label-sm text-on-surface">Add Customer</span>
+</button>
+<button class="bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant/20 flex flex-col items-center justify-center gap-2 hover:bg-surface-container-high transition-colors active:scale-95" onclick="showMetricDetail('Create Invoice', '', 'Create invoice form overlay...')">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">receipt</span>
+</div>
+<span class="font-label-sm text-on-surface">Create Invoice</span>
+</button>
+</div>
+</div>
+<!-- Recent Orders -->
+<div class="mb-lg">
+<div class="flex justify-between items-center mb-sm">
+<h2 class="font-headline-sm text-on-surface">Recent Orders</h2>
+<button class="text-primary font-label-md hover:opacity-80 transition-opacity" onclick="showMetricDetail('All Orders', '', 'Full orders list view...')">View All</button>
+</div>
+<div class="bg-surface-container rounded-xl p-md shadow-sm border border-outline-variant/20 flex flex-col gap-sm">
+<div class="flex justify-between items-center pb-sm border-b border-outline-variant/20 cursor-pointer hover:bg-surface-container-high rounded p-1 -mx-1 transition-colors active:bg-surface-variant" onclick="showMetricDetail('Order Details', 'ORD-2489', 'Order status, items, actions...')">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 bg-surface-container-high rounded-md flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">inventory_2</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">ORD-2489</p>
+<p class="text-[12px] text-on-surface-variant">2 items • Just now</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-on-surface">₦24,500</p>
+<span class="text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-sm">Paid</span>
+</div>
+</div>
+<div class="flex justify-between items-center cursor-pointer hover:bg-surface-container-high rounded p-1 -mx-1 transition-colors active:bg-surface-variant" onclick="showMetricDetail('Order Details', 'ORD-2488', 'Order status, items, actions...')">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 bg-surface-container-high rounded-md flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">inventory_2</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">ORD-2488</p>
+<p class="text-[12px] text-on-surface-variant">1 item • 2h ago</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-on-surface">₦12,000</p>
+<span class="text-[10px] bg-error-container text-error px-2 py-0.5 rounded-sm">Pending</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Customer Insights (New) -->
+<div class="bg-surface-container rounded-xl p-md shadow-sm mb-lg border border-outline-variant/20 cursor-pointer hover:bg-surface-container-high transition-colors active:scale-[0.99]" onclick="showMetricDetail('Customer Insights', '', 'Detailed CRM analytics...')">
+<h2 class="font-headline-sm text-on-surface mb-md">Customer Insights</h2>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<p class="font-label-sm text-on-surface-variant">Total Customers</p>
+<p class="font-headline-sm text-on-surface">128</p>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant">Avg Order Value</p>
+<p class="font-headline-sm text-on-surface">₦24,500</p>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<p class="font-label-sm text-on-surface">24 New</p>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<p class="font-label-sm text-on-surface">18 Returning</p>
+</div>
+</div>
+</div>
+<!-- Marketing (New) -->
+<div class="bg-surface-container rounded-xl p-md shadow-sm mb-lg border border-outline-variant/20 cursor-pointer hover:bg-surface-container-high transition-colors active:scale-[0.99]" onclick="showMetricDetail('Marketing Dashboard', '', 'Marketing performance and campaigns...')">
+<h2 class="font-headline-sm text-on-surface mb-md">Marketing</h2>
+<div class="bg-surface-container-lowest p-md rounded-lg mb-md">
+<p class="font-label-sm text-on-surface-variant mb-xs">Last promotion</p>
+<div class="flex justify-between items-center">
+<p class="font-label-md font-bold text-on-surface">₦84,500</p>
+<p class="font-label-sm text-primary">32 orders</p>
+</div>
+</div>
+<button class="w-full bg-secondary-container text-on-secondary-container py-sm rounded-lg font-label-md flex justify-center items-center gap-xs shadow-sm transition-all active:scale-95" onclick="event.stopPropagation(); showMetricDetail('Create Promotion', '', 'Promotion builder form...')">
+<span class="material-symbols-outlined text-[18px]">campaign</span> Create Promotion
+  </button>
+</div>
+<!-- WhatsApp Status (New) -->
+<div class="bg-surface-container rounded-xl p-md shadow-sm mb-lg border border-outline-variant/20 flex items-center justify-between cursor-pointer hover:bg-surface-container-high transition-colors" onclick="showMetricDetail('WhatsApp Settings', '', 'Notification and auto-reply configuration...')">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-[#25D366]/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[#25D366]">chat</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">WhatsApp • Connected</p>
+<p class="text-[12px] text-primary">Order notifications ON</p>
+</div>
+</div>
+<button class="w-8 h-8 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-full" onclick="event.stopPropagation(); showMetricDetail('WhatsApp Settings', '', 'Notification and auto-reply configuration...')">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+</div></div>
+</div>
+</main>
+</div>
+<script>
+  // Interaction Logic
+  function openNavDrawer() {
+    const backdrop = document.getElementById('nav-drawer-backdrop');
+    const drawer = document.getElementById('nav-drawer');
+    backdrop.classList.add('active');
+    setTimeout(() => drawer.classList.add('active'), 10);
+    document.body.classList.add('drawer-open');
+  }
+
+  function closeNavDrawer() {
+    const backdrop = document.getElementById('nav-drawer-backdrop');
+    const drawer = document.getElementById('nav-drawer');
+    drawer.classList.remove('active');
+    setTimeout(() => {
+      backdrop.classList.remove('active');
+      document.body.classList.remove('drawer-open');
+    }, 300);
+  }
+
+  function openDrawer(drawerId) {
+    const backdrop = document.getElementById(drawerId + '-backdrop');
+    const drawer = document.getElementById(drawerId);
+    if(backdrop && drawer) {
+      backdrop.classList.add('active');
+      setTimeout(() => drawer.classList.add('active'), 10);
+      document.body.classList.add('drawer-open');
+    }
+  }
+
+  function closeDrawer(drawerId) {
+    const backdrop = document.getElementById(drawerId + '-backdrop');
+    const drawer = document.getElementById(drawerId);
+    if(backdrop && drawer) {
+      drawer.classList.remove('active');
+      setTimeout(() => {
+        backdrop.classList.remove('active');
+        document.body.classList.remove('drawer-open');
+      }, 300);
+    }
+  }
+
+  function openModal(modalId, backdropId = modalId) {
+    const modal = document.getElementById(backdropId) || document.getElementById(modalId);
+    const content = document.getElementById(modalId);
+    if(modal) {
+      modal.classList.add('active');
+      if(content && content !== modal) {
+         setTimeout(() => content.classList.add('active'), 10);
+      }
+      document.body.classList.add('drawer-open');
+    }
+  }
+
+  function closeModal(modalId, backdropId = modalId) {
+    const modal = document.getElementById(backdropId) || document.getElementById(modalId);
+    const content = document.getElementById(modalId);
+    if(modal) {
+       if(content && content !== modal) {
+           content.classList.remove('active');
+       }
+      setTimeout(() => {
+        modal.classList.remove('active');
+        document.body.classList.remove('drawer-open');
+      }, 200);
+    }
+  }
+
+  function showMetricDetail(title, value, description) {
+    const titleEl = document.getElementById('generic-modal-title');
+    const contentEl = document.getElementById('generic-modal-content');
+    
+    titleEl.textContent = title;
+    contentEl.innerHTML = `
+      <div class="flex flex-col items-center justify-center py-xl text-center gap-sm">
+        ${value ? `<p class="font-headline-xl text-primary">${value}</p>` : ''}
+        <p class="font-body-md text-on-surface-variant">${description}</p>
+        <button class="mt-md px-lg py-sm bg-primary text-on-primary rounded-lg font-label-md" onclick="closeModal('generic-modal-wrapper')">Got it</button>
+      </div>
+    `;
+    
+    openModal('generic-modal-wrapper', 'generic-modal-backdrop');
+  }
+
+  function toggleChartType(btn, type) {
+    const parent = document.getElementById('sales-orders-toggle');
+    const buttons = parent.querySelectorAll('button');
+    
+    buttons.forEach(b => {
+      b.className = 'px-3 py-1 font-label-sm text-on-surface-variant hover:text-on-surface transition-colors';
+    });
+    
+    btn.className = 'px-3 py-1 bg-surface rounded-md font-label-sm text-primary shadow-sm';
+    
+    const chartTotal = document.getElementById('chart-total');
+    if(type === 'Sales') {
+      chartTotal.textContent = '₦1.8M';
+    } else {
+      chartTotal.textContent = '342';
+    }
+  }
+</script>
+</body></html>
