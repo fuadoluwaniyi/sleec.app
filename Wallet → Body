@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+
+<html lang="en" style=""><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={theme:{extend:{colors:{"primary-container":"#6b7a50","inverse-on-surface":"#eaf1ff","on-tertiary-fixed":"#121f03","inverse-primary":"#bccd9c","tertiary-fixed":"#d6e9b9","secondary-fixed-dim":"#bdcc9f","on-secondary":"#ffffff","surface-bright":"#f8f9ff","on-error-container":"#93000a","secondary-fixed":"#d9e9b9","on-tertiary-fixed-variant":"#3c4c28","outline-variant":"#c6c8ba","surface-container-lowest":"#ffffff","on-secondary-fixed-variant":"#3e4b28","surface-container":"#e6eeff","primary":"#728156","on-tertiary-container":"#f9ffea","surface":"#f8f9ff","primary-fixed-dim":"#bccd9c","on-primary-fixed-variant":"#3e4b26","surface-container-low":"#eff4ff","on-tertiary":"#ffffff","on-primary-container":"#faffe8","surface-dim":"#d0dbed","tertiary":"#51613c","on-error":"#ffffff","inverse-surface":"#27313f","surface-tint":"#55633b","primary-fixed":"#d8e9b6","surface-variant":"#d9e3f6","background":"#f8f9ff","on-secondary-container":"#5b6943","on-primary":"#ffffff","error":"#ba1a1a","outline":"#76786d","error-container":"#ffdad6","tertiary-container":"#697a52","on-primary-fixed":"#141f01","tertiary-fixed-dim":"#bacd9f","on-surface":"#121c2a","on-secondary-fixed":"#141f03","on-surface-variant":"#45483e","on-background":"#121c2a","surface-container-high":"#dee9fc","secondary":"#55633e","secondary-container":"#d9e9b9","surface-container-highest":"#d9e3f6"},spacing:{base:"8px",md:"16px","margin-desktop":"40px",xl:"32px",gutter:"24px",xxl:"48px",sm:"12px",xs:"4px","margin-mobile":"16px",lg:"24px"},fontFamily:{"headline-lg":["Inter"],"headline-md":["Inter"],"headline-xl":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"],"label-md":["Inter"],"body-md":["Inter"],"headline-lg-mobile":["Inter"],"label-sm":["Inter"],"body-sm":["Inter"]},fontSize:{"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"600"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"600"}],"label-md":["14px",{lineHeight:"16px",fontWeight:"500"}],"body-md":["16px",{lineHeight:"24px",fontWeight:"400"}],"headline-lg-mobile":["28px",{lineHeight:"36px",fontWeight:"700"}],"label-sm":["12px",{lineHeight:"16px",fontWeight:"600"}],"body-sm":["14px",{lineHeight:"20px",fontWeight:"400"}]}}}}</script></head><body class="bg-background font-body-md text-on-background"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col border-r border-outline-variant/20 shadow-sm"><div class="p-lg flex items-center gap-md border-b border-outline-variant/10"><img alt="Sleec Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLsZcxgLl88XoxnUS4isMKm5PbT1cnZ2KLsNafMvm-yZovsMpqeO3U_ZNfuBNs-z5WInBclXw84c10PEbi8AVZzkWRjiFwN9eyi6YUmLJFoHV1qawFfpKM34CBS_KK3wTz8r6uw-LudBmwr348__rtrYkRj0Hi2SwO0GHIufSMx54ikMB9Jbg543oEHhb0OJk94pl7pjwdBMWzl1xq3ouny6AWw7I5x1KQxkUjJbrMLXgxvHxEc6tGOmlLI"/><span class="font-headline-sm text-headline-sm text-primary">Sleec</span></div><nav class="flex-1 overflow-y-auto py-lg px-md space-y-lg" data-active-classes="bg-secondary-container text-on-secondary-container font-semibold"><div class="space-y-xs"><p class="px-md mb-xs text-label-sm uppercase tracking-wider text-outline">Business</p><a class="flex items-center gap-md px-md py-sm rounded-lg text-body-md text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined">dashboard</span>Dashboard</a><a class="flex items-center gap-md px-md py-sm rounded-lg text-body-md text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="products" href="#"><span class="material-symbols-outlined">inventory_2</span>Products</a><a class="flex items-center gap-md px-md py-sm rounded-lg text-body-md text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="orders" href="#"><span class="material-symbols-outlined">shopping_bag</span>Orders</a><a class="flex items-center gap-md px-md py-sm rounded-lg text-body-md text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="customers" href="#"><span class="material-symbols-outlined">group</span>Customers</a></div><div class="space-y-xs"><p class="px-md mb-xs text-label-sm uppercase tracking-wider text-outline">Growth</p><a class="flex items-center gap-md px-md py-sm rounded-lg text-body-md text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="analytics" href="#"><span class="material-symbols-outlined">insights</span>Analytics</a><a class="flex items-center gap-md px-md py-sm rounded-lg text-body-md text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="marketing" href="#"><span class="material-symbols-outlined">campaign</span>Marketing</a></div><div class="space-y-xs"><p class="px-md mb-xs text-label-sm uppercase tracking-wider text-outline">Money</p><a aria-current="page" class="flex items-center gap-md px-md py-sm rounded-lg transition-all bg-secondary-container text-on-secondary-container font-semibold" data-path="wallet" href="#"><span class="material-symbols-outlined">account_balance_wallet</span>Wallet</a></div><div class="space-y-xs"><p class="px-md mb-xs text-label-sm uppercase tracking-wider text-outline">Store</p><a class="flex items-center gap-md px-md py-sm rounded-lg text-body-md text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="my-shop" href="#"><span class="material-symbols-outlined">storefront</span>My Shop</a><a class="flex items-center gap-md px-md py-sm rounded-lg text-body-md text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="settings" href="#"><span class="material-symbols-outlined">settings</span>Settings</a></div></nav></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 border-b border-outline-variant/10 flex items-center justify-between px-xl shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="flex items-center gap-md bg-surface-container-low px-md py-xs rounded-full border border-outline-variant/20 w-96"><span class="material-symbols-outlined text-outline">search</span><input class="bg-transparent border-none focus:ring-0 text-body-sm w-full outline-none text-on-surface-variant placeholder:text-outline" placeholder="Search anything..." type="text"/></div><div class="flex items-center gap-lg"><button class="relative p-base text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors"><span class="material-symbols-outlined">notifications</span><span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span></button><div class="flex items-center gap-md pl-md border-l border-outline-variant/30"><div class="text-right hidden sm:block"><p class="text-label-md text-on-surface">Business Admin</p><p class="text-label-sm text-outline">Pro Plan</p></div><img alt="Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/10" src="https://lh3.googleusercontent.com/aida/AP1WRLs-1ajBxdJsF-oyaKmqCEzSJ8MWLtSrgTpkBSIl4ndw3lg5SkgmJVt2LqZFjZNVTLvSRgEsd7RhyMvDZcgCiw8BRhkNn9VpIWkktiX6cWwJmGEcFqYnp_eKPLVYEHT3VFa9wFFCawhgqkjiFQh96pQbQERPgKWzJluuWC9odTDcAlEEbNylMjbJnZWnI7I3GRr_Mm7Azp9jKFafTDOX4umBaq_ZQmlAcFQR2a-MFiV0gFLJbaaG6z7ITz4"/></div></div></header><main class="pt-16 min-h-screen bg-background bg-surface"><div class="flex flex-col w-full h-full text-on-background relative overflow-hidden" style="font-family: 'Inter', sans-serif;">
+<div class="px-xl py-xl space-y-xl max-w-[1400px] mx-auto w-full relative z-10">
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-8">
+<div class="space-y-sm">
+<h1 class="text-headline-xl text-on-surface font-headline-xl">Wallet</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl">Manage your balance, transactions, withdrawals and payouts from one place.</p>
+</div>
+<div class="flex items-center gap-md shrink-0"><button class="flex items-center gap-sm px-lg py-sm rounded-lg text-body-md font-semibold text-on-surface bg-surface-container-high hover:bg-surface-container-highest transition-colors shadow-sm" onclick="document.getElementById('modal-statement').classList.remove('hidden')"><span class="material-symbols-outlined text-[20px]">description</span> Statement</button><button class="flex items-center gap-sm px-lg py-sm rounded-lg text-body-md font-semibold text-on-primary bg-primary hover:bg-primary/90 transition-colors shadow-md" onclick="startFundFlow()"><span class="material-symbols-outlined text-[20px]">add_circle</span> Fund Wallet</button></div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<div class="lg:col-span-8 flex flex-col gap-xl">
+<div class="bg-surface-container-lowest rounded-lg p-xl border border-outline-variant/20 shadow-sm relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-lg">
+<div class="space-y-xs">
+<span class="text-label-sm uppercase tracking-wider text-outline font-bold">Available Balance</span>
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-xl text-on-surface font-headline-xl" id="available-balance">₦802,450.00</span>
+</div>
+</div>
+<button class="p-xs hover:bg-surface-container-high rounded-full text-on-surface-variant transition-colors" id="toggle-balance-visibility" onclick="toggleBalanceVisibility()"><span class="material-symbols-outlined" id="visibility-icon">visibility</span></button>
+</div>
+<div class="grid grid-cols-2 gap-lg mb-xl">
+<div class="p-md bg-surface-container-low rounded-lg">
+<p class="text-label-sm text-outline mb-xs">Available to withdraw</p>
+<p class="text-body-md font-semibold text-on-surface" id="withdraw-balance">₦750,000.00</p>
+</div>
+<div class="p-md bg-surface-container-low rounded-lg">
+<p class="text-label-sm text-outline mb-xs">Pending amount</p>
+<p class="text-body-md font-semibold text-on-surface" id="pending-balance">₦32,450.00</p>
+</div>
+</div>
+<div class="flex gap-md">
+<button class="flex-1 h-12 bg-primary text-on-primary rounded-lg font-semibold shadow-sm hover:bg-primary/90 transition-colors flex items-center justify-center gap-sm" onclick="startWithdrawFlow()">
+<span class="material-symbols-outlined">south_west</span> Withdraw
+      </button>
+<button class="flex-1 h-12 border border-primary text-primary rounded-lg font-semibold hover:bg-primary/5 transition-colors flex items-center justify-center gap-sm" onclick="startTransferFlow()">
+<span class="material-symbols-outlined">north_east</span> Send / Transfer
+      </button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/20 shadow-sm overflow-hidden flex flex-col">
+<div class="p-lg flex justify-between items-center bg-surface-container-low border-b border-outline-variant/10">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Recent Transactions</h2>
+<button class="text-primary text-label-md font-semibold hover:underline" onclick="openFullHistory()">View All</button>
+</div>
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse min-w-[600px]">
+<thead>
+<tr class="text-label-md text-on-surface-variant bg-surface-container-low/50 border-b border-outline-variant/10">
+<th class="py-md px-lg font-medium whitespace-nowrap">Transaction</th>
+<th class="py-md px-lg font-medium whitespace-nowrap">Date &amp; Time</th>
+<th class="py-md px-lg font-medium whitespace-nowrap text-right">Amount</th>
+<th class="py-md px-lg font-medium whitespace-nowrap text-center">Status</th>
+</tr>
+</thead>
+<tbody class="text-body-sm text-on-surface" id="recent-transactions-body"></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-xl">
+<div class="bg-surface-container rounded-2xl p-lg shadow-sm cursor-pointer" onclick="document.getElementById('modal-settlement-breakdown').classList.remove('hidden')">
+<h3 class="text-label-md uppercase tracking-wider text-on-surface-variant font-semibold mb-lg">Pending Settlements</h3>
+<div class="flex items-center justify-between mb-sm">
+<span class="text-headline-md font-headline-md text-on-surface">₦145,400.00</span>
+<span class="material-symbols-outlined text-outline-variant text-[32px]">pending_actions</span>
+</div>
+<div class="flex items-center gap-sm mt-md">
+<div class="h-2 flex-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-2/3 rounded-full"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant whitespace-nowrap">Clearing in 24h</span>
+</div>
+</div>
+<div class="bg-surface-container rounded-2xl p-lg shadow-sm">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="text-label-md uppercase tracking-wider text-on-surface-variant font-semibold">Withdrawal Account</h3>
+<button class="p-xs rounded-full hover:bg-surface-container-high text-on-surface-variant transition-colors" onclick="document.getElementById('modal-update-account').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<div class="flex items-center gap-md bg-surface p-md rounded-xl">
+<div class="w-12 h-12 bg-error-container text-on-error-container rounded-lg flex items-center justify-center shrink-0 font-bold">
+              GTB
+            </div>
+<div>
+<p class="font-semibold text-on-surface" id="withdrawal-bank-name">GTBank</p>
+<p class="text-body-sm text-on-surface-variant font-mono" id="withdrawal-account-number">•••• •••• 4092</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container rounded-2xl p-lg shadow-sm relative">
+<h3 class="text-label-md uppercase tracking-wider text-on-surface-variant font-semibold mb-lg">Payout Schedule</h3><button class="w-full mb-md py-sm bg-primary text-on-primary rounded-lg font-semibold flex items-center justify-center gap-sm hover:bg-primary/90 transition-colors shadow-sm" onclick="openScheduleModal()"><span class="material-symbols-outlined text-[20px]">add_circle</span> Scheduled Payout</button><button class="absolute top-lg right-lg p-xs rounded-full hover:bg-surface-container-high text-on-surface-variant transition-colors" onclick="document.getElementById('modal-payout-history').classList.remove('hidden')" title="View Payout History"><span class="material-symbols-outlined text-[20px]">history</span></button>
+<div class="space-y-md"><div class="flex bg-surface-container-highest rounded-lg p-xs relative"><button class="flex-1 py-xs text-label-sm font-semibold rounded-md z-10 text-on-surface-variant" onclick="switchPayoutTab('daily', this)">Daily</button><button class="flex-1 py-xs text-label-sm font-semibold rounded-md z-10 bg-surface shadow-sm text-on-surface" onclick="switchPayoutTab('weekly', this)">Weekly</button><button class="flex-1 py-xs text-label-sm font-semibold rounded-md z-10 text-on-surface-variant" onclick="switchPayoutTab('monthly', this)">Monthly</button></div><div class="payout-tab-content hidden min-h-[120px]" id="payout-daily"></div><div class="payout-tab-content min-h-[120px]" id="payout-weekly"></div><div class="payout-tab-content hidden min-h-[120px]" id="payout-monthly"></div></div>
+</div>
+<div class="bg-surface-container rounded-2xl p-lg shadow-sm">
+<h3 class="text-label-md uppercase tracking-wider text-on-surface-variant font-semibold mb-lg">Settlement Summary</h3>
+<div class="space-y-sm">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Gross Sales</span>
+<span class="font-medium text-on-surface">₦850,000.00</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Refunds</span>
+<span class="font-medium text-on-surface">- ₦25,000.00</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Fees</span>
+<span class="font-medium text-on-surface">- ₦42,550.00</span>
+</div>
+<div class="pt-sm mt-sm border-t border-outline-variant/20 flex justify-between text-body-md font-semibold">
+<span class="text-on-surface">Net Settled</span>
+<span class="text-on-surface">₦782,450.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Withdraw -->
+<div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-withdraw">
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative" id="withdraw-step-1">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Withdraw Funds</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-withdraw').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">Amount to withdraw</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">₦</span>
+<input class="w-full bg-surface-container rounded-lg py-md pl-10 pr-md text-body-lg font-semibold border-none focus:ring-2 focus:ring-primary outline-none" id="withdraw-amount-input" oninput="validateWithdrawAmount()" placeholder="0.00" type="number"/>
+</div>
+<p class="text-label-sm text-on-surface-variant mt-xs text-right">Available: <span class="" id="withdraw-available-text">₦750,000.00</span></p>
+<p class="text-error text-label-sm mt-xs hidden" id="withdraw-error-msg">Invalid amount</p>
+</div>
+</div>
+<div class="p-lg border-t border-outline-variant/10">
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold hover:bg-primary/90 transition-colors opacity-50" disabled="" id="withdraw-continue-btn" onclick="goToWithdrawStep2()">Continue</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="withdraw-step-2">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Confirm Withdrawal</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-withdraw').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div class="text-center mb-md">
+<p class="text-label-sm text-on-surface-variant">Amount to withdraw</p>
+<p class="text-headline-lg font-headline-lg text-on-surface" id="withdraw-confirm-amount">₦0.00</p>
+</div>
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">Destination Account</label>
+<div class="bg-surface-container-low p-md rounded-lg flex items-center justify-between">
+<span class="" id="withdraw-destination-text">GTBank - ••••4092</span>
+<span class="material-symbols-outlined text-outline">account_balance</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg text-body-sm space-y-xs">
+<div class="flex justify-between"><span class="text-on-surface-variant">Withdrawal Fee</span><span class="">₦50.00</span></div>
+<div class="flex justify-between font-semibold"><span class="text-on-surface">Total Deduction</span><span class="" id="withdraw-total-deduction">₦0.00</span></div>
+</div>
+</div>
+<div class="p-lg border-t border-outline-variant/10 flex gap-md">
+<button class="flex-1 py-md border border-outline-variant/30 text-on-surface font-semibold rounded-xl hover:bg-surface-container transition-colors" onclick="document.getElementById('withdraw-step-2').classList.add('hidden'); document.getElementById('withdraw-step-1').classList.remove('hidden')">Back</button>
+<button class="flex-1 py-md bg-primary text-on-primary rounded-xl font-semibold hover:bg-primary/90 transition-colors" onclick="processWithdrawal()">Confirm</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="withdraw-processing">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-12 h-12 border-4 border-surface-container-high border-t-primary rounded-full animate-spin"></div>
+<h3 class="text-headline-sm font-headline-sm">Processing Withdrawal...</h3>
+<p class="text-body-sm text-on-surface-variant">Please wait...</p>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="withdraw-success">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-[32px]">check_circle</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm">Withdrawal Confirmed</h3>
+<p class="text-body-sm text-on-surface-variant">Funds are on their way to your account.</p>
+<button class="w-full mt-md py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="document.getElementById('modal-withdraw').classList.add('hidden')">Done</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="withdraw-failed">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-16 h-16 bg-error/10 text-error rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-[32px]">cancel</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm">Withdrawal Failed</h3>
+<p class="text-body-sm text-on-surface-variant">We couldn't process this request. Please try again later.</p>
+<button class="w-full mt-md py-md bg-surface-container-high text-on-surface rounded-xl font-semibold hover:bg-surface-container-highest transition-colors" onclick="document.getElementById('modal-withdraw').classList.add('hidden')">Close</button>
+</div>
+</div>
+</div>
+<!-- Modal Transfer -->
+<div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-transfer">
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative" id="transfer-step-1">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Send Funds</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-transfer').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">Recipient @username</label>
+<input class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none focus:ring-2 focus:ring-primary outline-none" id="transfer-username-input" oninput="validateTransferRecipient()" placeholder="@johndoe" type="text"/>
+</div>
+<div class="hidden bg-surface-container-low p-md rounded-lg flex items-center gap-md" id="transfer-recipient-info">
+<div class="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">JO</div>
+<div>
+<p class="font-semibold" id="transfer-recipient-name">James Okoro</p>
+<p class="text-label-sm text-on-surface-variant" id="transfer-recipient-handle">@jamesokoro</p>
+</div>
+</div>
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">Amount</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">₦</span>
+<input class="w-full bg-surface-container rounded-lg py-md pl-10 pr-md text-body-lg font-semibold border-none focus:ring-2 focus:ring-primary outline-none" id="transfer-amount-input" oninput="validateTransferAmount()" placeholder="0.00" type="number"/>
+</div>
+<p class="text-error text-label-sm mt-xs hidden" id="transfer-error-msg">Invalid amount</p>
+</div>
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">Note (Optional)</label>
+<input class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none focus:ring-2 focus:ring-primary outline-none" id="transfer-note-input" placeholder="Payment for services" type="text"/>
+</div>
+</div>
+<div class="p-lg border-t border-outline-variant/10">
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold hover:bg-primary/90 transition-colors opacity-50" disabled="" id="transfer-continue-btn" onclick="goToTransferStep2()">Continue</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="transfer-step-2">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Confirm Transfer</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-transfer').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div class="text-center mb-md">
+<p class="text-label-sm text-on-surface-variant">Amount to send</p>
+<p class="text-headline-lg font-headline-lg text-on-surface" id="transfer-confirm-amount">₦0.00</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold">JO</div>
+<div>
+<p class="font-semibold">James Okoro</p>
+<p class="text-label-sm text-on-surface-variant">@jamesokoro</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg text-body-sm space-y-xs">
+<div class="flex justify-between"><span class="text-on-surface-variant">Sleec Transfer Fee</span><span class="">₦10.00</span></div>
+<div class="flex justify-between font-semibold"><span class="text-on-surface">Total Deduction</span><span class="" id="transfer-total-deduction">₦0.00</span></div>
+</div>
+</div>
+<div class="p-lg border-t border-outline-variant/10 flex gap-md">
+<button class="flex-1 py-md border border-outline-variant/30 text-on-surface font-semibold rounded-xl hover:bg-surface-container transition-colors" onclick="document.getElementById('transfer-step-2').classList.add('hidden'); document.getElementById('transfer-step-1').classList.remove('hidden')">Back</button>
+<button class="flex-1 py-md bg-primary text-on-primary rounded-xl font-semibold hover:bg-primary/90 transition-colors" onclick="processTransfer()">Send</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="transfer-processing">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-12 h-12 border-4 border-surface-container-high border-t-primary rounded-full animate-spin"></div>
+<h3 class="text-headline-sm font-headline-sm">Sending...</h3>
+<p class="text-body-sm text-on-surface-variant">Please wait...</p>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="transfer-success">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-[32px]">check_circle</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm">Transfer Successful</h3>
+<p class="text-body-sm text-on-surface-variant">Sleec transfers are instant. James Okoro has received the funds.</p>
+<button class="w-full mt-md py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="document.getElementById('modal-transfer').classList.add('hidden')">Done</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="transfer-failed">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-16 h-16 bg-error/10 text-error rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-[32px]">cancel</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm">Transfer Failed</h3>
+<p class="text-body-sm text-on-surface-variant">We couldn't process this transfer. Please try again later.</p>
+<button class="w-full mt-md py-md bg-surface-container-high text-on-surface rounded-xl font-semibold hover:bg-surface-container-highest transition-colors" onclick="document.getElementById('modal-transfer').classList.add('hidden')">Close</button>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-fund">
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative" id="fund-step-1">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Fund Wallet</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-fund').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">Amount (Min ₦100)</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">₦</span>
+<input class="w-full bg-surface-container rounded-lg py-md pl-10 pr-md text-body-lg font-semibold border-none focus:ring-2 focus:ring-primary outline-none" id="fund-amount" oninput="const val = parseFloat(this.value); const btn = document.getElementById('fund-proceed-btn'); const msg = document.getElementById('fund-error-msg'); if(val &lt; 100 || isNaN(val)){ btn.disabled = true; btn.classList.add('opacity-50'); msg.classList.remove('hidden'); } else { btn.disabled = false; btn.classList.remove('opacity-50'); msg.classList.add('hidden'); }" placeholder="0.00" type="number"/>
+</div>
+<p class="text-error text-label-sm mt-xs hidden" id="fund-error-msg">Minimum amount is ₦100</p>
+</div>
+</div>
+<div class="p-lg border-t border-outline-variant/10">
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold hover:bg-primary/90 transition-colors opacity-50" disabled="" id="fund-proceed-btn" onclick="document.getElementById('fund-step-1').classList.add('hidden'); document.getElementById('fund-step-2').classList.remove('hidden')">Continue</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="fund-step-2">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Select Funding Method</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-fund').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div class="space-y-sm">
+<button class="w-full flex items-center p-md border border-outline-variant/30 rounded-xl hover:bg-surface-container-high transition-colors" onclick="document.getElementById('fund-step-2').classList.add('hidden'); document.getElementById('fund-bank-transfer').classList.remove('hidden')">
+<span class="material-symbols-outlined text-primary mr-sm">account_balance</span>
+<span class="font-medium">Bank Transfer</span>
+</button>
+<button class="w-full flex items-center p-md border border-outline-variant/30 rounded-xl hover:bg-surface-container-high transition-colors" onclick="document.getElementById('fund-step-2').classList.add('hidden'); document.getElementById('fund-card').classList.remove('hidden')">
+<span class="material-symbols-outlined text-primary mr-sm">credit_card</span>
+<span class="font-medium">Debit Card</span>
+</button>
+<button class="w-full flex items-center p-md border border-outline-variant/30 rounded-xl hover:bg-surface-container-high transition-colors" onclick="simulateFunding('Paystack')">
+<span class="material-symbols-outlined text-primary mr-sm">payments</span>
+<span class="font-medium">Paystack</span>
+</button>
+<div class="hidden space-y-sm" id="more-options">
+<button class="w-full flex items-center p-md border border-outline-variant/30 rounded-xl hover:bg-surface-container-high transition-colors" onclick="simulateFunding('OPay')">
+<span class="material-symbols-outlined text-primary mr-sm">account_balance_wallet</span>
+<span class="font-medium">OPay</span>
+</button>
+<button class="w-full flex items-center p-md border border-outline-variant/30 rounded-xl hover:bg-surface-container-high transition-colors" onclick="simulateFunding('Moniepoint')">
+<span class="material-symbols-outlined text-primary mr-sm">store</span>
+<span class="font-medium">Moniepoint</span>
+</button>
+<button class="w-full flex items-center p-md border border-outline-variant/30 rounded-xl hover:bg-surface-container-high transition-colors" onclick="simulateFunding('Flutterwave')">
+<span class="material-symbols-outlined text-primary mr-sm">bolt</span>
+<span class="font-medium">Flutterwave</span>
+</button>
+</div>
+<button class="text-primary text-label-md font-semibold w-full text-center py-xs" id="view-more-btn" onclick="document.getElementById('more-options').classList.remove('hidden'); this.classList.add('hidden')">View More Options</button>
+</div>
+</div>
+<div class="p-lg border-t border-outline-variant/10">
+<button class="w-full py-md text-on-surface-variant font-semibold hover:bg-surface-container transition-colors rounded-xl" onclick="document.getElementById('fund-step-2').classList.add('hidden'); document.getElementById('fund-step-1').classList.remove('hidden')">Back</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="fund-bank-transfer">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Bank Transfer</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-fund').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div class="bg-surface-container-low p-lg rounded-xl space-y-md">
+<div class="flex justify-between items-center">
+<div>
+<p class="text-label-sm text-outline">Bank Name</p>
+<p class="font-semibold">Sleec Bank</p>
+</div>
+<button class="text-primary material-symbols-outlined">content_copy</button>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="text-label-sm text-outline">Account Number</p>
+<p class="font-semibold">1234567890</p>
+</div>
+<button class="text-primary material-symbols-outlined">content_copy</button>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="text-label-sm text-outline">Reference</p>
+<p class="font-semibold">SL-990</p>
+</div>
+<button class="text-primary material-symbols-outlined">content_copy</button>
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant text-center">Transfer the exact amount to the details above.</p>
+</div>
+<div class="p-lg border-t border-outline-variant/10 space-y-sm">
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="handleBankTransfer()">I've Made the Transfer</button>
+<button class="w-full py-md text-on-surface-variant font-semibold" onclick="document.getElementById('fund-bank-transfer').classList.add('hidden'); document.getElementById('fund-step-2').classList.remove('hidden')">Back</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="fund-card">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Pay with Card</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-fund').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div class="space-y-sm">
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">Card Number</label>
+<input class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none" placeholder="0000 0000 0000 0000" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">Expiry</label>
+<input class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none" placeholder="MM/YY" type="text"/>
+</div>
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">CVV</label>
+<input class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none" placeholder="123" type="password"/>
+</div>
+</div>
+</div>
+</div>
+<div class="p-lg border-t border-outline-variant/10 space-y-sm">
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="handleCardVerification(this)">Pay Now</button>
+<button class="w-full py-md text-on-surface-variant font-semibold" onclick="document.getElementById('fund-card').classList.add('hidden'); document.getElementById('fund-step-2').classList.remove('hidden')">Back</button>
+</div>
+</div>
+<!-- New State Views -->
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="fund-verifying">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-12 h-12 border-4 border-surface-container-high border-t-primary rounded-full animate-spin"></div>
+<h3 class="text-headline-sm font-headline-sm">Verifying Transfer...</h3>
+<p class="text-body-sm text-on-surface-variant">Please wait while we confirm your payment.</p>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="fund-success">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-[32px]">check_circle</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm">Funding Successful</h3>
+<p class="text-body-sm text-on-surface-variant">Your wallet has been credited successfully.</p>
+<button class="w-full mt-md py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="finalizeFunding()">Continue to Dashboard</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="fund-failed">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-16 h-16 bg-error/10 text-error rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-[32px]">error</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm">Funding Failed</h3>
+<p class="text-body-sm text-on-surface-variant">We couldn't verify your payment. Please try again.</p>
+<button class="w-full mt-md py-md bg-surface-container-high text-on-surface rounded-xl font-semibold hover:bg-surface-container-highest transition-colors" onclick="document.getElementById('fund-failed').classList.add('hidden'); document.getElementById('fund-step-2').classList.remove('hidden')">Try Again</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="card-processing">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-12 h-12 border-4 border-surface-container-high border-t-primary rounded-full animate-spin"></div>
+<h3 class="text-headline-sm font-headline-sm">Processing Card...</h3>
+<p class="text-body-sm text-on-surface-variant">Do not close this window.</p>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="card-verify-failed">
+<div class="p-xl flex flex-col items-center justify-center text-center space-y-md">
+<div class="w-16 h-16 bg-error/10 text-error rounded-full flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-[32px]">credit_card_off</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm">Verification Failed</h3>
+<p class="text-body-sm text-on-surface-variant">Your card could not be verified. Please check the details and try again.</p>
+<button class="w-full mt-md py-md bg-surface-container-high text-on-surface rounded-xl font-semibold hover:bg-surface-container-highest transition-colors" onclick="document.getElementById('card-verify-failed').classList.add('hidden'); document.getElementById('fund-card').classList.remove('hidden')">Try Again</button>
+</div>
+</div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="card-verified-state">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Enter OTP</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-fund').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">One Time Password</label>
+<input class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none" placeholder="123456" type="text"/>
+<p class="text-label-sm text-on-surface-variant mt-xs">A code was sent to your phone number ending in ****.</p>
+</div>
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="handleCardPayment()">Confirm Payment</button>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-statement">
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Generate Statement</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-statement').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-md">
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">Date Range</label>
+<select class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none focus:ring-2 focus:ring-primary outline-none appearance-none">
+<option>Last 30 Days</option>
+<option>This Month</option>
+<option>Last Month</option>
+<option>Custom Range</option>
+</select>
+</div>
+<div>
+<label class="block text-label-sm text-on-surface-variant mb-xs">Format</label>
+<div class="flex gap-sm">
+<button class="flex-1 py-sm border border-primary bg-primary/5 text-primary rounded-lg font-medium">PDF</button>
+<button class="flex-1 py-sm border border-outline-variant/30 text-on-surface rounded-lg font-medium hover:bg-surface-container">CSV</button>
+</div>
+</div>
+</div>
+<div class="p-lg border-t border-outline-variant/10">
+<button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold hover:bg-primary/90 transition-colors" onclick="document.getElementById('modal-statement').classList.add('hidden'); document.getElementById('modal-statement-preview').classList.remove('hidden')">Generate Statement</button>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-tx-detail" onclick="if(event.target === this) this.classList.add('hidden')">
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Transaction Details</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-tx-detail').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-lg">
+<div class="text-center">
+<div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-sm" id="tx-detail-icon-container">
+<span class="material-symbols-outlined text-[32px]" id="tx-detail-icon"></span>
+</div>
+<p class="text-headline-md font-bold" id="tx-detail-amount"></p>
+<p class="text-body-sm text-on-surface-variant" id="tx-detail-status"></p>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl space-y-sm text-body-sm">
+<div class="flex justify-between"><span class="text-on-surface-variant">Type</span><span class="font-medium" id="tx-detail-type"></span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Reference</span><span class="font-medium font-mono" id="tx-detail-ref"></span></div>
+<div class="flex justify-between"><span class="text-on-surface-variant">Date</span><span class="font-medium" id="tx-detail-date"></span></div>
+<div class="flex justify-between hidden" id="tx-detail-fee-container"><span class="text-on-surface-variant">Fee</span><span class="font-medium" id="tx-detail-fee"></span></div>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-payout-history"><div class="bg-surface rounded-2xl shadow-xl w-full max-w-2xl overflow-hidden relative"><div class="p-lg border-b border-outline-variant/10 flex justify-between items-center"><h2 class="text-headline-sm font-headline-sm">Payout History</h2><button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-payout-history').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="p-lg overflow-x-auto"><table class="w-full text-left border-collapse"><thead class="text-label-sm text-on-surface-variant bg-surface-container-low border-b border-outline-variant/10"><tr><th class="py-sm px-md">Payout ID</th><th class="py-sm px-md">Date</th><th class="py-sm px-md">Amount</th><th class="py-sm px-md">Status</th></tr></thead><tbody class="text-body-sm"><tr><td class="py-md px-md font-mono">PAY-99281</td><td class="py-md px-md">Oct 01, 2024</td><td class="py-md px-md font-semibold">₦450,000.00</td><td class="py-md px-md"><div class="flex justify-center"><span class="material-symbols-outlined text-tertiary text-[20px]">check</span></div></td></tr></tbody></table></div></div></div><div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-update-account"><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative" id="update-account-step-1"><div class="p-lg border-b border-outline-variant/10 flex justify-between items-center"><h2 class="text-headline-sm font-headline-sm">Update Account</h2><button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-update-account').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="p-lg space-y-md"><div><label class="block text-label-sm text-on-surface-variant mb-xs">Select Bank</label><select class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none" id="new-bank-select"><option>GTBank</option><option>Access Bank</option><option>Zenith Bank</option></select></div><div><label class="block text-label-sm text-on-surface-variant mb-xs">Account Number</label><input class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none" id="new-account-number" placeholder="0123456789" type="text"/></div><button class="w-full py-sm border border-outline-variant/30 text-on-surface rounded-lg font-semibold hover:bg-surface-container transition-colors" id="verify-account-trigger" onclick="document.getElementById('update-account-step-1').classList.add('hidden'); document.getElementById('update-account-verification').classList.remove('hidden')">Verify Account</button></div><div class="p-lg border-t border-outline-variant/10"><button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold opacity-50" disabled="" id="confirm-account-change" onclick="document.getElementById('update-account-step-1').classList.add('hidden'); document.getElementById('update-account-saving').classList.remove('hidden'); setTimeout(() =&gt; { document.getElementById('update-account-saving').classList.add('hidden'); document.getElementById('update-account-success').classList.remove('hidden'); const bankName = document.getElementById('new-bank-select').value; const accNum = document.getElementById('new-account-number').value; document.getElementById('withdrawal-bank-name').innerText = bankName; document.getElementById('withdrawal-account-number').innerText = '•••• •••• ' + accNum.slice(-4); }, 1500)">Save Changes</button></div></div><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="update-account-verification"><div class="p-lg border-b border-outline-variant/10 flex justify-between items-center"><h2 class="text-headline-sm font-headline-sm">Verify Bank Account</h2><button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-update-account').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="p-lg space-y-md"><p class="text-body-sm text-on-surface-variant">To verify that this bank account belongs to you, please send ₦100 from the bank account you are trying to link to the Sleek verification account below.</p><div class="bg-surface-container-low p-md rounded-xl space-y-sm text-body-sm"><div class="flex justify-between"><span class="text-on-surface-variant">Verification Amount</span><span class="font-bold">₦100</span></div><div class="flex justify-between"><span class="text-on-surface-variant">Bank</span><span class="font-medium">Sleek Verification Account</span></div><div class="flex justify-between"><span class="text-on-surface-variant">Account Name</span><span class="font-medium">Sleek Verification</span></div><div class="flex justify-between"><span class="text-on-surface-variant">Account Number</span><span class="font-medium font-mono">0123456789</span></div></div><div class="p-md bg-error/5 border border-error/10 rounded-lg"><p class="text-label-sm text-error"><strong>Warning:</strong> Send the ₦100 from the same bank account you are trying to add. Sending from another account will not verify this withdrawal account.</p></div><button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="handleAccountVerification()">I've Sent ₦100</button><button class="w-full py-xs text-on-surface-variant text-label-md font-semibold" onclick="document.getElementById('update-account-verification').classList.add('hidden'); document.getElementById('update-account-step-1').classList.remove('hidden')">Back</button></div></div><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="update-account-verifying-state"><div class="p-xl flex flex-col items-center justify-center text-center space-y-md"><div class="w-12 h-12 border-4 border-surface-container-high border-t-primary rounded-full animate-spin"></div><h3 class="text-headline-sm font-headline-sm">Verifying payment...</h3></div></div><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="update-account-verified-success"><div class="p-xl flex flex-col items-center justify-center text-center space-y-md"><div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-sm"><span class="material-symbols-outlined text-[32px]">check_circle</span></div><h3 class="text-headline-sm font-headline-sm">Account Verified ✓</h3><p class="text-body-sm text-on-surface-variant">Your bank account has been successfully verified.</p><div class="bg-surface-container-low p-md rounded-lg w-full text-left"><p class="font-semibold">James Okoro</p><p class="text-label-sm text-on-surface-variant" id="verified-account-details">GTBank •••• 4092</p></div><button class="w-full mt-md py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="document.getElementById('update-account-verified-success').classList.add('hidden'); document.getElementById('update-account-step-1').classList.remove('hidden'); const btn = document.getElementById('verify-account-trigger'); btn.innerText = '✓ Verified'; btn.disabled = true; btn.className = 'w-full py-sm bg-surface-container-high text-tertiary rounded-lg font-semibold cursor-default'; const confirmBtn = document.getElementById('confirm-account-change'); confirmBtn.disabled = false; confirmBtn.classList.remove('opacity-50');">Continue</button></div></div><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="update-account-verified-failed"><div class="p-xl flex flex-col items-center justify-center text-center space-y-md"><div class="w-16 h-16 bg-error/10 text-error rounded-full flex items-center justify-center mb-sm"><span class="material-symbols-outlined text-[32px]">cancel</span></div><h3 class="text-headline-sm font-headline-sm">Verification Failed</h3><p class="text-body-sm text-on-surface-variant">We couldn't verify your payment. Please ensure you sent it from the correct account.</p><button class="w-full mt-md py-md bg-surface-container-high text-on-surface rounded-xl font-semibold hover:bg-surface-container-highest transition-colors" onclick="document.getElementById('update-account-verified-failed').classList.add('hidden'); document.getElementById('update-account-verification').classList.remove('hidden')">Try Again</button></div></div><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="update-account-saving"><div class="p-xl flex flex-col items-center justify-center text-center space-y-md"><div class="w-12 h-12 border-4 border-surface-container-high border-t-primary rounded-full animate-spin"></div><h3 class="text-headline-sm font-headline-sm">Saving withdrawal account...</h3></div></div><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="update-account-success"><div class="p-xl flex flex-col items-center justify-center text-center space-y-md"><div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-sm"><span class="material-symbols-outlined text-[32px]">check_circle</span></div><h3 class="text-headline-sm font-headline-sm">Withdrawal Account Updated ✓</h3><button class="w-full mt-md py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="document.getElementById('modal-update-account').classList.add('hidden');">Done</button></div></div></div><div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-settlement-breakdown"><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative"><div class="p-lg border-b border-outline-variant/10 flex justify-between items-center"><h2 class="text-headline-sm font-headline-sm">Pending Breakdown</h2><button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-settlement-breakdown').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="p-lg space-y-sm"><div class="flex justify-between p-md bg-surface-container-low rounded-lg"><span class="text-body-sm">Order #8840</span><span class="font-semibold">₦85,000.00</span></div><div class="flex justify-between p-md bg-surface-container-low rounded-lg"><span class="text-body-sm">Order #8841</span><span class="font-semibold">₦60,400.00</span></div></div></div></div><div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-statement-preview"><div class="bg-surface rounded-2xl shadow-xl w-full max-w-4xl h-[80vh] overflow-hidden relative flex flex-col"><div class="p-lg border-b border-outline-variant/10 flex justify-between items-center bg-surface"><h2 class="text-headline-sm font-headline-sm">Statement Preview</h2><div class="flex gap-sm"><button class="p-xs hover:bg-surface-container rounded-full" onclick="alert('Exporting PDF...')"><span class="material-symbols-outlined">download</span></button><button class="p-xs hover:bg-surface-container rounded-full" onclick="alert('Printing...')"><span class="material-symbols-outlined">print</span></button><button class="text-on-surface-variant hover:text-on-surface ml-md" onclick="document.getElementById('modal-statement-preview').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div></div><div class="flex-1 overflow-y-auto p-xl bg-white text-black font-mono text-sm"><div class="border-b-2 border-black pb-md mb-lg flex justify-between"><div><h1 class="text-xl font-bold">SLEEC WALLET STATEMENT</h1><p class="">Business Admin (Pro Plan)</p></div><div class="text-right"><p class="">Period: Oct 1 - Oct 31, 2024</p></div></div><div class="grid grid-cols-2 gap-xl mb-xl"><div class="border p-md"><p class="">Opening Balance</p><p class="text-lg font-bold" id="withdraw-balance">₦0.00</p></div><div class="border p-md"><p class="">Closing Balance</p><p class="text-lg font-bold" id="pending-balance">₦782,450.00</p></div></div><table class="w-full border-collapse"><thead><tr class="border-b border-black"><th class="text-left py-xs">Date</th><th class="text-left py-xs">Description</th><th class="text-right py-xs">Credit</th><th class="text-right py-xs">Debit</th></tr></thead><tbody><tr class="border-b border-gray-200"><td class="py-xs">Oct 24</td><td class="">Order #8839</td><td class="text-right">45,000.00</td><td class="text-right">-</td></tr></tbody></table></div></div></div>
+<script>
+    // State Management
+    let state = {
+        balances: {
+            main: 802450.00,
+            withdraw: 750000.00,
+            pending: 32450.00
+        },
+        transactions: [
+            {
+                id: 'TX-8839',
+                title: 'Order #8839',
+                type: 'Payment Received',
+                date: 'Oct 24, 2:30 PM',
+                amount: 45000.00,
+                isCredit: true,
+                status: 'success',
+                icon: 'shopping_cart',
+                iconColor: 'bg-secondary-container text-on-secondary-container',
+                fee: null
+            },
+            {
+                id: 'TX-8838',
+                title: 'Withdrawal to GTBank',
+                type: 'Payout',
+                date: 'Oct 23, 9:15 AM',
+                amount: 120000.00,
+                isCredit: false,
+                status: 'success',
+                icon: 'account_balance',
+                iconColor: 'bg-surface-container-high text-on-surface',
+                fee: 50.00
+            },
+            {
+                id: 'TX-8837',
+                title: 'Sleec Transfer to @jamesokoro',
+                type: 'Send Money',
+                date: 'Oct 22, 4:45 PM',
+                amount: 15000.00,
+                isCredit: false,
+                status: 'success',
+                icon: 'send',
+                iconColor: 'bg-primary/20 text-primary',
+                fee: 10.00
+            },
+            {
+                id: 'TX-8836',
+                title: 'Wallet Funding via Paystack',
+                type: 'Wallet Fund',
+                date: 'Oct 21, 11:20 AM',
+                amount: 50000.00,
+                isCredit: true,
+                status: 'success',
+                icon: 'payments',
+                iconColor: 'bg-tertiary-container/20 text-tertiary',
+                fee: null
+            },
+            {
+                id: 'TX-8835',
+                title: 'Order #8835',
+                type: 'Payment Received',
+                date: 'Oct 20, 1:15 PM',
+                amount: 25000.00,
+                isCredit: true,
+                status: 'pending',
+                icon: 'shopping_cart',
+                iconColor: 'bg-secondary-container text-on-secondary-container',
+                fee: null
+            },
+            {
+                id: 'TX-8834',
+                title: 'Withdrawal to Access Bank',
+                type: 'Payout',
+                date: 'Oct 19, 8:00 AM',
+                amount: 200000.00,
+                isCredit: false,
+                status: 'failed',
+                icon: 'account_balance',
+                iconColor: 'bg-surface-container-high text-on-surface',
+                fee: null
+            }
+        ],
+        withdrawFlow: {
+            attempts: 0
+        },
+        transferFlow: {
+            attempts: 0
+        },
+        fundFlow: {
+            attempts: 0,
+            amount: 0
+        },
+        verifyAccountFlow: {
+            attempts: 0
+        },
+        balancesHidden: false,
+        schedules: {
+            weekly: {
+                amount: 50000,
+                dateStr: 'Wed, Aug 19 • 10:00 AM'
+            }
+        },
+        pendingScheduleType: null,
+        activeTab: 'weekly'
+    };
+
+    function formatMoney(amount) {
+        return '₦' + parseFloat(amount).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    }
+
+    function updateDOMBalances() {
+        const mainEl = document.getElementById('available-balance');
+        const withdrawEl = document.getElementById('withdraw-balance');
+        const pendingEl = document.getElementById('pending-balance');
+        
+        if (state.balancesHidden) {
+            mainEl.innerText = '••••••';
+            withdrawEl.innerText = '••••••';
+            pendingEl.innerText = '••••••';
+        } else {
+            mainEl.innerText = formatMoney(state.balances.main);
+            withdrawEl.innerText = formatMoney(state.balances.withdraw);
+            pendingEl.innerText = formatMoney(state.balances.pending);
+        }
+    }
+
+    function toggleBalanceVisibility() {
+        state.balancesHidden = !state.balancesHidden;
+        const icon = document.getElementById('visibility-icon');
+        icon.innerText = state.balancesHidden ? 'visibility_off' : 'visibility';
+        updateDOMBalances();
+    }
+
+    function renderTransactions() {
+        const tbody = document.getElementById('recent-transactions-body');
+        tbody.innerHTML = '';
+        
+        // Show up to 7 for recent transactions
+        const recentTx = state.transactions.slice(0, 7);
+        
+        recentTx.forEach(tx => {
+            const row = document.createElement('tr');
+            row.className = "hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/5";
+            row.onclick = () => showTxDetail(tx);
+            
+            const amountColor = tx.isCredit ? 'text-primary' : 'text-on-surface';
+            const amountPrefix = tx.isCredit ? '+' : '-';
+            
+            let statusIcon = '';
+            if (tx.status === 'success') {
+                statusIcon = '<span class="material-symbols-outlined text-tertiary text-[20px]">check</span>';
+            } else if (tx.status === 'failed') {
+                statusIcon = '<span class="material-symbols-outlined text-error text-[20px]">close</span>';
+            } else {
+                statusIcon = '<span class="material-symbols-outlined text-on-surface-variant text-[20px]">schedule</span>';
+            }
+
+            row.innerHTML = `
+                <td class="py-md px-lg flex items-center gap-md">
+                    <div class="w-10 h-10 rounded-full ${tx.iconColor} flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-[20px]">${tx.icon}</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold">${tx.title}</p>
+                        <p class="text-on-surface-variant text-label-sm">${tx.type}</p>
+                    </div>
+                </td>
+                <td class="py-md px-lg text-on-surface-variant whitespace-nowrap">${tx.date}</td>
+                <td class="py-md px-lg font-semibold ${amountColor} text-right whitespace-nowrap">${amountPrefix} ${formatMoney(tx.amount)}</td>
+                <td class="py-md px-lg text-center">${statusIcon}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    function openFullHistory() {
+        const tbody = document.getElementById('full-history-body');
+        tbody.innerHTML = '';
+        
+        state.transactions.forEach(tx => {
+            const row = document.createElement('tr');
+            row.className = "hover:bg-surface-container-high transition-colors cursor-pointer border-b border-outline-variant/10";
+            row.onclick = () => showTxDetail(tx);
+            
+            const amountColor = tx.isCredit ? 'text-primary' : 'text-on-surface';
+            const amountPrefix = tx.isCredit ? '+' : '-';
+            
+            let statusIcon = '';
+            if (tx.status === 'success') {
+                statusIcon = '<span class="material-symbols-outlined text-tertiary text-[20px]">check</span>';
+            } else if (tx.status === 'failed') {
+                statusIcon = '<span class="material-symbols-outlined text-error text-[20px]">close</span>';
+            } else {
+                statusIcon = '<span class="material-symbols-outlined text-on-surface-variant text-[20px]">schedule</span>';
+            }
+
+            row.innerHTML = `
+                <td class="py-md px-lg font-medium whitespace-nowrap">
+                    <div class="flex items-center gap-sm">
+                         <div class="w-8 h-8 rounded-full ${tx.iconColor} flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-[16px]">${tx.icon}</span>
+                        </div>
+                        ${tx.type}
+                    </div>
+                </td>
+                <td class="py-md px-lg text-on-surface whitespace-nowrap">${tx.title}</td>
+                <td class="py-md px-lg text-on-surface-variant whitespace-nowrap">${tx.date}</td>
+                <td class="py-md px-lg font-semibold ${amountColor} text-right whitespace-nowrap">${amountPrefix} ${formatMoney(tx.amount)}</td>
+                <td class="py-md px-lg text-on-surface-variant font-mono text-xs whitespace-nowrap">${tx.id}</td>
+                <td class="py-md px-lg text-center">${statusIcon}</td>
+            `;
+            tbody.appendChild(row);
+        });
+        
+        document.getElementById('modal-full-history').classList.remove('hidden');
+    }
+
+    function showTxDetail(tx) {
+        document.getElementById('tx-detail-icon').innerText = tx.icon;
+        document.getElementById('tx-detail-icon-container').className = `w-16 h-16 rounded-full ${tx.iconColor} flex items-center justify-center mx-auto mb-sm`;
+        
+        const amountPrefix = tx.isCredit ? '+' : '-';
+        const amountColor = tx.isCredit ? 'text-primary' : 'text-on-surface';
+        
+        const amountEl = document.getElementById('tx-detail-amount');
+        amountEl.innerText = `${amountPrefix} ${formatMoney(tx.amount)}`;
+        amountEl.className = `text-headline-md font-bold ${amountColor}`;
+        
+        document.getElementById('tx-detail-status').innerText = tx.status.charAt(0).toUpperCase() + tx.status.slice(1);
+        document.getElementById('tx-detail-type').innerText = tx.type;
+        document.getElementById('tx-detail-ref').innerText = tx.id;
+        document.getElementById('tx-detail-date').innerText = tx.date;
+        
+        const feeContainer = document.getElementById('tx-detail-fee-container');
+        if (tx.fee !== null) {
+            feeContainer.classList.remove('hidden');
+            document.getElementById('tx-detail-fee').innerText = `- ${formatMoney(tx.fee)}`;
+        } else {
+            feeContainer.classList.add('hidden');
+        }
+        
+        document.getElementById('modal-tx-detail').classList.remove('hidden');
+    }
+
+    // Fund Flow
+    function startFundFlow() {
+        document.getElementById('fund-amount').value = '';
+        const btn = document.getElementById('fund-proceed-btn');
+        btn.disabled = true;
+        btn.classList.add('opacity-50');
+        document.getElementById('modal-fund').classList.remove('hidden');
+        document.getElementById('fund-step-1').classList.remove('hidden');
+        document.getElementById('fund-step-2').classList.add('hidden');
+        document.getElementById('fund-bank-transfer').classList.add('hidden');
+        document.getElementById('fund-card').classList.add('hidden');
+        document.getElementById('fund-verifying').classList.add('hidden');
+        document.getElementById('fund-success').classList.add('hidden');
+        document.getElementById('fund-failed').classList.add('hidden');
+        document.getElementById('card-processing').classList.add('hidden');
+        document.getElementById('card-verify-failed').classList.add('hidden');
+        document.getElementById('card-verified-state').classList.add('hidden');
+    }
+
+    function simulateFunding(provider) {
+        state.fundFlow.amount = parseFloat(document.getElementById('fund-amount').value);
+        document.getElementById('fund-step-2').classList.add('hidden');
+        document.getElementById('fund-verifying').classList.remove('hidden');
+        
+        setTimeout(() => {
+            document.getElementById('fund-verifying').classList.add('hidden');
+            const isSuccess = state.fundFlow.attempts % 2 === 0;
+            state.fundFlow.attempts++;
+            
+            if (isSuccess) {
+                document.getElementById('fund-success').classList.remove('hidden');
+                state.fundFlow.provider = provider;
+            } else {
+                document.getElementById('fund-failed').classList.remove('hidden');
+            }
+        }, 1500);
+    }
+
+    function handleBankTransfer() {
+        state.fundFlow.amount = parseFloat(document.getElementById('fund-amount').value);
+        document.getElementById('fund-bank-transfer').classList.add('hidden');
+        document.getElementById('fund-verifying').classList.remove('hidden');
+        
+        setTimeout(() => {
+            document.getElementById('fund-verifying').classList.add('hidden');
+            const isSuccess = state.fundFlow.attempts % 2 === 0;
+            state.fundFlow.attempts++;
+            
+            if (isSuccess) {
+                document.getElementById('fund-success').classList.remove('hidden');
+                state.fundFlow.provider = 'Bank Transfer';
+            } else {
+                document.getElementById('fund-failed').classList.remove('hidden');
+                const now = new Date();
+                const dateStr = now.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
+                state.transactions.unshift({
+                    id: 'FND-' + Math.floor(Math.random() * 10000),
+                    title: `Wallet Funding via Bank Transfer`,
+                    type: 'Wallet Fund',
+                    date: dateStr,
+                    amount: state.fundFlow.amount,
+                    isCredit: true,
+                    status: 'failed',
+                    icon: 'payments',
+                    iconColor: 'bg-tertiary-container/20 text-tertiary',
+                    fee: null
+                });
+                renderTransactions();
+            }
+        }, 2000);
+    }
+
+    function handleCardVerification(btn) {
+        state.fundFlow.amount = parseFloat(document.getElementById('fund-amount').value);
+        document.getElementById('fund-card').classList.add('hidden');
+        document.getElementById('card-processing').classList.remove('hidden');
+        
+        setTimeout(() => {
+            document.getElementById('card-processing').classList.add('hidden');
+            document.getElementById('card-verified-state').classList.remove('hidden');
+        }, 1500);
+    }
+
+    function handleCardPayment() {
+        document.getElementById('card-verified-state').classList.add('hidden');
+        document.getElementById('fund-verifying').classList.remove('hidden');
+        
+        setTimeout(() => {
+            document.getElementById('fund-verifying').classList.add('hidden');
+            const isSuccess = state.fundFlow.attempts % 2 === 0;
+            state.fundFlow.attempts++;
+            
+            if (isSuccess) {
+                document.getElementById('fund-success').classList.remove('hidden');
+                state.fundFlow.provider = 'Card Payment';
+            } else {
+                document.getElementById('fund-failed').classList.remove('hidden');
+                const now = new Date();
+                const dateStr = now.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
+                state.transactions.unshift({
+                    id: 'FND-' + Math.floor(Math.random() * 10000),
+                    title: `Wallet Funding via Card Payment`,
+                    type: 'Wallet Fund',
+                    date: dateStr,
+                    amount: state.fundFlow.amount,
+                    isCredit: true,
+                    status: 'failed',
+                    icon: 'payments',
+                    iconColor: 'bg-tertiary-container/20 text-tertiary',
+                    fee: null
+                });
+                renderTransactions();
+            }
+        }, 1500);
+    }
+
+    function finalizeFunding() {
+        const amount = state.fundFlow.amount;
+        const provider = state.fundFlow.provider || 'Funding';
+        
+        state.balances.main += amount;
+        state.balances.withdraw += amount;
+        updateDOMBalances();
+        
+        const now = new Date();
+        const dateStr = now.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
+        
+        state.transactions.unshift({
+            id: 'FND-' + Math.floor(Math.random() * 10000),
+            title: `Wallet Funding via ${provider}`,
+            type: 'Wallet Fund',
+            date: dateStr,
+            amount: amount,
+            isCredit: true,
+            status: 'success',
+            icon: 'payments',
+            iconColor: 'bg-tertiary-container/20 text-tertiary',
+            fee: null
+        });
+        
+        renderTransactions();
+        document.getElementById('modal-fund').classList.add('hidden');
+    }
+
+    // Withdraw Flow
+    function startWithdrawFlow() {
+        document.getElementById('withdraw-amount-input').value = '';
+        validateWithdrawAmount();
+        document.getElementById('modal-withdraw').classList.remove('hidden');
+        document.getElementById('withdraw-step-1').classList.remove('hidden');
+        document.getElementById('withdraw-step-2').classList.add('hidden');
+        document.getElementById('withdraw-processing').classList.add('hidden');
+        document.getElementById('withdraw-success').classList.add('hidden');
+        document.getElementById('withdraw-failed').classList.add('hidden');
+    }
+
+    function validateWithdrawAmount() {
+        const input = document.getElementById('withdraw-amount-input');
+        const btn = document.getElementById('withdraw-continue-btn');
+        const msg = document.getElementById('withdraw-error-msg');
+        const val = parseFloat(input.value);
+        
+        if (isNaN(val) || val <= 0) {
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+            msg.classList.add('hidden');
+        } else if (val > state.balances.withdraw) {
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+            msg.innerText = "Amount exceeds available balance";
+            msg.classList.remove('hidden');
+        } else {
+            btn.disabled = false;
+            btn.classList.remove('opacity-50');
+            msg.classList.add('hidden');
+        }
+    }
+
+    function goToWithdrawStep2() {
+        const val = parseFloat(document.getElementById('withdraw-amount-input').value);
+        document.getElementById('withdraw-confirm-amount').innerText = formatMoney(val);
+        document.getElementById('withdraw-total-deduction').innerText = formatMoney(val + 50);
+        
+        document.getElementById('withdraw-step-1').classList.add('hidden');
+        document.getElementById('withdraw-step-2').classList.remove('hidden');
+    }
+
+    function processWithdrawal() {
+        document.getElementById('withdraw-step-2').classList.add('hidden');
+        document.getElementById('withdraw-processing').classList.remove('hidden');
+        
+        const amount = parseFloat(document.getElementById('withdraw-amount-input').value);
+        
+        setTimeout(() => {
+            document.getElementById('withdraw-processing').classList.add('hidden');
+            
+            const isSuccess = state.withdrawFlow.attempts % 2 === 0;
+            state.withdrawFlow.attempts++;
+            
+            const now = new Date();
+            const dateStr = now.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
+            const bankName = document.getElementById('withdrawal-bank-name').innerText;
+            
+            if (isSuccess) {
+                state.balances.main -= (amount + 50);
+                state.balances.withdraw -= (amount + 50);
+                updateDOMBalances();
+                
+                state.transactions.unshift({
+                    id: 'WD-' + Math.floor(Math.random() * 10000),
+                    title: `Withdrawal to ${bankName}`,
+                    type: 'Payout',
+                    date: dateStr,
+                    amount: amount,
+                    isCredit: false,
+                    status: 'success',
+                    icon: 'account_balance',
+                    iconColor: 'bg-surface-container-high text-on-surface',
+                    fee: 50.00
+                });
+                
+                document.getElementById('withdraw-success').classList.remove('hidden');
+            } else {
+                state.transactions.unshift({
+                    id: 'WD-' + Math.floor(Math.random() * 10000),
+                    title: `Withdrawal to ${bankName}`,
+                    type: 'Payout',
+                    date: dateStr,
+                    amount: amount,
+                    isCredit: false,
+                    status: 'failed',
+                    icon: 'account_balance',
+                    iconColor: 'bg-surface-container-high text-on-surface',
+                    fee: null
+                });
+                document.getElementById('withdraw-failed').classList.remove('hidden');
+            }
+            renderTransactions();
+        }, 1500);
+    }
+
+    // Transfer Flow
+    function startTransferFlow() {
+        document.getElementById('transfer-username-input').value = '';
+        document.getElementById('transfer-amount-input').value = '';
+        document.getElementById('transfer-note-input').value = '';
+        document.getElementById('transfer-recipient-info').classList.add('hidden');
+        validateTransferAmount();
+        
+        document.getElementById('modal-transfer').classList.remove('hidden');
+        document.getElementById('transfer-step-1').classList.remove('hidden');
+        document.getElementById('transfer-step-2').classList.add('hidden');
+        document.getElementById('transfer-processing').classList.add('hidden');
+        document.getElementById('transfer-success').classList.add('hidden');
+        document.getElementById('transfer-failed').classList.add('hidden');
+    }
+
+    function validateTransferRecipient() {
+        const input = document.getElementById('transfer-username-input').value;
+        const info = document.getElementById('transfer-recipient-info');
+        if (input.toLowerCase() === '@jamesokoro' || input.length > 5) {
+             info.classList.remove('hidden');
+        } else {
+             info.classList.add('hidden');
+        }
+        validateTransferAmount();
+    }
+
+    function validateTransferAmount() {
+        const input = document.getElementById('transfer-amount-input');
+        const btn = document.getElementById('transfer-continue-btn');
+        const msg = document.getElementById('transfer-error-msg');
+        const infoVisible = !document.getElementById('transfer-recipient-info').classList.contains('hidden');
+        const val = parseFloat(input.value);
+        
+        if (!infoVisible || isNaN(val) || val <= 0) {
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+            msg.classList.add('hidden');
+        } else if ((val + 10) > state.balances.main) {
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+            msg.innerText = "Total exceeds available balance";
+            msg.classList.remove('hidden');
+        } else {
+            btn.disabled = false;
+            btn.classList.remove('opacity-50');
+            msg.classList.add('hidden');
+        }
+    }
+
+    function goToTransferStep2() {
+        const val = parseFloat(document.getElementById('transfer-amount-input').value);
+        document.getElementById('transfer-confirm-amount').innerText = formatMoney(val);
+        document.getElementById('transfer-total-deduction').innerText = formatMoney(val + 10);
+        
+        document.getElementById('transfer-step-1').classList.add('hidden');
+        document.getElementById('transfer-step-2').classList.remove('hidden');
+    }
+
+    function processTransfer() {
+        document.getElementById('transfer-step-2').classList.add('hidden');
+        document.getElementById('transfer-processing').classList.remove('hidden');
+        
+        const amount = parseFloat(document.getElementById('transfer-amount-input').value);
+        
+        setTimeout(() => {
+            document.getElementById('transfer-processing').classList.add('hidden');
+            
+            const isSuccess = state.transferFlow.attempts % 2 === 0;
+            state.transferFlow.attempts++;
+            
+            const now = new Date();
+            const dateStr = now.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
+            
+            if (isSuccess) {
+                state.balances.main -= (amount + 10);
+                state.balances.withdraw -= (amount + 10);
+                updateDOMBalances();
+                
+                state.transactions.unshift({
+                    id: 'TRF-' + Math.floor(Math.random() * 10000),
+                    title: 'Transfer to James Okoro',
+                    type: 'Send Money',
+                    date: dateStr,
+                    amount: amount,
+                    isCredit: false,
+                    status: 'success',
+                    icon: 'send',
+                    iconColor: 'bg-primary/20 text-primary',
+                    fee: 10.00
+                });
+                
+                document.getElementById('transfer-success').classList.remove('hidden');
+            } else {
+                state.transactions.unshift({
+                    id: 'TRF-' + Math.floor(Math.random() * 10000),
+                    title: 'Transfer to James Okoro',
+                    type: 'Send Money',
+                    date: dateStr,
+                    amount: amount,
+                    isCredit: false,
+                    status: 'failed',
+                    icon: 'send',
+                    iconColor: 'bg-primary/20 text-primary',
+                    fee: null
+                });
+                document.getElementById('transfer-failed').classList.remove('hidden');
+            }
+            renderTransactions();
+        }, 1500);
+    }
+
+    // Account Verification Flow
+    function handleAccountVerification() {
+        document.getElementById('update-account-verification').classList.add('hidden');
+        document.getElementById('update-account-verifying-state').classList.remove('hidden');
+        
+        setTimeout(() => {
+            document.getElementById('update-account-verifying-state').classList.add('hidden');
+            const isSuccess = state.verifyAccountFlow.attempts % 2 === 0;
+            state.verifyAccountFlow.attempts++;
+            
+            if (isSuccess) {
+                const bankName = document.getElementById('new-bank-select').value;
+                const accNum = document.getElementById('new-account-number').value;
+                document.getElementById('verified-account-details').innerText = `${bankName} •••• ${accNum.slice(-4)}`;
+                document.getElementById('update-account-verified-success').classList.remove('hidden');
+            } else {
+                document.getElementById('update-account-verified-failed').classList.remove('hidden');
+            }
+        }, 2000);
+    }
+    
+    // Payout Schedules
+    function renderSchedules() {
+        ['daily', 'weekly', 'monthly'].forEach(type => {
+            const container = document.getElementById(`payout-${type}`);
+            if (state.schedules[type]) {
+                const sched = state.schedules[type];
+                container.innerHTML = `
+                    <div class="bg-surface p-md rounded-xl border border-outline-variant/20 space-y-xs relative group">
+                        <div class="flex flex-col gap-xs">
+                            <p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Next Payout</p>
+                            <p class="text-body-sm font-medium text-primary">${sched.dateStr}</p>
+                            <p class="text-body-sm font-semibold text-on-surface">${formatMoney(sched.amount)}</p>
+                        </div>
+                        <button class="absolute top-2 right-2 p-xs text-on-surface-variant/40 hover:text-error transition-colors" onclick="confirmDeleteSchedule('${type}')" title="Delete Schedule">
+                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                        </button>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div class="bg-surface p-lg rounded-xl border border-outline-variant/20 text-center py-xl min-h-[120px] flex items-center justify-center">
+                        <p class="text-body-md font-semibold text-on-surface">No ${type} payout scheduled</p>
+                    </div>
+                `;
+            }
+        });
+    }
+
+    function switchPayoutTab(type, btn) {
+        state.activeTab = type;
+        document.querySelectorAll('.payout-tab-content').forEach(el => el.classList.add('hidden'));
+        document.getElementById(`payout-${type}`).classList.remove('hidden');
+        
+        btn.parentElement.querySelectorAll('button').forEach(b => {
+            b.classList.remove('bg-surface', 'shadow-sm', 'text-on-surface');
+            b.classList.add('text-on-surface-variant');
+        });
+        btn.classList.add('bg-surface', 'shadow-sm', 'text-on-surface');
+        btn.classList.remove('text-on-surface-variant');
+    }
+
+    function openScheduleModal() {
+        document.getElementById('modal-schedule-payout-flow').classList.remove('hidden');
+        document.getElementById('schedule-step-form').classList.remove('hidden');
+        document.getElementById('schedule-step-processing').classList.add('hidden');
+        document.getElementById('schedule-step-success').classList.add('hidden');
+        document.getElementById('modal-replace-schedule').classList.add('hidden');
+    }
+
+    function initiateSaveSchedule() {
+        const type = document.getElementById('payout-frequency-selector').value;
+        if (state.schedules[type]) {
+            state.pendingScheduleType = type;
+            document.getElementById('replace-schedule-type-text').innerText = type;
+            document.getElementById('modal-replace-schedule').classList.remove('hidden');
+        } else {
+            processSaveSchedule(type);
+        }
+    }
+
+    function processSaveSchedule(type) {
+        document.getElementById('modal-replace-schedule').classList.add('hidden');
+        document.getElementById('schedule-step-form').classList.add('hidden');
+        document.getElementById('schedule-step-processing').classList.remove('hidden');
+        
+        const amount = parseFloat(document.getElementById('payout-amount-input').value) || 50000;
+        
+        setTimeout(() => {
+            document.getElementById('schedule-step-processing').classList.add('hidden');
+            
+            // Dummy date string generation for demo
+            let dateStr = 'Today • 10:00 AM';
+            if(type === 'weekly') dateStr = 'Wed, Aug 19 • 10:00 AM';
+            if(type === 'monthly') dateStr = '1st of Month • 10:00 AM';
+
+            state.schedules[type] = {
+                amount: amount,
+                dateStr: dateStr
+            };
+            
+            renderSchedules();
+            // Optional: automatically switch tab to the newly created schedule type
+            // const tabBtn = document.querySelector(`button[onclick*="switchPayoutTab('${type}'"]`);
+            // if(tabBtn) switchPayoutTab(type, tabBtn);
+
+            document.getElementById('schedule-step-success').classList.remove('hidden');
+        }, 1500);
+    }
+
+    function confirmDeleteSchedule(type) {
+        state.pendingScheduleType = type;
+        document.getElementById('modal-delete-payout').classList.remove('hidden');
+    }
+
+    function executeDeleteSchedule() {
+        if (state.pendingScheduleType) {
+            delete state.schedules[state.pendingScheduleType];
+            renderSchedules();
+            state.pendingScheduleType = null;
+        }
+        document.getElementById('modal-delete-payout').classList.add('hidden');
+    }
+
+    // Initial Render
+    document.addEventListener('DOMContentLoaded', () => {
+        updateDOMBalances();
+        renderTransactions();
+        renderSchedules();
+    });
+
+</script>
+</div></main></div><div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-full-history"><div class="bg-surface rounded-2xl shadow-xl w-full max-w-4xl h-[80vh] overflow-hidden relative flex flex-col"><div class="p-lg border-b border-outline-variant/10 flex justify-between items-center bg-surface"><h2 class="text-headline-sm font-headline-sm">Full Transaction History</h2><button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-full-history').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="flex-1 overflow-y-auto"><table class="w-full text-left border-collapse"><thead class="text-label-sm text-on-surface-variant bg-surface-container-low sticky top-0 z-10 border-b border-outline-variant/10"><tr class="bg-surface-container-low"><th class="py-md px-lg font-medium">Type</th><th class="py-md px-lg font-medium">Description</th><th class="py-md px-lg font-medium">Date &amp; Time</th><th class="py-md px-lg font-medium text-right">Amount</th><th class="py-md px-lg font-medium">Ref ID</th><th class="py-md px-lg font-medium text-center">Status</th></tr></thead><tbody class="text-body-sm" id="full-history-body"><tr class="hover:bg-surface-container-high transition-colors cursor-pointer border-b border-outline-variant/10">
+<td class="py-md px-lg font-medium whitespace-nowrap">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+</div>
+                        Payment Received
+                    </div>
+</td>
+<td class="py-md px-lg text-on-surface whitespace-nowrap">Order #8839</td>
+<td class="py-md px-lg text-on-surface-variant whitespace-nowrap">Oct 24, 2:30 PM</td>
+<td class="py-md px-lg font-semibold text-primary text-right whitespace-nowrap">+ ₦45,000.00</td>
+<td class="py-md px-lg text-on-surface-variant font-mono text-xs whitespace-nowrap">TX-8839</td>
+<td class="py-md px-lg text-center"><span class="material-symbols-outlined text-tertiary text-[20px]">check</span></td>
+</tr><tr class="hover:bg-surface-container-high transition-colors cursor-pointer border-b border-outline-variant/10">
+<td class="py-md px-lg font-medium whitespace-nowrap">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">account_balance</span>
+</div>
+                        Payout
+                    </div>
+</td>
+<td class="py-md px-lg text-on-surface whitespace-nowrap">Withdrawal to GTBank</td>
+<td class="py-md px-lg text-on-surface-variant whitespace-nowrap">Oct 23, 9:15 AM</td>
+<td class="py-md px-lg font-semibold text-on-surface text-right whitespace-nowrap">- ₦120,000.00</td>
+<td class="py-md px-lg text-on-surface-variant font-mono text-xs whitespace-nowrap">TX-8838</td>
+<td class="py-md px-lg text-center"><span class="material-symbols-outlined text-tertiary text-[20px]">check</span></td>
+</tr><tr class="hover:bg-surface-container-high transition-colors cursor-pointer border-b border-outline-variant/10">
+<td class="py-md px-lg font-medium whitespace-nowrap">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">send</span>
+</div>
+                        Send Money
+                    </div>
+</td>
+<td class="py-md px-lg text-on-surface whitespace-nowrap">Sleec Transfer to @jamesokoro</td>
+<td class="py-md px-lg text-on-surface-variant whitespace-nowrap">Oct 22, 4:45 PM</td>
+<td class="py-md px-lg font-semibold text-on-surface text-right whitespace-nowrap">- ₦15,000.00</td>
+<td class="py-md px-lg text-on-surface-variant font-mono text-xs whitespace-nowrap">TX-8837</td>
+<td class="py-md px-lg text-center"><span class="material-symbols-outlined text-tertiary text-[20px]">check</span></td>
+</tr><tr class="hover:bg-surface-container-high transition-colors cursor-pointer border-b border-outline-variant/10">
+<td class="py-md px-lg font-medium whitespace-nowrap">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/20 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+</div>
+                        Wallet Fund
+                    </div>
+</td>
+<td class="py-md px-lg text-on-surface whitespace-nowrap">Wallet Funding via Paystack</td>
+<td class="py-md px-lg text-on-surface-variant whitespace-nowrap">Oct 21, 11:20 AM</td>
+<td class="py-md px-lg font-semibold text-primary text-right whitespace-nowrap">+ ₦50,000.00</td>
+<td class="py-md px-lg text-on-surface-variant font-mono text-xs whitespace-nowrap">TX-8836</td>
+<td class="py-md px-lg text-center"><span class="material-symbols-outlined text-tertiary text-[20px]">check</span></td>
+</tr><tr class="hover:bg-surface-container-high transition-colors cursor-pointer border-b border-outline-variant/10">
+<td class="py-md px-lg font-medium whitespace-nowrap">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">shopping_cart</span>
+</div>
+                        Payment Received
+                    </div>
+</td>
+<td class="py-md px-lg text-on-surface whitespace-nowrap">Order #8835</td>
+<td class="py-md px-lg text-on-surface-variant whitespace-nowrap">Oct 20, 1:15 PM</td>
+<td class="py-md px-lg font-semibold text-primary text-right whitespace-nowrap">+ ₦25,000.00</td>
+<td class="py-md px-lg text-on-surface-variant font-mono text-xs whitespace-nowrap">TX-8835</td>
+<td class="py-md px-lg text-center"><span class="material-symbols-outlined text-on-surface-variant text-[20px]">schedule</span></td>
+</tr><tr class="hover:bg-surface-container-high transition-colors cursor-pointer border-b border-outline-variant/10">
+<td class="py-md px-lg font-medium whitespace-nowrap">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">account_balance</span>
+</div>
+                        Payout
+                    </div>
+</td>
+<td class="py-md px-lg text-on-surface whitespace-nowrap">Withdrawal to Access Bank</td>
+<td class="py-md px-lg text-on-surface-variant whitespace-nowrap">Oct 19, 8:00 AM</td>
+<td class="py-md px-lg font-semibold text-on-surface text-right whitespace-nowrap">- ₦200,000.00</td>
+<td class="py-md px-lg text-on-surface-variant font-mono text-xs whitespace-nowrap">TX-8834</td>
+<td class="py-md px-lg text-center"><span class="material-symbols-outlined text-error text-[20px]">close</span></td>
+</tr></tbody></table></div></div></div><div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-edit-payout-schedule"><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative"><div class="p-lg border-b border-outline-variant/10 flex justify-between items-center"><h2 class="text-headline-sm font-headline-sm">Edit Payout Schedule</h2><button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-edit-payout-schedule').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="p-lg space-y-md"><div><label class="block text-label-sm text-on-surface-variant mb-xs">Frequency</label><select class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none" id="payout-freq-select"><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option></select></div><div id="payout-time-config"><label class="block text-label-sm text-on-surface-variant mb-xs">Preferred Time</label><input class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none" type="time" value="09:00"/></div><div class="bg-surface-container-low p-md rounded-xl space-y-xs"><div class="flex justify-between text-label-sm"><span class="text-on-surface-variant">Next Payout</span><span class="font-semibold text-primary">Nov 1, 2024</span></div><p class="text-body-sm text-on-surface-variant">Funds will be sent to GTBank ••••4092</p></div></div><div class="p-lg border-t border-outline-variant/10"><button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="document.getElementById('modal-edit-payout-schedule').classList.add('hidden')">Confirm Schedule</button></div></div></div>
+<div class="fixed inset-0 z-50 bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-schedule-payout-flow"><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="schedule-step-form"><div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h2 class="text-headline-sm font-headline-sm">Manage Payout Schedule</h2>
+<button class="text-on-surface-variant hover:text-on-surface" onclick="document.getElementById('modal-schedule-payout-flow').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="p-lg space-y-lg"><div class="bg-surface-container-low p-md rounded-xl flex items-center justify-between mb-md"><div class="flex items-center gap-sm"><span class="material-symbols-outlined text-primary">account_balance</span><span class="text-body-sm font-medium">GTBank •••• 4092</span></div><span class="text-primary text-label-sm font-bold">✓ Verified</span></div><div class="space-y-sm mb-md"><label class="block text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Frequency</label><select class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none appearance-none" id="payout-frequency-selector"><option value="daily">Daily</option><option selected="" value="weekly">Weekly</option><option value="monthly">Monthly</option></select></div><div class="space-y-sm mb-md">
+<label class="block text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Payout Amount</label>
+<div class="flex bg-surface-container-low rounded-lg p-xs mb-sm">
+<button class="flex-1 py-xs text-label-sm font-semibold rounded-md text-on-surface-variant" onclick="document.getElementById('payout-custom-input-container').classList.remove('hidden'); document.getElementById('payout-entire-balance-display').classList.add('hidden'); this.classList.add('bg-surface', 'shadow-sm', 'text-on-surface'); this.nextElementSibling.classList.remove('bg-surface', 'shadow-sm', 'text-on-surface'); this.nextElementSibling.classList.add('text-on-surface-variant');">
+      Custom Amount
+    </button>
+<button class="flex-1 py-xs text-label-sm font-semibold rounded-md text-on-surface-variant bg-surface shadow-sm text-on-surface" onclick="document.getElementById('payout-custom-input-container').classList.add('hidden'); document.getElementById('payout-entire-balance-display').classList.remove('hidden'); this.classList.add('bg-surface', 'shadow-sm', 'text-on-surface'); this.previousElementSibling.classList.remove('bg-surface', 'shadow-sm', 'text-on-surface'); this.previousElementSibling.classList.add('text-on-surface-variant');">
+      Entire Balance
+    </button>
+</div>
+<div class="relative hidden" id="payout-custom-input-container">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">₦</span>
+<input class="w-full bg-surface-container rounded-lg py-md pl-10 pr-md text-body-md border-none outline-none" id="payout-amount-input" type="number" value="50000"/>
+</div>
+<div class="p-md bg-surface-container rounded-lg border border-outline-variant/20" id="payout-entire-balance-display">
+<p class="text-body-md font-semibold text-on-surface">Entire Balance — ₦750,000.00</p>
+<p class="text-label-sm text-on-surface-variant">Current withdrawable amount</p>
+</div>
+</div><div class="grid grid-cols-2 gap-md mb-md"><div class="space-y-xs"><label class="block text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Start Date</label><input class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none" type="date" value="2024-08-19"/></div><div class="space-y-xs"><label class="block text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Time</label><input class="w-full bg-surface-container rounded-lg py-md px-md text-body-md border-none outline-none" type="time" value="10:00"/></div></div><div class="bg-primary/5 p-md rounded-xl border border-primary/20"><p class="text-label-sm text-on-surface-variant mb-xs">Schedule Preview</p><p class="text-body-sm font-bold text-primary" id="schedule-preview-text">Every Wednesday • 10:00 AM</p></div></div>
+<div class="p-lg border-t border-outline-variant/10"><button class="w-full py-md bg-primary text-on-primary rounded-xl font-semibold hover:bg-primary/90 transition-colors shadow-md" onclick="initiateSaveSchedule()">Save Changes</button></div></div><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative hidden" id="schedule-step-processing"><div class="p-xl flex flex-col items-center justify-center text-center space-y-md"><div class="w-12 h-12 border-4 border-surface-container-high border-t-primary rounded-full animate-spin"></div><h3 class="text-headline-sm font-headline-sm">Saving...</h3></div></div><div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden relative" id="schedule-step-success"><div class="p-xl flex flex-col items-center justify-center text-center space-y-md"><div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-sm"><span class="material-symbols-outlined text-[32px]">check_circle</span></div><h3 class="text-headline-sm font-headline-sm">Payout Scheduled</h3><p class="text-body-sm text-on-surface-variant">Your automatic payout has been set successfully.</p><button class="w-full mt-md py-md bg-primary text-on-primary rounded-xl font-semibold" onclick="document.getElementById('modal-schedule-payout-flow').classList.add('hidden')">Done</button></div></div>
+<div class="bg-surface rounded-2xl shadow-xl w-full max-w-md overflow-hidden p-lg text-center space-y-lg hidden" id="modal-replace-schedule">
+<div class="w-16 h-16 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center mx-auto"><span class="material-symbols-outlined text-[32px]">update</span></div>
+<div class="space-y-xs">
+<h3 class="text-headline-sm font-headline-sm">Replace existing <span id="replace-schedule-type-text"></span> schedule?</h3>
+<p class="text-body-sm text-on-surface-variant">A schedule of this type already exists. Creating this new one will replace the current schedule.</p>
+</div>
+<div class="flex gap-md">
+<button class="flex-1 py-md border border-outline-variant/30 text-on-surface font-semibold rounded-xl hover:bg-surface-container transition-colors" onclick="document.getElementById('modal-replace-schedule').classList.add('hidden')">Cancel</button>
+<button class="flex-1 py-md bg-primary text-on-primary rounded-xl font-semibold hover:bg-primary/90 transition-colors" onclick="processSaveSchedule(state.pendingScheduleType)">Replace Schedule</button>
+</div>
+</div>
+</div><div class="fixed inset-0 z-[60] bg-surface-inverse/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="modal-delete-payout"><div class="bg-surface rounded-2xl shadow-xl w-full max-w-sm overflow-hidden p-lg text-center space-y-lg"><div class="w-16 h-16 bg-error/10 text-error rounded-full flex items-center justify-center mx-auto"><span class="material-symbols-outlined text-[32px]">delete_forever</span></div><div class="space-y-xs"><h3 class="text-headline-sm font-headline-sm">Delete this payout schedule?</h3><p class="text-body-sm text-on-surface-variant">This action cannot be undone. You will need to re-configure this schedule manually.</p></div><div class="flex gap-md"><button class="flex-1 py-md border border-outline-variant/30 text-on-surface font-semibold rounded-xl hover:bg-surface-container transition-colors" onclick="document.getElementById('modal-delete-payout').classList.add('hidden')">Cancel</button><button class="flex-1 py-md bg-error text-on-error rounded-xl font-semibold hover:bg-error/90 transition-colors" onclick="executeDeleteSchedule()">Delete</button></div></div></div>
+</body></html>
