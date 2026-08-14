@@ -1,0 +1,1220 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-tint": "#55633b",
+                "surface-container-low": "#eff4ff",
+                "on-secondary-fixed-variant": "#3e4b28",
+                "error": "#ba1a1a",
+                "on-tertiary-container": "#f9ffea",
+                "outline": "#76786d",
+                "on-primary-fixed": "#141f01",
+                "primary-fixed": "#d8e9b6",
+                "inverse-on-surface": "#eaf1ff",
+                "surface-container": "#e6eeff",
+                "on-primary": "#ffffff",
+                "surface-container-high": "#dee9fc",
+                "surface-container-highest": "#d9e3f6",
+                "primary-container": "#6b7a50",
+                "on-surface": "#121c2a",
+                "on-tertiary": "#ffffff",
+                "secondary-container": "#d9e9b9",
+                "on-error-container": "#93000a",
+                "inverse-primary": "#bccd9c",
+                "secondary-fixed": "#d9e9b9",
+                "tertiary-fixed-dim": "#bacd9f",
+                "on-primary-container": "#faffe8",
+                "surface-dim": "#d0dbed",
+                "surface-bright": "#f8f9ff",
+                "error-container": "#ffdad6",
+                "surface-variant": "#d9e3f6",
+                "on-tertiary-fixed": "#121f03",
+                "on-background": "#121c2a",
+                "tertiary": "#51613c",
+                "on-secondary-container": "#5b6943",
+                "secondary-fixed-dim": "#bdcc9f",
+                "tertiary-container": "#697a52",
+                "primary-fixed-dim": "#bccd9c",
+                "tertiary-fixed": "#d6e9b9",
+                "on-secondary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "outline-variant": "#c6c8ba",
+                "on-secondary-fixed": "#141f03",
+                "secondary": "#55633e",
+                "on-tertiary-fixed-variant": "#3c4c28",
+                "on-error": "#ffffff",
+                "on-primary-fixed-variant": "#3e4b26",
+                "inverse-surface": "#27313f",
+                "on-surface-variant": "#45483e",
+                "primary": "#536139",
+                "background": "#f8f9ff",
+                "surface": "#f8f9ff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "base": "8px",
+                "margin-mobile": "16px",
+                "lg": "24px",
+                "md": "16px",
+                "sm": "12px",
+                "xl": "32px",
+                "xs": "4px",
+                "margin-desktop": "40px",
+                "xxl": "48px",
+                "gutter": "24px"
+        },
+        "fontFamily": {
+                "headline-xl": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "headline-sm": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "body-sm": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-xl": [
+                        "40px",
+                        {
+                                "lineHeight": "48px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-sm": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-background font-body-md text-on-surface">
+<aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[4px_0_12px_rgba(114,129,86,0.04)]">
+<div class="h-16 flex items-center px-lg mb-md text-on-surface">
+<img alt="Sleec Logo" class="h-8 w-auto object-contain mr-sm" src="https://lh3.googleusercontent.com/aida/AP1WRLsP6exljQxcl5lGJC2c3my3SL9Ma_U0m10ZR76s7vm5cdyhwtaOymeaTlQpwhjR6WlXDt42uoUWeYfPlSjzmQwUMfwkcHFWkzOJ71Chkdvcsxj-HZOwxNj4U_EI0zxT9j2LbFmlDK0IONdENgMKzLFmNRZ-krjk20UoiCzjNB-biphxSwpEMbpGkxKgU4fVVV0JK_XtAZe0u9yQkQhIpoKQ7U9Mw-NIb-cFOZCwqS-d9La1aiMsq_ptN8M">
+<span class="font-headline-sm text-headline-sm tracking-tight">Sleec</span>
+</div>
+<nav class="flex-1 px-md overflow-y-auto space-y-lg" data-active-classes="bg-primary-container text-on-primary-container font-semibold shadow-sm">
+<section>
+<p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Business</p>
+<div class="space-y-xs">
+<a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="dashboard" href="#">
+<span class="material-symbols-outlined mr-md">dashboard</span>Dashboard
+</a>
+<a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="products" href="#">
+<span class="material-symbols-outlined mr-md">inventory_2</span>Products
+</a>
+<a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="orders" href="#">
+<span class="material-symbols-outlined mr-md">shopping_cart</span>Orders
+</a>
+<a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="customers" href="#">
+<span class="material-symbols-outlined mr-md">group</span>Customers
+</a>
+</div>
+</section>
+<section>
+<p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Growth</p>
+<div class="space-y-xs">
+<a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="analytics" href="#">
+<span class="material-symbols-outlined mr-md">leaderboard</span>Analytics
+</a>
+<a aria-current="page" class="flex items-center px-md py-base rounded-lg transition-all bg-[#728156] text-white font-semibold shadow-sm" data-path="marketing" href="#">
+<span class="material-symbols-outlined mr-md">campaign</span>Marketing
+</a>
+</div>
+</section>
+<section>
+<p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Money</p>
+<div class="space-y-xs">
+<a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="wallet" href="#">
+<span class="material-symbols-outlined mr-md">account_balance_wallet</span>Wallet
+</a>
+<a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="payouts" href="#">
+<span class="material-symbols-outlined mr-md">payments</span>Payouts
+</a>
+</div>
+</section>
+<section>
+<p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Store</p>
+<div class="space-y-xs">
+<a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="my-shop" href="#">
+<span class="material-symbols-outlined mr-md">storefront</span>My Shop
+</a>
+<a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="settings" href="#">
+<span class="material-symbols-outlined mr-md">settings</span>Settings
+</a>
+</div>
+</section>
+</nav>
+</aside>
+<div class="pl-72">
+<header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 px-lg flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+<div class="flex-1 max-w-md">
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-md text-outline">search</span>
+<input class="w-full bg-surface-container-low border border-transparent focus:border-primary/30 rounded-full py-xs pl-xxl pr-md text-body-sm transition-all focus:outline-none" placeholder="Search..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-xs flex items-center justify-center relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="flex items-center gap-md pl-md border-l border-outline-variant">
+<div class="text-right hidden sm:block">
+<p class="text-label-md font-label-md text-on-surface">Jameson Okoro</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Store Owner</p>
+</div>
+<img alt="Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/10" src="https://lh3.googleusercontent.com/aida/AP1WRLs-1ajBxdJsF-oyaKmqCEzSJ8MWLtSrgTpkBSIl4ndw3lg5SkgmJVt2LqZFjZNVTLvSRgEsd7RhyMvDZcgCiw8BRhkNn9VpIWkktiX6cWwJmGEcFqYnp_eKPLVYEHT3VFa9wFFCawhgqkjiFQh96pQbQERPgKWzJluuWC9odTDcAlEEbNylMjbJnZWnI7I3GRr_Mm7Azp9jKFafTDOX4umBaq_ZQmlAcFQR2a-MFiV0gFLJbaaG6z7ITz4">
+</div>
+</div>
+</header>
+<main class="relative pt-16 min-h-screen bg-background">
+<div class="px-gutter py-lg max-w-[1440px] mx-auto w-full space-y-md">
+<!-- Header Controls -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md mb-md">
+<div class="flex flex-col">
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-xs">Marketing</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Grow your business with targeted campaigns, offers, referrals and promotions.</p>
+</div>
+<div class="flex items-center gap-sm flex-row whitespace-nowrap">
+<!-- Date Range Picker (Static Representation) -->
+<div class="relative group">
+<button class="flex items-center gap-xs px-sm py-xs bg-surface-container rounded-lg text-label-md font-label-md text-on-surface hover:bg-surface-container-high transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                    Last 30 Days
+                    <span class="material-symbols-outlined text-[18px]">arrow_drop_down</span>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute right-0 mt-2 w-48 bg-surface-container-lowest border border-outline-variant/30 rounded-lg shadow-lg hidden group-hover:block z-50">
+<a class="block px-md py-sm text-body-sm text-on-surface hover:bg-surface-container transition-colors" href="#">Last 7 Days</a>
+<a class="block px-md py-sm text-body-sm text-on-surface hover:bg-surface-container transition-colors" href="#">Last 30 Days</a>
+<a class="block px-md py-sm text-body-sm text-on-surface hover:bg-surface-container transition-colors" href="#">Last 90 Days</a>
+</div>
+</div>
+<!-- Create Campaign Button -->
+<button class="flex items-center gap-xs px-md py-xs bg-[#728156] text-white rounded-lg font-label-md hover:bg-surface-tint transition-colors shadow-sm text-[12px] px-lg" onclick="openWizard()">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+                    Create Campaign
+                </button>
+</div>
+</div>
+<!-- Top Level Metrics (Compact 4 columns) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-sm">
+<!-- Metric 1: Active Campaigns -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col relative overflow-hidden group shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Active Campaigns</span>
+</div>
+<span class="px-xs py-[2px] bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-semibold flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> +3
+                    </span>
+</div>
+<div class="flex items-baseline gap-xs mt-auto">
+<span class="font-headline-md text-on-surface text-headline-sm" id="activeCampaignsCount">2</span>
+</div>
+</div>
+<!-- Metric 2: Total Reach -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col relative overflow-hidden group shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow">
+<div class="absolute inset-x-0 bottom-0 h-12 opacity-20 pointer-events-none">
+<svg class="w-full h-full text-[#728156] fill-current" preserveAspectRatio="none" viewBox="0 0 100 40">
+<path d="M0 40 L0 20 Q 10 30, 20 15 T 40 25 T 60 10 T 80 20 T 100 5 L100 40 Z"></path>
+</svg>
+</div>
+<div class="flex items-center justify-between mb-xs relative z-10">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">groups</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Total Reach</span>
+</div>
+<span class="px-xs py-[2px] bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-semibold flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> 14%
+                    </span>
+</div>
+<div class="flex items-baseline gap-xs mt-auto relative z-10">
+<span class="font-headline-md text-on-surface text-headline-sm">45.2k</span>
+</div>
+</div>
+<!-- Metric 3: Conversion Rate -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col relative overflow-hidden group shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">track_changes</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Conversion Rate</span>
+</div>
+<span class="px-xs py-[2px] bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-semibold flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> 0.8%
+                    </span>
+</div>
+<div class="flex items-baseline gap-xs mt-auto mb-xs">
+<span class="font-headline-md text-on-surface text-headline-sm">4.2%</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#536139] h-full w-[42%] rounded-full"></div>
+</div>
+</div>
+<!-- Metric 4: Marketing Revenue -->
+<div class="bg-[#6b7a50] text-on-primary-container border border-outline-variant/30 rounded-lg p-md flex flex-col relative overflow-hidden group shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-[#536139]/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700"></div>
+<div class="flex items-center justify-between mb-xs relative z-10">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider opacity-90">Marketing Revenue</span>
+</div>
+</div>
+<div class="flex items-baseline gap-xs mt-auto relative z-10">
+<span class="font-headline-md text-headline-sm">₦486k</span>
+</div>
+<p class="text-[10px] opacity-80 mt-1 relative z-10">Last 30 days</p>
+</div>
+</div>
+<!-- Bento Grid Main Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-sm w-full">
+<!-- Left Column (Span 8) -->
+<div class="lg:col-span-8 flex flex-col gap-sm">
+<!-- Active Campaigns -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col">
+<div class="p-md flex justify-between items-center border-b border-outline-variant/30">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Active Campaigns</h2>
+<button class="text-label-sm font-label-sm text-[#536139] hover:text-primary-container transition-colors" onclick="openAllCampaignsModal()">View All</button>
+</div>
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left border-collapse"><thead><tr class="bg-surface-container/30 border-b border-outline-variant/10 text-[10px] text-outline uppercase tracking-wider"><th class="p-sm font-medium">Campaign Name</th><th class="p-sm font-medium">Channel</th><th class="p-sm font-medium">Reach</th><th class="p-sm font-medium">Revenue</th><th class="p-sm font-medium">Duration</th><th class="p-sm font-medium text-right">Status</th></tr></thead><tbody id="campaignList"><tr class="group hover:bg-surface-container/50 transition-colors border-b border-outline-variant/10 cursor-pointer" id="camp1" onclick="manageCampaign('camp1', 'Weekend Flash Sale', 'Active')"><td class="p-sm"><p class="font-label-sm text-on-surface">Weekend Flash Sale</p><p class="text-[10px] text-on-surface-variant opacity-70">20% off all shoes</p></td><td class="p-sm"><div class="flex items-center gap-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">forum</span> <span class="text-[12px]">WhatsApp</span></div></td><td class="p-sm"><p class="font-label-sm text-on-surface">12.4k</p><p class="text-[10px] text-on-surface-variant opacity-70">342 orders</p></td><td class="p-sm font-label-sm text-on-surface">₦450k</td><td class="p-sm text-[12px] text-on-surface-variant">3 days left</td><td class="p-sm text-right"><span class="inline-flex items-center px-sm py-[2px] rounded-full bg-[#d9e9b9] text-[#3e4b28] text-[10px] font-semibold status-badge">Active</span></td></tr><tr class="group hover:bg-surface-container/50 transition-colors border-b border-outline-variant/10 cursor-pointer" id="camp2" onclick="manageCampaign('camp2', 'New Arrival: Summer Collection', 'Active')"><td class="p-sm"><p class="font-label-sm text-on-surface">New Arrival: Summer Collection</p><p class="text-[10px] text-on-surface-variant opacity-70">Apparel showcase</p></td><td class="p-sm"><div class="flex items-center gap-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">mail</span> <span class="text-[12px]">Email</span></div></td><td class="p-sm"><p class="font-label-sm text-on-surface">8.1k</p><p class="text-[10px] text-on-surface-variant opacity-70">120 orders</p></td><td class="p-sm font-label-sm text-on-surface">₦210k</td><td class="p-sm text-[12px] text-on-surface-variant">2 days left</td><td class="p-sm text-right"><span class="inline-flex items-center px-sm py-[2px] rounded-full bg-[#d9e9b9] text-[#3e4b28] text-[10px] font-semibold status-badge">Active</span></td></tr><tr class="group hover:bg-surface-container/50 transition-colors cursor-pointer" id="camp3" onclick="manageCampaign('camp3', 'Welcome Campaign', 'Draft')"><td class="p-sm"><p class="font-label-sm text-on-surface">Welcome Campaign</p><p class="text-[10px] text-on-surface-variant opacity-70">Automated drip</p></td><td class="p-sm"><div class="flex items-center gap-xs text-on-surface-variant"><span class="material-symbols-outlined text-[14px]">mail</span> <span class="text-[12px]">Email</span></div></td><td class="p-sm text-on-surface-variant font-label-sm">-</td><td class="p-sm text-on-surface-variant font-label-sm">-</td><td class="p-sm text-[12px] text-on-surface-variant">Not started</td><td class="p-sm text-right"><span class="inline-flex items-center px-sm py-[2px] rounded-full bg-surface-container-high text-on-surface text-[10px] font-semibold status-badge">Draft</span></td></tr></tbody></table>
+</div>
+</div>
+<!-- Referral & Ambassador Program -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-md flex flex-col gap-md relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="max-w-md">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-[#728156]">handshake</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Sleec Ambassadors</h2>
+</div>
+<p class="font-body-sm text-on-surface-variant">Turn your best customers into promoters. Configure your referral program and track their performance.</p>
+</div>
+<label class="flex items-center cursor-pointer">
+<div class="relative">
+<input checked="" class="sr-only" type="checkbox">
+<div class="block bg-[#728156] w-10 h-6 rounded-full transition-colors"></div>
+<div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform translate-x-4 shadow"></div>
+</div>
+</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-sm mt-xs">
+<!-- Commission Settings -->
+<div class="bg-surface-container/30 border border-outline-variant/10 rounded p-sm flex flex-col justify-between">
+<div>
+<p class="text-[10px] text-outline uppercase tracking-wider mb-xs">Commission Rate</p>
+<h4 class="font-headline-md text-on-surface mb-1">6%</h4>
+<p class="font-body-sm text-on-surface-variant text-[12px]">Percentage per successful referral sale.</p>
+</div>
+<button class="mt-md text-[#536139] font-label-sm text-label-sm self-start flex items-center gap-xs hover:opacity-80" onclick="document.getElementById('commissionModal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[16px]">edit</span> Edit Settings
+            </button>
+</div>
+<!-- Top Ambassadors -->
+<div class="bg-surface-container/30 border border-outline-variant/10 rounded p-sm flex flex-col">
+<div class="flex justify-between items-center mb-sm">
+<p class="text-[10px] text-outline uppercase tracking-wider">Top Performers</p>
+<button class="text-label-sm font-label-sm text-[#536139] hover:text-primary-container transition-colors" onclick="document.getElementById('ambassadorsModal').classList.remove('hidden')">View All</button>
+</div>
+<div class="flex flex-col gap-xs">
+<a class="flex items-center justify-between p-xs hover:bg-surface-container/50 rounded transition-colors cursor-pointer" href="#">
+<div class="flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Portrait of a young African man, David Okafor, smiling confidently in modern casual attire, brightly lit studio photography with a sage green background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3RPtNEy_S0Ayuvf4gUclq73NlAYZe4yoRhIECZTa3vwCXzS1I_a8k8G-WvHck1uGxNqnVXwtdFPNgr_g5U-9YoFRJj4qDFxRPajUU3La7YNshAM693Wk-zPpRUy-RR7xJ2wL4cMitQP2tyZz8JrAGPJ01zdKVvTqQhksitjBCfF57MLkfWH4O_TYWS4JWuvTr0CpXGCY5HbOwRc5BFzK_YDGy47K3rhcVk1anz6Dnim6RW9eJxR69">
+<div>
+<p class="text-label-sm text-on-surface">David Okafor</p>
+<p class="text-[10px] text-on-surface-variant">24 referrals</p>
+</div>
+</div>
+<div class="text-label-sm font-semibold text-on-surface">₦185,000</div>
+</a>
+<a class="flex items-center justify-between p-xs hover:bg-surface-container/50 rounded transition-colors cursor-pointer" href="#">
+<div class="flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Portrait of a professional African woman, Amina Eze, wearing a stylish hijab, soft natural lighting, warm and approachable expression, muted background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQbBQ5FSwJe1ApG7CtDL_qc5rX2OS_Z7JfjjxrAPq9RISWG5Z50PIxv0PmcfhufSeZb51Xa92nGij3-lQRC0ivVaNRrR8jbnRREAqIqdwPCOpmxTU_8C1NO--qecsFKv8VaQisjEyRknfTi4tM0CJWLBEvESRul1T17IAcXbJMef59UUwb3mpd9BnrPr7w1FBR13yJjxd5SuIji1NmDIfk98yzR8tmYePfjKNdGDXWTa5kWYZ2LYq8">
+<div>
+<p class="text-label-sm text-on-surface">Amina Eze</p>
+<p class="text-[10px] text-on-surface-variant">18 referrals</p>
+</div>
+</div>
+<div class="text-label-sm font-semibold text-on-surface">₦142,500</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Span 4) -->
+<div class="lg:col-span-4 flex flex-col gap-sm">
+<!-- Offers & Promotions -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.04)] p-md flex flex-col gap-sm"><div><h2 class="text-headline-sm font-headline-sm text-on-surface mb-xs">Offers &amp; Promotions</h2><p class="font-body-sm text-on-surface-variant text-[12px]">Create quick discounts for your checkout.</p></div><div class="grid grid-cols-3 gap-xs"><button class="bg-surface-container/30 border border-outline-variant/10 rounded p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors group" onclick="openQuickDiscount('percentage')"><div class="w-8 h-8 rounded-full bg-[#e6efd8] text-[#536139] flex items-center justify-center group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[16px]">percent</span></div><span class="font-label-sm text-[10px] text-on-surface text-center">Percentage</span></button><button class="bg-surface-container/30 border border-outline-variant/10 rounded p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors group" onclick="openQuickDiscount('fixed')"><div class="w-8 h-8 rounded-full bg-[#e6efff] text-[#2753a8] flex items-center justify-center group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[16px]">payments</span></div><span class="font-label-sm text-[10px] text-on-surface text-center">Fixed Amt</span></button><button class="bg-surface-container/30 border border-outline-variant/10 rounded p-sm flex flex-col items-center justify-center gap-xs hover:bg-surface-container-high transition-colors group" onclick="openQuickDiscount('shipping')"><div class="w-8 h-8 rounded-full bg-[#fff0d6] text-[#a86500] flex items-center justify-center group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-[16px]">local_shipping</span></div><span class="font-label-sm text-[10px] text-on-surface text-center">Free Ship</span></button></div><div class="mt-xs"><p class="text-[10px] text-outline uppercase tracking-wider mb-sm">Active Coupons</p><div class="flex flex-col gap-xs" id="active-coupons-list"><div class="flex justify-between items-center p-xs bg-surface-container/30 border border-outline-variant/10 rounded group relative overflow-hidden"><div class="flex items-center gap-xs text-on-surface"><span class="material-symbols-outlined text-[14px]">local_offer</span><span class="text-label-sm font-semibold tracking-wide">SUMMER20</span></div><div class="relative h-6 w-20 flex items-center justify-end"><span class="text-[10px] font-semibold text-on-surface bg-surface px-xs py-[2px] border border-outline-variant/20 rounded group-hover:opacity-0 transition-opacity">20% OFF</span><button class="absolute inset-0 flex items-center justify-center bg-error text-white rounded opacity-0 group-hover:opacity-100 transition-opacity" onclick="confirmDeleteCoupon(this)"><span class="material-symbols-outlined text-[16px]">delete</span></button></div></div></div></div></div>
+<!-- Marketing Insights -->
+<div class="bg-surface-container-high rounded-lg shadow-sm p-md flex flex-col gap-sm relative overflow-hidden group">
+<div class="absolute -right-8 -bottom-8 opacity-10 pointer-events-none group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[80px]">lightbulb</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-xs relative z-10">
+<span class="material-symbols-outlined text-[#536139]">insights</span> Insights
+        </h2>
+<p class="text-[12px] text-on-surface-variant relative z-10 leading-relaxed">
+<strong class="text-on-surface font-semibold">Campaign Insight:</strong> WhatsApp campaigns generated <span class="text-[#728156] font-semibold">38%</span> more orders than Email in the last 14 days.
+        </p>
+<button class="mt-xs text-[10px] font-semibold text-[#536139] flex items-center gap-xs hover:underline relative z-10 self-start" onclick="document.getElementById('reportModal').classList.remove('hidden')">
+          View full report <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Promote on Sleec -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col relative group">
+<div class="h-24 w-full bg-cover bg-center relative" data-alt="A stylized 3D render of a megaphone emitting glowing particles and floating discount tags, set against a soft, sage green background. Modern, minimalist tech aesthetic, clean lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBnLMuoTIOi1CL0N-W86nqVM2i6dW2zecE6xLEewjSNV8vbanTJ8w_OshQVN_Udast_SX0ErPyNj1fvWaW748aDejVp1jdMS2AlXFeyPCPZphtYuHAaGYLtkBFXYAahEfToQoE6uogu6gbklk4CFyjf4zI1Laaz0hzWPjK8r-GZ0g6mQ4-gpjO33Fooq2aHkw1qTX6NymSmmqEU5RPc8lKJN2FGfa7Sb158GSJ16RwZuUvDHwg9Hwpq')">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+</div>
+<div class="p-md -mt-8 relative z-10 flex flex-col gap-xs">
+<span class="inline-flex items-center px-sm py-[2px] rounded-full bg-[#536139] text-white text-[10px] font-semibold self-start mb-xs">Ad Network</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Promote on Sleec</h2>
+<p class="text-[12px] text-on-surface-variant mb-sm">Get your products featured on the buyer dashboard as a sponsored placement to reach thousands of new shoppers.</p>
+<button class="w-full py-xs rounded border border-outline-variant/30 bg-surface text-on-surface shadow-sm hover:bg-surface-container-high transition-colors font-label-sm text-label-sm flex justify-center items-center gap-xs" onclick="openPromotionWizard()">
+<span class="material-symbols-outlined text-[16px]">support_agent</span> Contact Sleec
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Create Campaign Wizard Overlay (Hidden by default) -->
+<div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md lg:p-xl transition-opacity" id="campaignWizard" style="display: none;"><div class="bg-surface-container-lowest w-full max-w-5xl h-[800px] rounded-xl shadow-2xl flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out]"><div class="px-lg py-md bg-surface border-b border-surface-variant flex justify-between items-center shadow-sm z-10"><div><h2 class="font-headline-md text-on-surface">Create Campaign</h2><p class="font-body-sm text-on-surface-variant">Step <span class="" id="wizard-step-num">7</span> of 7: <span class="font-label-md text-primary" id="wizard-step-title">Review &amp; Launch</span></p></div><button class="p-xs rounded-full hover:bg-surface-container-high text-on-surface-variant transition-colors" onclick="closeWizard()"><span class="material-symbols-outlined">close</span></button></div><div class="flex flex-1 overflow-hidden"><div class="w-64 bg-surface-container-low hidden md:flex flex-col p-lg gap-sm border-r border-outline-variant/20"><div class="flex flex-col gap-xs relative z-0"><div class="absolute left-[11px] top-0 bottom-0 w-0.5 bg-surface-variant -z-10"></div><div class="space-y-4" id="stepper-container"><div class="flex items-center gap-sm text-primary/60"><div class="w-6 h-6 rounded-full flex items-center justify-center border border-outline">✓</div><span class="text-label-md">Campaign Details</span></div><div class="flex items-center gap-sm text-primary/60"><div class="w-6 h-6 rounded-full flex items-center justify-center border border-outline">✓</div><span class="text-label-md">Select Products</span></div><div class="flex items-center gap-sm text-primary/60"><div class="w-6 h-6 rounded-full flex items-center justify-center border border-outline">✓</div><span class="text-label-md">Target Audience</span></div><div class="flex items-center gap-sm text-primary/60"><div class="w-6 h-6 rounded-full flex items-center justify-center border border-outline">✓</div><span class="text-label-md">Campaign Offer</span></div><div class="flex items-center gap-sm text-primary/60"><div class="w-6 h-6 rounded-full flex items-center justify-center border border-outline">✓</div><span class="text-label-md">Marketing Channels</span></div><div class="flex items-center gap-sm text-primary/60"><div class="w-6 h-6 rounded-full flex items-center justify-center border border-outline">✓</div><span class="text-label-md">Schedule &amp; Budget</span></div><div class="flex items-center gap-sm text-primary font-bold"><div class="w-6 h-6 rounded-full flex items-center justify-center border bg-primary text-white border-primary">7</div><span class="text-label-md">Review &amp; Launch</span></div></div></div></div><div class="flex-1 bg-surface-container-lowest p-xl overflow-y-auto flex flex-col"><div class="max-w-2xl w-full mx-auto flex-1" id="wizard-content-area"><div class="space-y-lg animate-[fadeIn_0.2s]">
+    <h3 class="font-headline-sm">Final Review</h3>
+    <div class="p-md bg-surface-container rounded-lg space-y-sm">
+        <div class="flex justify-between"><span class="text-outline text-label-sm">Campaign Name</span><span class="font-semibold text-label-md">Weekend Flash Sale</span></div>
+        <div class="flex justify-between"><span class="text-outline text-label-sm">Audience Type</span><span class="font-semibold text-label-md">Smart Reach</span></div>
+        <div class="flex justify-between"><span class="text-outline text-label-sm">Target Reach</span><span class="font-label-md">5,000 recipients</span></div>
+        <div class="flex justify-between"><span class="text-outline text-label-sm">Delivery</span><span class="font-label-md">1 message per recipient</span></div>
+        <div class="flex justify-between border-t border-outline-variant/30 pt-sm mt-sm"><span class="text-outline text-label-sm font-semibold">Estimated Cost</span><span class="font-semibold text-primary text-label-md">₦25,000</span></div>
+    </div>
+    <div class="border rounded-xl overflow-hidden">
+        <div class="bg-surface-container p-sm border-b flex gap-md"><button class="text-primary font-bold text-label-sm">WhatsApp Preview</button><button class="text-outline text-label-sm">Email Preview</button></div>
+        <div class="p-xl bg-[#e5ddd5] flex justify-center"><div class="bg-white p-md rounded-lg shadow-sm max-w-xs relative"><p class="text-body-sm">Hello {{customer_name}}! 🌟 Get 20% OFF all shoes this weekend. Shop now!</p><span class="text-[10px] text-outline absolute bottom-1 right-2">12:00 PM</span></div></div>
+    </div>
+</div></div><div class="mt-xl pt-lg border-t border-surface-variant flex justify-between items-center"><button class="px-lg py-sm rounded-lg font-label-md text-on-surface-variant hover:bg-surface-container transition-colors invisible" id="wizard-prev" style="visibility: visible;">Back</button><div class="flex gap-md"><button class="px-lg py-sm rounded-lg border border-outline-variant text-on-surface font-label-md hover:bg-surface-container transition-colors" id="wizard-draft">Save as Draft</button><button class="px-lg py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" id="wizard-next">Launch Campaign</button></div></div></div></div></div></div>
+<!-- Contact Form Modal -->
+<div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md transition-opacity hidden" id="contactModal">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-xl p-lg flex flex-col md:flex-row">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-on-surface">Contact Ads Team</h3>
+<button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="openPromotionWizard()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<p class="font-body-sm text-on-surface-variant mb-md">Interested in placing your products on the buyer dashboard? Drop us a message.</p>
+<textarea class="w-full bg-surface rounded-lg p-sm font-body-sm text-on-surface ring-1 ring-surface-variant focus:ring-2 focus:ring-[#728156] outline-none mb-md resize-none" placeholder="Tell us about the products you want to promote..." rows="4"></textarea>
+<button class="w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" onclick="openPromotionWizard()">Send Request</button>
+</div>
+</div>
+<!-- Pricing Info Modal -->
+<div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md transition-opacity hidden" id="pricingModal">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-xl p-lg flex flex-col">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-on-surface">Campaign Pricing</h3>
+<button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('pricingModal').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button>
+</div>
+<p class="font-body-sm text-on-surface-variant mb-md">You pay for reach. Each recipient costs a flat rate depending on the targeting type you select.</p>
+<div class="space-y-sm mb-md">
+<div class="p-sm bg-surface rounded border border-outline-variant/30 flex justify-between items-center">
+<span class="">Basic Reach (General)</span>
+<span class="font-semibold text-primary">₦3 / recipient</span>
+</div>
+<div class="p-sm bg-surface rounded border border-primary/30 flex justify-between items-center">
+<span class="">Smart Reach (Prioritized)</span>
+<span class="font-semibold text-primary">₦5 / recipient</span>
+</div>
+</div>
+<p class="text-[12px] text-on-surface-variant italic mb-md">Example: Reaching 1,000 customers via Smart Reach costs ₦5,000.</p>
+<button class="w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" onclick="document.getElementById('pricingModal').classList.add('hidden')">Got it</button>
+</div>
+</div>
+<!-- Toast Notification (Hidden) -->
+<div class="fixed bottom-lg right-lg bg-surface-container-lowest shadow-xl rounded-lg p-md flex items-center gap-sm transform transition-all duration-300 z-50 ring-1 ring-outline-variant/30 translate-y-20 opacity-0" id="toast">
+<div class="w-8 h-8 rounded-full bg-[#728156]/10 flex items-center justify-center md:flex-row">
+<span class="material-symbols-outlined text-[#728156] text-[20px]">check_circle</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">Coupon Deleted</p>
+<p class="font-body-sm text-on-surface-variant">The discount has been removed.</p>
+</div>
+</div>
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+<script>
+  let currentStep = 1;
+  const totalSteps = 10;
+  const stepTitles = ["Objective", "Name", "Products", "Audience", "Offer", "Channels", "Schedule", "Budget", "Preview", "Launch"];
+
+  function openWizard() {
+    document.getElementById('campaignWizard').style.display = 'flex';
+    currentStep = 1;
+    updateWizardUI();
+  }
+
+  function closeWizard() {
+    document.getElementById('campaignWizard').style.display = 'none';
+  }
+
+  function nextStep() {
+    if (currentStep < totalSteps) {
+      currentStep++;
+      updateWizardUI();
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 1) {
+      currentStep--;
+      updateWizardUI();
+    }
+  }
+
+  function updateWizardUI() {
+    // Legacy logic (handled below by wizardState now)
+  }
+
+  function launchCampaign() {
+    closeWizard();
+    
+    // Add to table
+    const tableBody = document.getElementById('campaignList');
+    const newRow = document.createElement('tr');
+    const newId = 'camp' + Date.now();
+    newRow.id = newId;
+    newRow.className = 'group hover:bg-surface-container/50 transition-colors border-b border-outline-variant/10 cursor-pointer animate-[fadeIn_0.5s_ease-out] bg-[#728156]/5';
+    newRow.onclick = () => manageCampaign(newId, 'Flash Sale (New)', 'Active');
+    newRow.innerHTML = `
+      <td class="p-sm">
+        <p class="font-label-sm text-on-surface">Flash Sale (New)</p>
+        <p class="text-[10px] text-on-surface-variant opacity-70">Custom promotion</p>
+      </td>
+      <td class="p-sm">
+        <div class="flex items-center gap-xs text-on-surface-variant">
+          <span class="material-symbols-outlined text-[14px]">forum</span> <span class="text-[12px]">WhatsApp</span>
+        </div>
+      </td>
+      <td class="p-sm text-on-surface-variant font-label-sm">0</td>
+      <td class="p-sm font-label-sm text-on-surface">₦0</td>
+      <td class="p-sm text-[12px] text-on-surface-variant">7 days left</td>
+      <td class="p-sm text-right">
+        <span class="inline-flex items-center px-sm py-[2px] rounded-full bg-[#d9e9b9] text-[#3e4b28] text-[10px] font-semibold status-badge">Active</span>
+      </td>
+    `;
+    tableBody.insertBefore(newRow, tableBody.firstChild);
+    
+    // Keep only 3 rows
+    if (tableBody.children.length > 3) {
+      tableBody.lastChild.remove();
+    }
+
+    updateActiveCount();
+
+    // Show toast
+    const toast = document.getElementById('toast');
+    toast.classList.remove('translate-y-20', 'opacity-0');
+    
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0');
+      newRow.classList.remove('bg-[#728156]/5');
+    }, 4000);
+  }
+</script>
+</main>
+</div>
+<script>
+const wizardState={step:1,totalSteps:7,data:{name:'',desc:'',products:[],audience:'smart',location:'all',offerType:'percentage',offerValue:'',message:'',channels:['whatsapp'],budget:''}};
+
+function updatePricing(val) {
+    const cost = val * 5;
+    const formattedVal = Number(val).toLocaleString();
+    const formattedCost = cost.toLocaleString();
+    document.getElementById('calc-text').innerText = `e.g., ${formattedVal} recipients × ₦5 per recipient = ₦${formattedCost}`;
+    document.getElementById('calc-total').innerText = `₦${formattedCost}`;
+}
+
+const steps=[
+{title:'Campaign Details',render:()=>`<div class='space-y-lg animate-[fadeIn_0.2s]'><h3 class='font-headline-sm'>Basic Information</h3><div class='space-y-md'><div><label class='block text-label-md mb-xs'>Campaign Name *</label><input type='text' class='w-full p-md bg-surface border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary outline-none' placeholder='e.g. Weekend Flash Sale' oninput='wizardState.data.name=this.value'></div><div><label class='block text-label-md mb-xs'>Description</label><textarea class='w-full p-md bg-surface border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary outline-none h-32' placeholder='What is this campaign about?' oninput='wizardState.data.desc=this.value'></textarea></div></div></div>`},
+{title:'Select Products',render:()=>`<div class='space-y-lg animate-[fadeIn_0.2s]'><div class='flex justify-between items-center'><h3 class='font-headline-sm'>Choose Products</h3><span class='text-label-sm text-primary'>0 Selected</span></div><div class='relative mb-md'><span class='material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline'>search</span><input type='text' class='w-full pl-xxl pr-md py-sm bg-surface border border-outline-variant rounded-full text-body-sm' placeholder='Search products...'></div><div class='grid grid-cols-1 gap-sm'><div class='flex items-center gap-md p-md border border-outline-variant rounded-lg hover:bg-surface-container transition-colors cursor-pointer'><input type='checkbox' class='w-5 h-5 accent-[#728156]'><img src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100' class='w-12 h-12 rounded object-cover'><div class='flex-1'><p class='font-label-md'>Nike Air Max</p><p class='text-body-sm text-on-surface-variant'>₦45,000 • 12 in stock</p></div></div></div></div>`},
+{title:'Target Audience',render:()=>`<div class='space-y-lg animate-[fadeIn_0.2s]'>
+    <h3 class='font-headline-sm'>Who do you want to reach?</h3>
+    <div class='space-y-md'>
+        <label class='flex gap-md p-md border border-outline-variant rounded-lg hover:border-primary cursor-pointer transition-colors'>
+            <input type='radio' name='audience' class='mt-1 accent-primary'>
+            <div>
+                <p class='font-label-md mb-xs'>My Customers</p>
+                <p class='text-body-sm text-on-surface-variant mb-sm'>Reach people who have previously purchased from this store.</p>
+                <div class='flex flex-wrap gap-xs'>
+                    <span class='px-xs py-1 bg-surface-container text-[10px] rounded text-on-surface-variant font-medium'>All</span>
+                    <span class='px-xs py-1 bg-surface-container text-[10px] rounded text-on-surface-variant font-medium'>Returning</span>
+                    <span class='px-xs py-1 bg-surface-container text-[10px] rounded text-on-surface-variant font-medium'>VIP</span>
+                    <span class='px-xs py-1 bg-surface-container text-[10px] rounded text-on-surface-variant font-medium'>Category-specific</span>
+                    <span class='px-xs py-1 bg-surface-container text-[10px] rounded text-on-surface-variant font-medium'>Inactive</span>
+                    <span class='px-xs py-1 bg-surface-container text-[10px] rounded text-on-surface-variant font-medium'>Most Active</span>
+                </div>
+            </div>
+        </label>
+        <label class='flex gap-md p-md border border-outline-variant rounded-lg hover:border-primary cursor-pointer transition-colors'>
+            <input type='radio' name='audience' class='mt-1 accent-primary'>
+            <div>
+                <p class='font-label-md mb-xs'>General Audience</p>
+                <p class='text-body-sm text-on-surface-variant mb-sm'>Reach potential customers beyond your existing customer list.</p>
+                <div class='flex flex-wrap gap-xs'>
+                    <span class='px-xs py-1 bg-surface-container text-[10px] rounded text-on-surface-variant font-medium'>Location</span>
+                    <span class='px-xs py-1 bg-surface-container text-[10px] rounded text-on-surface-variant font-medium'>State</span>
+                    <span class='px-xs py-1 bg-surface-container text-[10px] rounded text-on-surface-variant font-medium'>City</span>
+                    <span class='px-xs py-1 bg-surface-container text-[10px] rounded text-on-surface-variant font-medium'>Interest</span>
+                </div>
+            </div>
+        </label>
+        <label class='flex gap-md p-md border border-primary bg-primary/5 rounded-lg cursor-pointer transition-colors'>
+            <input type='radio' name='audience' class='mt-1 accent-primary' checked>
+            <div>
+                <p class='font-label-md mb-xs flex items-center gap-xs'>Smart Reach <span class='material-symbols-outlined text-[16px] text-primary'>auto_awesome</span></p>
+                <p class='text-body-sm text-on-surface-variant mb-xs'>Reach new people while prioritizing customers who are most likely to be interested in your offer.</p>
+                <p class='text-[10px] text-primary bg-primary-container/20 inline-block px-sm py-[2px] rounded font-medium'>Note: Smart Reach campaigns require a minimum audience of 5,000 recipients.</p>
+            </div>
+        </label>
+    </div>
+</div>`},
+{title:'Campaign Offer',render:()=>`<div class='space-y-lg animate-[fadeIn_0.2s]'><h3 class='font-headline-sm'>Discount & Message</h3><div class='flex gap-sm'>${['Percentage','Fixed','Free Ship'].map(o=>`<button class='flex-1 p-md border border-outline-variant rounded-lg text-center hover:bg-surface-container'>${o}</button>`).join('')}</div><input type='number' class='w-full p-md bg-surface border border-outline-variant rounded-lg' placeholder='Enter value (e.g. 20)'><textarea class='w-full p-md bg-surface border border-outline-variant rounded-lg h-24' placeholder='Campaign Message...'></textarea></div>`},
+{title:'Marketing Channels',render:()=>`<div class='space-y-lg animate-[fadeIn_0.2s]'><h3 class='font-headline-sm'>Select Channels</h3><div class='space-y-sm'><div class='p-md border border-primary bg-primary/5 rounded-lg flex items-center gap-md'><span class='material-symbols-outlined'>forum</span><div class='flex-1'><p class='font-label-md'>WhatsApp</p><p class='text-body-sm'>Direct message to customer phones</p></div><span class='material-symbols-outlined text-primary'>check_circle</span></div><div class='p-md border border-outline-variant rounded-lg flex items-center gap-md opacity-60'><span class='material-symbols-outlined'>mail</span><div class='flex-1'><p class='font-label-md'>Email</p><p class='text-body-sm'>Send to customer inboxes</p></div></div></div></div>`},
+{title:'Schedule & Budget',render:()=>`<div class='space-y-lg animate-[fadeIn_0.2s]'>
+    <h3 class='font-headline-sm'>Timing & Spend</h3>
+    
+    <div class='bg-surface-container-low p-md rounded-lg border border-outline-variant/30 text-body-sm'>
+        <p class='font-label-md mb-xs flex items-center gap-xs'><span class='material-symbols-outlined text-[18px]'>info</span> How Campaign Budgeting Works</p>
+        <p class='text-on-surface-variant mb-sm'>Your campaign budget is based on the number of people you want to reach, not the number of days your campaign runs. Each customer will receive the campaign message once to avoid spamming.</p>
+        
+        <div class='grid grid-cols-2 gap-sm mb-sm'>
+            <div class='bg-surface p-sm rounded border border-outline-variant/30'>
+                <p class='font-label-md text-[12px] mb-1'>Basic Reach</p>
+                <ul class='text-[10px] text-on-surface-variant list-disc pl-md space-y-1'>
+                    <li>General targeting</li>
+                    <li>Min 500 reach</li>
+                    <li>Lower cost</li>
+                </ul>
+            </div>
+            <div class='bg-surface p-sm rounded border border-primary/30'>
+                <p class='font-label-md text-[12px] mb-1 text-primary'>Smart Reach</p>
+                <ul class='text-[10px] text-on-surface-variant list-disc pl-md space-y-1'>
+                    <li>Intelligent targeting</li>
+                    <li>Prioritizes best customers</li>
+                    <li>Min 5,000 reach</li>
+                    <li>Higher cost</li>
+                </ul>
+            </div>
+        </div>
+        
+        <button class='text-primary text-[12px] font-label-sm hover:underline' onclick='document.getElementById("pricingModal").classList.remove("hidden")'>Learn more about campaign pricing →</button>
+    </div>
+
+    <div class='grid grid-cols-2 gap-md'>
+        <div>
+            <label class='text-label-sm block mb-xs'>Start Date</label>
+            <input type='date' class='w-full p-sm bg-surface border border-outline-variant rounded-lg outline-none font-body-sm'>
+            <p class='text-[10px] text-on-surface-variant mt-xs leading-tight'>Customer-friendly delivery: Each recipient will receive this campaign once during the scheduled period.</p>
+        </div>
+        <div>
+            <label class='text-label-sm block mb-xs'>Total Recipients</label>
+            <input type='number' class='w-full p-sm bg-surface border border-outline-variant rounded-lg outline-none font-body-sm' value='5000' oninput='updatePricing(this.value)' min="5000">
+            <div class='mt-sm p-sm bg-surface-container rounded border border-outline-variant/30'>
+                <p class='text-[10px] text-on-surface-variant mb-1' id='calc-text'>e.g., 5,000 recipients × ₦5 per recipient = ₦25,000</p>
+                <p class='font-label-sm text-on-surface'>Estimated Campaign Cost: <span id='calc-total' class='text-primary text-label-md ml-xs'>₦25,000</span></p>
+            </div>
+        </div>
+    </div>
+</div>`},
+{title:'Review & Launch',render:()=>`<div class='space-y-lg animate-[fadeIn_0.2s]'>
+    <h3 class='font-headline-sm'>Final Review</h3>
+    <div class='p-md bg-surface-container rounded-lg space-y-sm'>
+        <div class='flex justify-between'><span class='text-outline text-label-sm'>Campaign Name</span><span class='font-semibold text-label-md'>Weekend Flash Sale</span></div>
+        <div class='flex justify-between'><span class='text-outline text-label-sm'>Audience Type</span><span class='font-semibold text-label-md'>Smart Reach</span></div>
+        <div class='flex justify-between'><span class='text-outline text-label-sm'>Target Reach</span><span class='font-label-md'>5,000 recipients</span></div>
+        <div class='flex justify-between'><span class='text-outline text-label-sm'>Delivery</span><span class='font-label-md'>1 message per recipient</span></div>
+        <div class='flex justify-between border-t border-outline-variant/30 pt-sm mt-sm'><span class='text-outline text-label-sm font-semibold'>Estimated Cost</span><span class='font-semibold text-primary text-label-md'>₦25,000</span></div>
+    </div>
+    <div class='border rounded-xl overflow-hidden'>
+        <div class='bg-surface-container p-sm border-b flex gap-md'><button class='text-primary font-bold text-label-sm'>WhatsApp Preview</button><button class='text-outline text-label-sm'>Email Preview</button></div>
+        <div class='p-xl bg-[#e5ddd5] flex justify-center'><div class='bg-white p-md rounded-lg shadow-sm max-w-xs relative'><p class='text-body-sm'>Hello {{customer_name}}! 🌟 Get 20% OFF all shoes this weekend. Shop now!</p><span class='text-[10px] text-outline absolute bottom-1 right-2'>12:00 PM</span></div></div>
+    </div>
+</div>`}
+];
+
+function updateWizard(){const step=steps[wizardState.step-1];document.getElementById('wizard-step-num').innerText=wizardState.step;document.getElementById('wizard-step-title').innerText=step.title;document.getElementById('wizard-content-area').innerHTML=step.render();document.getElementById('wizard-prev').style.visibility=wizardState.step===1?'hidden':'visible';document.getElementById('wizard-next').innerText=wizardState.step===7?'Launch Campaign':'Continue';const stepper=document.getElementById('stepper-container');stepper.innerHTML=steps.map((s,i)=>`<div class='flex items-center gap-sm ${i+1===wizardState.step?'text-primary font-bold':(i+1<wizardState.step?'text-primary/60':'text-outline')}'><div class='w-6 h-6 rounded-full flex items-center justify-center border ${i+1===wizardState.step?'bg-primary text-white border-primary':'border-outline'}'>${i+1<wizardState.step?'✓':i+1}</div><span class='text-label-md'>${s.title}</span></div>`).join('');}
+document.getElementById('wizard-next').onclick=()=>{if(wizardState.step<7){wizardState.step++;updateWizard();}else{launchCampaign();}};
+document.getElementById('wizard-prev').onclick=()=>{if(wizardState.step>1){wizardState.step--;updateWizard();}};
+document.getElementById('wizard-draft').onclick=()=>{saveDraft();};
+
+function saveDraft(){closeWizard();const table=document.getElementById('campaignList');const row=document.createElement('tr');const newId = 'camp' + Date.now();row.id=newId;row.className='group hover:bg-surface-container/50 transition-colors border-b border-outline-variant/10 cursor-pointer';row.onclick=()=>manageCampaign(newId, wizardState.data.name||'Untitled Draft', 'Draft');row.innerHTML=`<td class='p-sm'><p class='font-label-sm'>${wizardState.data.name||'Untitled Draft'}</p><p class='text-[10px] opacity-70'>Draft</p></td><td class='p-sm'>-</td><td class='p-sm'>-</td><td class='p-sm'>-</td><td class='p-sm'>-</td><td class='p-sm text-right'><span class='inline-flex items-center px-sm py-[2px] rounded-full bg-surface-container-high text-on-surface text-[10px] font-semibold status-badge'>Draft</span></td>`;table.insertBefore(row,table.firstChild);if(table.children.length>3)table.lastChild.remove();showToast('Draft Saved','You can resume this campaign later.');}
+function showToast(title,msg){const t=document.getElementById('toast');t.querySelector('.font-label-md').innerText=title;t.querySelector('.font-body-sm').innerText=msg;t.classList.remove('translate-y-20','opacity-0');setTimeout(()=>t.classList.add('translate-y-20','opacity-0'),3000);}
+window.openWizard=()=>{document.getElementById('campaignWizard').style.display='flex';wizardState.step=1;updateWizard();};
+
+let currentCampaignId = '';
+function manageCampaign(id, name, status) {
+    currentCampaignId = id;
+    document.getElementById('mgmtCampaignName').innerText = name;
+    
+    const actionsContainer = document.getElementById('mgmtActions');
+    actionsContainer.innerHTML = '';
+    
+    let btn1 = document.createElement('button');
+    btn1.className = 'w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors mb-sm';
+    
+    let btn2 = document.createElement('button');
+    btn2.className = 'w-full py-sm rounded-lg border border-error text-error font-label-md hover:bg-error-container transition-colors';
+    btn2.innerText = 'Delete Campaign';
+    btn2.onclick = () => { deleteCampaign(); document.getElementById('campaignManagementModal').classList.add('hidden'); };
+
+    if (status === 'Active') {
+        let viewBtn = document.createElement('button');
+        viewBtn.className = 'w-full py-sm rounded-lg border border-outline-variant text-on-surface font-label-md hover:bg-surface-container transition-colors mb-sm';
+        viewBtn.innerText = 'View Details';
+        actionsContainer.appendChild(viewBtn);
+
+        btn1.innerText = 'Deactivate';
+        btn1.onclick = () => { changeStatus('Stopped'); document.getElementById('campaignManagementModal').classList.add('hidden'); };
+    } else if (status === 'Draft') {
+        let editBtn = document.createElement('button');
+        editBtn.className = 'w-full py-sm rounded-lg border border-outline-variant text-on-surface font-label-md hover:bg-surface-container transition-colors mb-sm';
+        editBtn.innerText = 'Continue Editing';
+        actionsContainer.appendChild(editBtn);
+
+        btn1.innerText = 'Make Campaign Live';
+        btn1.onclick = () => { changeStatus('Active'); document.getElementById('campaignManagementModal').classList.add('hidden'); };
+    } else if (status === 'Stopped') {
+        let viewBtn = document.createElement('button');
+        viewBtn.className = 'w-full py-sm rounded-lg border border-outline-variant text-on-surface font-label-md hover:bg-surface-container transition-colors mb-sm';
+        viewBtn.innerText = 'View Details';
+        actionsContainer.appendChild(viewBtn);
+
+        btn1.innerText = 'Reactivate';
+        btn1.onclick = () => { changeStatus('Active'); document.getElementById('campaignManagementModal').classList.add('hidden'); };
+    }
+    
+    actionsContainer.appendChild(btn1);
+    actionsContainer.appendChild(btn2);
+    
+    document.getElementById('campaignManagementModal').classList.remove('hidden');
+}
+
+function changeStatus(newStatus) {
+    const row = document.getElementById(currentCampaignId);
+    if (!row) return;
+    const badge = row.querySelector('.status-badge');
+    badge.innerText = newStatus;
+    
+    if (newStatus === 'Active') {
+        badge.className = 'inline-flex items-center px-sm py-[2px] rounded-full bg-[#d9e9b9] text-[#3e4b28] text-[10px] font-semibold status-badge';
+    } else if (newStatus === 'Stopped') {
+        badge.className = 'inline-flex items-center px-sm py-[2px] rounded-full bg-error-container text-on-error-container text-[10px] font-semibold status-badge';
+    }
+    
+    // Update onclick handler
+    const name = document.getElementById('mgmtCampaignName').innerText;
+    row.onclick = () => manageCampaign(currentCampaignId, name, newStatus);
+    
+    updateActiveCount();
+}
+
+function deleteCampaign() {
+    const row = document.getElementById(currentCampaignId);
+    if (row) {
+        row.remove();
+        updateActiveCount();
+        showToast('Campaign Deleted', 'The campaign has been removed.');
+    }
+}
+
+function updateActiveCount() {
+    const activeBadges = Array.from(document.querySelectorAll('#campaignList .status-badge')).filter(b => b.innerText === 'Active');
+    document.getElementById('activeCampaignsCount').innerText = activeBadges.length;
+}
+
+function openAllCampaignsModal() {
+    document.getElementById('allCampaignsModal').classList.remove('hidden');
+}
+</script>
+<div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="campaignManagementModal"><div class="bg-surface-container-lowest w-full max-w-sm rounded-xl shadow-xl p-lg flex flex-col"><div class="flex justify-between items-center mb-md"><h3 class="font-headline-md text-on-surface" id="mgmtCampaignName">Flash Sale (New)</h3><button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('campaignManagementModal').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="flex flex-col" id="mgmtActions"><button class="w-full py-sm rounded-lg border border-outline-variant text-on-surface font-label-md hover:bg-surface-container transition-colors mb-sm">View Details</button><button class="w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors mb-sm">Reactivate</button><button class="w-full py-sm rounded-lg border border-error text-error font-label-md hover:bg-error-container transition-colors">Delete Campaign</button></div></div></div>
+<div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="allCampaignsModal"><div class="bg-surface-container-lowest w-full max-w-4xl h-[600px] rounded-xl shadow-xl flex flex-col overflow-hidden"><div class="flex justify-between items-center p-md border-b border-outline-variant/30"><h3 class="font-headline-md text-on-surface">All Campaigns</h3><button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('allCampaignsModal').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="flex-1 overflow-auto p-md"><table class="w-full text-left border-collapse"><thead><tr class="bg-surface-container/30 border-b border-outline-variant/10 text-[10px] text-outline uppercase tracking-wider"><th class="p-sm font-medium">Campaign Name</th><th class="p-sm font-medium">Channel</th><th class="p-sm font-medium">Reach</th><th class="p-sm font-medium">Revenue</th><th class="p-sm font-medium">Duration</th><th class="p-sm font-medium text-right">Status</th></tr></thead><tbody><tr class="border-b border-outline-variant/10"><td class="p-sm"><p class="font-label-sm text-on-surface">Weekend Flash Sale</p></td><td class="p-sm text-[12px]"><span class="material-symbols-outlined text-[14px] align-middle">forum</span> WhatsApp</td><td class="p-sm text-[12px]">12.4k</td><td class="p-sm text-[12px]">₦450k</td><td class="p-sm text-[12px]">3 days left</td><td class="p-sm text-right"><span class="inline-flex items-center px-sm py-[2px] rounded-full bg-[#d9e9b9] text-[#3e4b28] text-[10px] font-semibold">Active</span></td></tr><tr class="border-b border-outline-variant/10"><td class="p-sm"><p class="font-label-sm text-on-surface">New Arrival: Summer Collection</p></td><td class="p-sm text-[12px]"><span class="material-symbols-outlined text-[14px] align-middle">mail</span> Email</td><td class="p-sm text-[12px]">8.1k</td><td class="p-sm text-[12px]">₦210k</td><td class="p-sm text-[12px]">2 days left</td><td class="p-sm text-right"><span class="inline-flex items-center px-sm py-[2px] rounded-full bg-[#d9e9b9] text-[#3e4b28] text-[10px] font-semibold">Active</span></td></tr><tr class="border-b border-outline-variant/10"><td class="p-sm"><p class="font-label-sm text-on-surface">Welcome Campaign</p></td><td class="p-sm text-[12px]"><span class="material-symbols-outlined text-[14px] align-middle">mail</span> Email</td><td class="p-sm text-[12px]">-</td><td class="p-sm text-[12px]">-</td><td class="p-sm text-[12px]">Not started</td><td class="p-sm text-right"><span class="inline-flex items-center px-sm py-[2px] rounded-full bg-surface-container-high text-on-surface text-[10px] font-semibold">Draft</span></td></tr><tr><td class="p-sm"><p class="font-label-sm text-on-surface">Old Promo</p></td><td class="p-sm text-[12px]"><span class="material-symbols-outlined text-[14px] align-middle">mail</span> Email</td><td class="p-sm text-[12px]">5k</td><td class="p-sm text-[12px]">₦100k</td><td class="p-sm text-[12px]">Ended</td><td class="p-sm text-right"><span class="inline-flex items-center px-sm py-[2px] rounded-full bg-error-container text-on-error-container text-[10px] font-semibold">Stopped</span></td></tr></tbody></table></div></div></div>
+<div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="commissionModal"><div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-xl p-lg flex flex-col" id="commissionModalContent"><div class="flex justify-between items-center mb-md"><h3 class="font-headline-md text-on-surface">Ambassador Commission Settings</h3><button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('commissionModal').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="space-y-md mb-md"><div><label class="text-label-sm block mb-xs">Commission Rate (%)</label><input class="w-full p-sm bg-surface border border-outline-variant rounded-lg outline-none font-body-sm" id="commInput" oninput="const val=parseFloat(this.value); const current=5; const warning=document.getElementById('commReductionPanel'); const saveBtn=document.getElementById('saveCommBtn'); if(val &lt; current){ warning.classList.remove('hidden'); saveBtn.classList.add('hidden'); } else { warning.classList.add('hidden'); saveBtn.classList.remove('hidden'); }" type="number" value="5"></div><div class="p-md bg-surface-container-high rounded-lg border border-primary/20 text-body-sm space-y-sm hidden" id="commReductionPanel"><p class="text-on-surface font-medium">Commission Reduction Request</p><p class="text-on-surface-variant text-[12px]">To reduce your commission rate below the standard 5%, please submit a request for review.</p><button class="w-full py-sm rounded-lg bg-primary text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors flex items-center justify-center gap-xs" onclick="openReductionForm()"><span class="material-symbols-outlined text-[18px]">mail</span> Contact Sleec</button></div></div><button class="w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" id="saveCommBtn" onclick="const val=document.getElementById('commInput').value; document.querySelector('h4.font-headline-md').innerText = val + '%'; document.getElementById('commissionModal').classList.add('hidden'); showToast('Settings Saved', 'Commission updated successfully.');">Save Changes</button></div></div><div class="fixed inset-0 z-50 bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="ambassadorsModal"><div class="bg-surface-container-lowest w-full max-w-2xl h-[600px] rounded-xl shadow-xl flex flex-col overflow-hidden"><div class="flex justify-between items-center p-md border-b border-outline-variant/30"><h3 class="font-headline-md text-on-surface">Top Ambassadors</h3><button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('ambassadorsModal').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="flex-1 overflow-auto p-md"><div class="flex flex-col gap-sm" id="ambassadorListFull"><div class="flex items-center justify-between p-sm border-b border-outline-variant/10"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">1</div><img class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3RPtNEy_S0Ayuvf4gUclq73NlAYZe4yoRhIECZTa3vwCXzS1I_a8k8G-WvHck1uGxNqnVXwtdFPNgr_g5U-9YoFRJj4qDFxRPajUU3La7YNshAM693Wk-zPpRUy-RR7xJ2wL4cMitQP2tyZz8JrAGPJ01zdKVvTqQhksitjBCfF57MLkfWH4O_TYWS4JWuvTr0CpXGCY5HbOwRc5BFzK_YDGy47K3rhcVk1anz6Dnim6RW9eJxR69"><div class="flex flex-col"><p class="font-label-md text-on-surface">David Okafor</p><p class="text-[12px] text-on-surface-variant">24 referrals</p></div></div><div class="font-bold text-on-surface">₦185,000</div></div><div class="flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">2</div><div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-outline">person</span></div><div class="flex flex-col"><p class="font-label-md text-on-surface">Ambassador 2</p><p class="text-[12px] text-on-surface-variant">8 referrals</p></div></div><div class="font-bold text-on-surface">₦16,356</div></div><div class="flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">3</div><div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-outline">person</span></div><div class="flex flex-col"><p class="font-label-md text-on-surface">Ambassador 3</p><p class="text-[12px] text-on-surface-variant">12 referrals</p></div></div><div class="font-bold text-on-surface">₦95,334</div></div><div class="flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">4</div><div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-outline">person</span></div><div class="flex flex-col"><p class="font-label-md text-on-surface">Ambassador 4</p><p class="text-[12px] text-on-surface-variant">0 referrals</p></div></div><div class="font-bold text-on-surface">₦97,095</div></div><div class="flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">5</div><div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-outline">person</span></div><div class="flex flex-col"><p class="font-label-md text-on-surface">Ambassador 5</p><p class="text-[12px] text-on-surface-variant">9 referrals</p></div></div><div class="font-bold text-on-surface">₦97,030</div></div><div class="flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">6</div><div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-outline">person</span></div><div class="flex flex-col"><p class="font-label-md text-on-surface">Ambassador 6</p><p class="text-[12px] text-on-surface-variant">0 referrals</p></div></div><div class="font-bold text-on-surface">₦29,802</div></div><div class="flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">7</div><div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-outline">person</span></div><div class="flex flex-col"><p class="font-label-md text-on-surface">Ambassador 7</p><p class="text-[12px] text-on-surface-variant">9 referrals</p></div></div><div class="font-bold text-on-surface">₦45,982</div></div><div class="flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">8</div><div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-outline">person</span></div><div class="flex flex-col"><p class="font-label-md text-on-surface">Ambassador 8</p><p class="text-[12px] text-on-surface-variant">14 referrals</p></div></div><div class="font-bold text-on-surface">₦24,746</div></div><div class="flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">9</div><div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-outline">person</span></div><div class="flex flex-col"><p class="font-label-md text-on-surface">Ambassador 9</p><p class="text-[12px] text-on-surface-variant">1 referrals</p></div></div><div class="font-bold text-on-surface">₦46,479</div></div><div class="flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">10</div><div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-outline">person</span></div><div class="flex flex-col"><p class="font-label-md text-on-surface">Ambassador 10</p><p class="text-[12px] text-on-surface-variant">10 referrals</p></div></div><div class="font-bold text-on-surface">₦75,695</div></div><div class="flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]"><div class="flex items-center gap-md"><div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary">11</div><div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-outline">person</span></div><div class="flex flex-col"><p class="font-label-md text-on-surface">Ambassador 11</p><p class="text-[12px] text-on-surface-variant">4 referrals</p></div></div><div class="font-bold text-on-surface">₦33,689</div></div></div><button class="w-full mt-md py-sm text-primary font-label-md hover:bg-surface-container transition-colors rounded-lg" id="loadMoreAmbassadors" onclick="const list = document.getElementById('ambassadorListFull'); const start = list.children.length + 1; for(let i=0; i&lt;5; i++) { const rank = start + i; const div = document.createElement('div'); div.className = 'flex items-center justify-between p-sm border-b border-outline-variant/10 animate-[fadeIn_0.3s]'; div.innerHTML = `&lt;div class='flex items-center gap-md'&gt;&lt;div class='w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-primary'&gt;${rank}&lt;/div&gt;&lt;div class='w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center'&gt;&lt;span class='material-symbols-outlined text-outline'&gt;person&lt;/span&gt;&lt;/div&gt;&lt;div class='flex flex-col'&gt;&lt;p class='font-label-md text-on-surface'&gt;Ambassador ${rank}&lt;/p&gt;&lt;p class='text-[12px] text-on-surface-variant'&gt;${Math.floor(Math.random()*15)} referrals&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class='font-bold text-on-surface'&gt;₦${(Math.random()*100000).toLocaleString(undefined, {maximumFractionDigits:0})}&lt;/div&gt;`; list.appendChild(div); } if(start &gt; 25) this.innerText = 'No more ambassadors';">View More</button></div></div></div>
+<div class="fixed inset-0 z-[60] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="reductionFormModal"><div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-xl p-lg flex flex-col" id="reductionFormContent"><div class="flex justify-between items-center mb-md"><h3 class="font-headline-md text-on-surface">Commission Reduction Request</h3><button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('reductionFormModal').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><p class="font-body-sm text-on-surface-variant mb-md">You currently have a 5% ambassador commission rate and would like to request a reduction. Send a message to the Sleec team and we will review your request.</p><div class="space-y-md mb-lg"><div class="grid grid-cols-2 gap-sm"><div class="space-y-xs"><label class="text-[10px] text-outline uppercase font-bold">Store Name</label><p class="text-body-sm font-medium">Jameson Okoro Store</p></div><div class="space-y-xs"><label class="text-[10px] text-outline uppercase font-bold">Current Rate</label><p class="text-body-sm font-medium">5%</p></div></div><div class="grid grid-cols-2 gap-sm"><div class="space-y-xs"><label class="text-[10px] text-outline uppercase font-bold">Requested Rate</label><p class="text-body-sm font-medium text-primary" id="reqRateDisplay">4%</p></div><div class="space-y-xs"><label class="text-label-sm">Email Address</label><p class="text-body-sm font-medium">jameson.okoro@example.com</p></div></div><div class="space-y-xs"><label class="text-label-sm">Message</label><textarea class="w-full p-sm bg-surface border border-outline-variant rounded-lg outline-none font-body-sm h-24 resize-none" id="reductionMessage">Hello Sleec team, I would like to request a reduction of my ambassador commission rate from 5% to 4%. Please review my request.</textarea></div></div><button class="w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" id="submitReductionBtn" onclick="const btn=this; const rate=document.getElementById('reqRateDisplay').innerText; btn.innerText='Sending...'; btn.disabled=true; setTimeout(()=&gt;{document.getElementById('reductionFormContent').innerHTML=`&lt;div class='flex flex-col items-center text-center py-lg'&gt;&lt;div class='w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-md'&gt;&lt;span class='material-symbols-outlined text-[40px]'&gt;check_circle&lt;/span&gt;&lt;/div&gt;&lt;h3 class='font-headline-md text-on-surface mb-xs'&gt;Request Sent Successfully&lt;/h3&gt;&lt;p class='text-body-sm text-on-surface-variant mb-md'&gt;Your request has been sent to Sleec. Our team will review it and contact you through your account email.&lt;/p&gt;&lt;p class='text-label-md font-semibold mb-lg'&gt;Requested rate: ${rate}&lt;/p&gt;&lt;button class='w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors' onclick='document.getElementById(&quot;reductionFormModal&quot;).classList.add(&quot;hidden&quot;); document.getElementById(&quot;commissionModal&quot;).classList.add(&quot;hidden&quot;);'&gt;Done&lt;/button&gt;&lt;/div&gt;`}, 1000)" style="opacity: 0;">Send Request</button></div></div><script class="">function openReductionForm(){ const reqRate = document.getElementById('commInput').value; document.getElementById('reqRateDisplay').innerText = reqRate + '%'; document.getElementById('reductionFormModal').classList.remove('hidden'); } function submitReductionRequest(){ const content = document.getElementById('reductionFormContent'); content.innerHTML = `<div class="flex flex-col items-center text-center py-lg"><div class="w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-md"><span class="material-symbols-outlined text-[40px]">check_circle</span></div><h3 class="font-headline-md text-on-surface mb-xs">Request Sent</h3><p class="text-body-sm text-on-surface-variant mb-lg">Your commission reduction request has been sent to Sleec. Our team will review it and get back to you within 2-3 business days.</p><button class="w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" onclick="document.getElementById('reductionFormModal').classList.add('hidden'); document.getElementById('commissionModal').classList.add('hidden');">Done</button></div>`; }</script>
+<!-- Promote Wizard Overlay -->
+<div class="fixed inset-0 z-[70] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="promotionWizard">
+<div class="bg-surface-container-lowest w-full max-w-2xl h-[700px] rounded-xl shadow-2xl flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out]">
+<div class="px-lg py-md bg-surface border-b border-outline-variant/30 flex justify-between items-center">
+<div>
+<h2 class="font-headline-sm text-on-surface" id="promo-modal-title">Promote on Sleec</h2>
+<p class="text-label-sm text-on-surface-variant" id="promo-step-indicator">Success</p>
+</div>
+<button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="closePromotionWizard()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div class="flex-1 overflow-y-auto p-xl" id="promo-wizard-content"><div class="flex flex-col items-center justify-center h-full text-center py-xl animate-[fadeIn_0.5s]">
+            <div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-lg">
+                <span class="material-symbols-outlined text-[48px]">check_circle</span>
+            </div>
+            <h3 class="font-headline-md mb-xs text-on-surface">Request Submitted</h3>
+            <p class="text-body-sm text-on-surface-variant mb-md">Request ID: <span class="font-bold text-on-surface">SLK-2026-00124</span></p>
+            <p class="text-body-sm text-on-surface-variant max-w-sm">Our team will review your placement and contact you shortly.</p>
+        </div></div>
+<div class="px-lg py-md bg-surface border-t border-outline-variant/30 flex justify-between items-center">
+<button class="px-lg py-sm rounded-lg font-label-md text-on-surface-variant hover:bg-surface-container transition-colors invisible" id="promo-prev" onclick="promoPrev()">Back</button>
+<button class="px-lg py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" id="promo-next" onclick="promoNext()">Done</button>
+</div>
+</div>
+</div>
+<script class="">
+let promoStep=1;
+let promoType='';
+let promoDuration=1;
+let promoRate=0;
+let promoStart='';
+
+function calculateEndDate(startStr, days) {
+    if(!startStr) return 'TBD';
+    const startDate = new Date(startStr);
+    startDate.setDate(startDate.getDate() + parseInt(days));
+    return startDate.toLocaleDateString();
+}
+
+function updatePromoTotal() {
+    const total = promoRate * promoDuration;
+    const end = calculateEndDate(promoStart, promoDuration);
+    document.getElementById('promo-total-val').innerText = '₦' + total.toLocaleString();
+    document.getElementById('promo-end-val').innerText = end;
+}
+
+function openPromotionWizard(){
+    document.getElementById('promotionWizard').classList.remove('hidden');
+    promoStep=1;
+    promoType='';
+    renderPromoStep();
+}
+
+function closePromotionWizard(){
+    document.getElementById('promotionWizard').classList.add('hidden');
+}
+
+function renderPromoStep(){
+    const content=document.getElementById('promo-wizard-content');
+    const indicator=document.getElementById('promo-step-indicator');
+    const nextBtn=document.getElementById('promo-next');
+    const prevBtn=document.getElementById('promo-prev');
+    
+    prevBtn.classList.toggle('invisible',promoStep===1);
+    nextBtn.classList.remove('hidden');
+    
+    if(promoStep===1){
+        indicator.innerText='Step 1: Choose Type';
+        nextBtn.innerText='Continue';
+        content.innerHTML=`<div class='space-y-lg'><h3 class='font-headline-sm'>What would you like to promote?</h3><div class='grid grid-cols-2 gap-md'><div onclick="promoType='product';promoRate=5000;promoNext()" class='p-lg border-2 border-outline-variant/30 rounded-xl hover:border-[#728156] hover:bg-[#728156]/5 cursor-pointer transition-all flex flex-col items-center gap-md'><span class='material-symbols-outlined text-[48px] text-[#728156]'>inventory_2</span><span class='font-headline-sm'>Product</span><span class='text-label-sm text-on-surface-variant'>₦5,000 / day</span></div><div onclick="promoType='event';promoRate=7500;promoNext()" class='p-lg border-2 border-outline-variant/30 rounded-xl hover:border-[#728156] hover:bg-[#728156]/5 cursor-pointer transition-all flex flex-col items-center gap-md'><span class='material-symbols-outlined text-[48px] text-[#728156]'>event</span><span class='font-headline-sm'>Event</span><span class='text-label-sm text-on-surface-variant'>₦7,500 / day</span></div></div></div>`;
+        nextBtn.classList.add('hidden'); // Hide until selection
+    }else if(promoStep===2){
+        if(promoType==='product'){
+            indicator.innerText='Step 2: Product Details';
+            nextBtn.innerText='Continue';
+            content.innerHTML=`<div class='space-y-md'>
+                <h3 class='font-headline-sm'>Select a Product</h3>
+                <div class='relative mb-sm'>
+                    <span class='material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline'>search</span>
+                    <input type='text' class='w-full pl-xl pr-sm py-xs bg-surface border border-outline-variant rounded text-body-sm' placeholder='Search existing products...'>
+                </div>
+                <div class='grid grid-cols-1 gap-sm'>
+                    <label class='flex items-center gap-md p-sm border border-outline-variant rounded hover:bg-surface-container cursor-pointer'>
+                        <input type='radio' name='prod_sel' checked class='accent-[#728156]'>
+                        <img src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=100' class='w-10 h-10 rounded object-cover'>
+                        <div class='flex-1'><p class='font-label-md'>Nike Air Max</p><p class='text-[10px] text-on-surface-variant'>Weekend Flash Sale items</p></div>
+                    </label>
+                </div>
+                <div class='mt-md p-sm bg-surface-container rounded-lg text-body-sm'>
+                    <p class='font-label-sm mb-xs'>Sleec Product Link (Auto-attached)</p>
+                    <p class='text-on-surface-variant text-[12px]'>https://sleec.shop/jameson/product/nike-air-max</p>
+                </div>
+                <h3 class='font-headline-sm mt-lg'>Hero Image</h3>
+                <div class='space-y-sm'>
+                    <label class='flex items-start gap-sm p-sm border border-outline-variant rounded hover:bg-surface-container cursor-pointer'>
+                        <input type='radio' name='prod_img' checked class='mt-1 accent-[#728156]'>
+                        <div>
+                            <p class='font-label-md'>I'll provide my own image</p>
+                            <p class='text-[10px] text-on-surface-variant'>Must be 1200x628px</p>
+                            <button class='mt-xs px-sm py-1 bg-surface border border-outline-variant rounded text-[10px]'>Upload Image</button>
+                        </div>
+                    </label>
+                    <label class='flex items-start gap-sm p-sm border border-outline-variant rounded hover:bg-surface-container cursor-pointer'>
+                        <input type='radio' name='prod_img' class='mt-1 accent-[#728156]'>
+                        <div>
+                            <p class='font-label-md flex items-center gap-xs'>Let Sleec create it for me <span class='material-symbols-outlined text-[14px] text-primary'>auto_awesome</span></p>
+                            <p class='text-[10px] text-on-surface-variant'>AI generated using catalog image</p>
+                        </div>
+                    </label>
+                </div>
+            </div>`;
+        }else{
+            indicator.innerText='Step 2: Event Details';
+            nextBtn.innerText='Continue';
+            content.innerHTML=`<div class='space-y-md'>
+                <h3 class='font-headline-sm'>Event Information</h3>
+                <div class='space-y-sm'>
+                    <div><label class='text-label-sm block mb-xs'>Event Name</label><input type='text' class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm' placeholder='Summer Pop-up'></div>
+                    <div><label class='text-label-sm block mb-xs'>Description</label><textarea class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm h-16' placeholder='Details...'></textarea></div>
+                    <div class='grid grid-cols-2 gap-sm'>
+                        <div><label class='text-label-sm block mb-xs'>Date</label><input type='date' class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm'></div>
+                        <div><label class='text-label-sm block mb-xs'>Time</label><input type='time' class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm'></div>
+                    </div>
+                    <div>
+                        <label class='text-label-sm block mb-xs'>Location Type</label>
+                        <select class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm mb-xs' onchange="document.getElementById('loc_opts').innerHTML = this.value === 'offline' ? '<input type=\\'text\\' class=\\'w-full p-sm bg-surface border border-outline-variant rounded text-body-sm\\' placeholder=\\'Physical Address\\'>' : '<div class=\\'flex items-center gap-sm\\'><input type=\\'radio\\' name=\\'on_loc\\' checked class=\\'accent-[#728156]\\'><span class=\\'text-body-sm\\'>My Sleec Store (Auto-link)</span><input type=\\'radio\\' name=\\'on_loc\\' class=\\'accent-[#728156]\\'><input type=\\'text\\' class=\\'flex-1 p-xs bg-surface border border-outline-variant rounded text-body-sm\\' placeholder=\\'Custom Link\\'></div>'">
+                            <option value='offline'>Offline</option>
+                            <option value='online'>Online</option>
+                        </select>
+                        <div id='loc_opts'><input type='text' class='w-full p-sm bg-surface border border-outline-variant rounded text-body-sm' placeholder='Physical Address'></div>
+                    </div>
+                </div>
+                <h3 class='font-headline-sm mt-lg'>Mandatory Banner</h3>
+                <div class='p-md border-2 border-dashed border-outline-variant rounded text-center bg-surface-container/30'>
+                    <span class='material-symbols-outlined text-outline mb-xs text-[32px]'>add_photo_alternate</span>
+                    <p class='font-label-sm mb-xs'>Upload Banner (Required)</p>
+                    <p class='text-[10px] text-on-surface-variant mb-xs'>1200x628px. Keep text within safe zone.</p>
+                    <button class='px-md py-xs bg-surface border border-outline-variant rounded text-[12px]'>Select File</button>
+                </div>
+            </div>`;
+        }
+    }else if(promoStep===3){
+        indicator.innerText='Step 3: Duration & Pricing';
+        nextBtn.innerText='Review';
+        promoStart = new Date().toISOString().split('T')[0];
+        
+        content.innerHTML=`<div class='space-y-md'>
+            <h3 class='font-headline-sm'>Schedule & Budget</h3>
+            <div class='grid grid-cols-2 gap-md'>
+                <div>
+                    <label class='text-label-sm block mb-xs'>Start Date</label>
+                    <input type='date' class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm' value='${promoStart}' onchange="promoStart=this.value; updatePromoTotal();">
+                </div>
+                <div>
+                    <label class='text-label-sm block mb-xs'>Duration (Days)</label>
+                    <select class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm' onchange="promoDuration=parseInt(this.value); updatePromoTotal();">
+                        <option value='1'>1 Day</option>
+                        <option value='3'>3 Days</option>
+                        <option value='5'>5 Days</option>
+                        <option value='7'>7 Days</option>
+                        <option value='14'>Custom</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class='bg-surface-container-high rounded p-md mt-lg'>
+                <div class='flex justify-between mb-sm'><span class='text-body-sm text-on-surface-variant'>Daily Rate</span><span class='font-label-md'>₦${promoRate.toLocaleString()}</span></div>
+                <div class='flex justify-between mb-sm'><span class='text-body-sm text-on-surface-variant'>Estimated End</span><span class='font-label-md' id='promo-end-val'>${calculateEndDate(promoStart, 1)}</span></div>
+                <div class='flex justify-between border-t border-outline-variant/30 pt-sm mt-sm'><span class='font-headline-sm'>Estimated Total</span><span class='font-headline-sm text-[#728156]' id='promo-total-val'>₦${(promoRate*1).toLocaleString()}</span></div>
+            </div>
+        </div>`;
+    }else if(promoStep===4){
+        indicator.innerText='Step 4: Review';
+        nextBtn.innerText='Submit Request';
+        const typeStr = promoType === 'product' ? 'Product Promotion' : 'Event Promotion';
+        
+        content.innerHTML=`<div class='space-y-md'>
+            <h3 class='font-headline-sm'>Review Details</h3>
+            <div class='bg-surface-container rounded p-md space-y-sm'>
+                <div class='flex justify-between'><span class='text-outline text-label-sm'>Type</span><span class='font-label-md'>${typeStr}</span></div>
+                <div class='flex justify-between'><span class='text-outline text-label-sm'>Duration</span><span class='font-label-md'>${promoDuration} Days</span></div>
+                <div class='flex justify-between'><span class='text-outline text-label-sm'>Estimated Cost</span><span class='font-label-md text-primary'>₦${(promoRate*promoDuration).toLocaleString()}</span></div>
+                <div class='text-right mt-sm'><button class='text-primary text-[10px] hover:underline' onclick='promoStep=3;renderPromoStep()'>Edit Schedule</button></div>
+            </div>
+            <div class='bg-surface-container rounded p-md space-y-sm'>
+                <div class='flex justify-between'><span class='text-outline text-label-sm'>Target</span><span class='font-label-md'>${promoType==='product'?'Nike Air Max':'Summer Pop-up'}</span></div>
+                <div class='text-right mt-sm'><button class='text-primary text-[10px] hover:underline' onclick='promoStep=2;renderPromoStep()'>Edit Details</button></div>
+            </div>
+        </div>`;
+    }else if(promoStep===5){
+        indicator.innerText='Success';
+        nextBtn.innerText='Done';
+        prevBtn.classList.add('invisible');
+        
+        content.innerHTML=`<div class='flex flex-col items-center justify-center h-full text-center py-xl animate-[fadeIn_0.5s]'>
+            <div class='w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-lg'>
+                <span class='material-symbols-outlined text-[48px]'>check_circle</span>
+            </div>
+            <h3 class='font-headline-md mb-xs text-on-surface'>Request Submitted</h3>
+            <p class='text-body-sm text-on-surface-variant mb-md'>Request ID: <span class='font-bold text-on-surface'>SLK-2026-00124</span></p>
+            <p class='text-body-sm text-on-surface-variant max-w-sm'>Our team will review your placement and contact you shortly.</p>
+        </div>`;
+    }
+}
+
+function promoNext(){
+    if(promoStep===4) {
+        // Loading state
+        const content=document.getElementById('promo-wizard-content');
+        document.getElementById('promo-next').disabled = true;
+        document.getElementById('promo-prev').disabled = true;
+        content.innerHTML=`<div class='flex flex-col items-center justify-center h-full text-center py-xl'><span class='material-symbols-outlined text-[48px] text-primary animate-spin mb-md'>sync</span><p class='font-label-md'>Submitting request...</p></div>`;
+        setTimeout(() => {
+            promoStep++;
+            document.getElementById('promo-next').disabled = false;
+            document.getElementById('promo-prev').disabled = false;
+            renderPromoStep();
+        }, 1500);
+    } else if(promoStep<5){
+        promoStep++;
+        renderPromoStep();
+    }else{
+        closePromotionWizard();
+    }
+}
+
+function promoPrev(){
+    if(promoStep>1 && promoStep<5){
+        promoStep--;
+        renderPromoStep();
+    }
+}
+</script>
+<div class="fixed inset-0 z-[80] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="reportModal"><div class="bg-surface-container-lowest w-full max-w-5xl h-[85vh] rounded-xl shadow-2xl flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out]"><div class="px-lg py-md bg-surface border-b border-outline-variant/30 flex justify-between items-center"><div><h2 class="font-headline-md text-on-surface">Campaign Performance Report</h2><p class="text-label-sm text-on-surface-variant">Detailed analytics for your marketing activities</p></div><div class="flex items-center gap-md"><button class="flex items-center gap-xs px-md py-xs border border-outline-variant rounded-lg text-label-md hover:bg-surface-container transition-colors" onclick="window.print()"><span class="material-symbols-outlined text-[18px]">print</span> Print Report</button><div class="relative group"><button class="flex items-center gap-xs px-md py-xs bg-[#728156] text-white rounded-lg text-label-md hover:bg-surface-tint transition-colors shadow-sm"><span class="material-symbols-outlined text-[18px]">download</span> Export Report</button><div class="absolute right-0 mt-2 w-32 bg-white border border-outline-variant/30 rounded-lg shadow-lg hidden group-hover:block z-50"><button class="w-full text-left px-md py-sm text-body-sm hover:bg-surface-container" onclick="exportReport('PDF')">PDF</button><button class="w-full text-left px-md py-sm text-body-sm hover:bg-surface-container" onclick="exportReport('Word')">Word</button></div></div><button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('reportModal').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div></div><div class="bg-surface-container-low px-lg py-sm border-b border-outline-variant/20 flex gap-md items-center"><div class="flex items-center gap-xs"><span class="text-label-sm text-outline uppercase">Date Range:</span><select class="bg-transparent border-none text-label-md font-semibold focus:ring-0 cursor-pointer"><option>Last 7 Days</option><option selected="">Last 30 Days</option><option>Last 90 Days</option></select></div><div class="w-px h-4 bg-outline-variant/30"></div><div class="flex items-center gap-xs"><span class="text-label-sm text-outline uppercase">Channel:</span><select class="bg-transparent border-none text-label-md font-semibold focus:ring-0 cursor-pointer"><option>All Channels</option><option>WhatsApp</option><option>Email</option></select></div></div><div class="flex-1 overflow-y-auto p-lg space-y-lg"><div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-md"><div class="p-md bg-surface rounded-lg border border-outline-variant/20"><p class="text-[10px] text-outline uppercase font-bold mb-1">Total Campaigns</p><p class="text-headline-sm">14</p></div><div class="p-md bg-surface rounded-lg border border-outline-variant/20"><p class="text-[10px] text-outline uppercase font-bold mb-1">Total Reach</p><p class="text-headline-sm">45.2k</p></div><div class="p-md bg-surface rounded-lg border border-outline-variant/20"><p class="text-[10px] text-outline uppercase font-bold mb-1">Conversions</p><p class="text-headline-sm">1,240</p></div><div class="p-md bg-surface rounded-lg border border-outline-variant/20"><p class="text-[10px] text-outline uppercase font-bold mb-1">Revenue</p><p class="text-headline-sm">₦486k</p></div><div class="p-md bg-surface rounded-lg border border-outline-variant/20"><p class="text-[10px] text-outline uppercase font-bold mb-1">ROI</p><p class="text-headline-sm text-[#728156]">4.2x</p></div><div class="p-md bg-surface rounded-lg border border-outline-variant/20"><p class="text-[10px] text-outline uppercase font-bold mb-1">Avg. Conv. Rate</p><p class="text-headline-sm">4.2%</p></div></div><div class="grid grid-cols-1 lg:grid-cols-2 gap-lg"><div class="bg-surface rounded-xl border border-outline-variant/20 p-lg"><h3 class="font-label-md uppercase text-outline mb-lg">Performance Trend</h3><div class="h-48 w-full flex items-end gap-2 px-2"><div class="flex-1 bg-[#728156]/20 rounded-t h-[40%] relative group"><div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">Reach: 8k</div></div><div class="flex-1 bg-[#728156]/40 rounded-t h-[60%]"></div><div class="flex-1 bg-[#728156]/60 rounded-t h-[85%]"></div><div class="flex-1 bg-[#728156] rounded-t h-[70%]"></div><div class="flex-1 bg-[#728156]/30 rounded-t h-[50%]"></div><div class="flex-1 bg-[#728156]/50 rounded-t h-[95%]"></div></div><div class="flex justify-between mt-md text-[10px] text-outline"><span class="">Week 1</span><span class="">Week 2</span><span class="">Week 3</span><span class="">Week 4</span></div></div><div class="bg-surface rounded-xl border border-outline-variant/20 p-lg flex flex-col"><h3 class="font-label-md uppercase text-outline mb-lg">Revenue by Channel</h3><div class="flex-1 flex items-center justify-center"><div class="relative w-40 h-40 rounded-full border-[16px] border-[#728156] flex items-center justify-center"><div class="absolute inset-0 rounded-full border-[16px] border-[#d9e9b9] border-t-transparent border-r-transparent rotate-45"></div><div class="text-center"><p class="text-headline-sm">₦486k</p><p class="text-[10px] text-outline">Total</p></div></div></div><div class="flex justify-center gap-lg mt-lg"><div class="flex items-center gap-xs"><div class="w-3 h-3 rounded-full bg-[#728156]"></div><span class="text-body-sm">WhatsApp (72%)</span></div><div class="flex items-center gap-xs"><div class="w-3 h-3 rounded-full bg-[#d9e9b9]"></div><span class="text-body-sm">Email (28%)</span></div></div></div></div><div class="bg-surface rounded-xl border border-outline-variant/20 overflow-hidden"><table class="w-full text-left border-collapse"><thead class="bg-surface-container/50 border-b border-outline-variant/10"><tr class="text-[10px] text-outline uppercase font-bold"><th class="p-md">Channel</th><th class="p-md">Reach</th><th class="p-md">Orders</th><th class="p-md">Revenue</th><th class="p-md">Conv. Rate</th></tr></thead><tbody class="text-body-sm"><tr class="border-b border-outline-variant/10"><td class="p-md flex items-center gap-sm"><span class="material-symbols-outlined text-[#728156]">forum</span> WhatsApp</td><td class="p-md">12,400</td><td class="p-md">890</td><td class="p-md font-semibold">₦350,000</td><td class="p-md text-[#728156] font-bold">7.1%</td></tr><tr><td class="p-md flex items-center gap-sm"><span class="material-symbols-outlined text-[#728156]">mail</span> Email</td><td class="p-md">8,100</td><td class="p-md">350</td><td class="p-md font-semibold">₦136,000</td><td class="p-md">4.3%</td></tr></tbody></table></div></div></div></div><script>function exportReport(format){const toast=document.getElementById('toast');showToast('Generating '+format+'...','Please wait while we prepare your file.');setTimeout(()=>{showToast('Report Downloaded','Your '+format+' report is ready.'),3000});}</script>
+<div class="fixed inset-0 z-[90] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="discountModal"><div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-2xl flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out]"><div class="px-lg py-md bg-surface border-b border-outline-variant/30 flex justify-between items-center"><div><h2 class="font-headline-sm text-on-surface">Create Discount</h2><p class="text-label-sm text-on-surface-variant" id="discountStepIndicator">Step 1 of 3</p></div><button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="closeDiscountModal()"><span class="material-symbols-outlined">close</span></button></div><div class="flex-1 overflow-y-auto p-lg" id="discountModalContent"></div><div class="px-lg py-md bg-surface border-t border-outline-variant/30 flex justify-between items-center"><button class="px-lg py-sm rounded-lg font-label-md text-on-surface-variant hover:bg-surface-container transition-colors invisible" id="discountPrev" onclick="discountPrev()">Back</button><button class="px-lg py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" id="discountNext" onclick="discountNext()">Continue</button></div></div></div><script class="">let discountStep=1;let discountData={type:'',value:'',code:'',minOrder:0,limit:0,eligibility:'all',start:'',end:''};function openDiscountModal(type){discountData.type=type;discountStep=1;document.getElementById('discountModal').classList.remove('hidden');renderDiscountStep();}function closeDiscountModal(){document.getElementById('discountModal').classList.add('hidden');}function renderDiscountStep(){const content=document.getElementById('discountModalContent');const indicator=document.getElementById('discountStepIndicator');const nextBtn=document.getElementById('discountNext');const prevBtn=document.getElementById('discountPrev');prevBtn.classList.toggle('invisible',discountStep===1);if(discountStep===1){indicator.innerText='Step 1: Discount Details';nextBtn.innerText='Continue';let valLabel=discountData.type==='percentage'?'Percentage (%)':(discountData.type==='fixed'?'Amount (₦)':'Free Shipping');let placeholder=discountData.type==='percentage'?'e.g. 20':(discountData.type==='fixed'?'e.g. 5000':'Standard Shipping');let inputHtml=discountData.type==='shipping'?`<p class='text-body-sm text-on-surface-variant'>Customers will get free shipping on their entire order.</p>`:`<div><label class='text-label-sm block mb-xs'>${valLabel}</label><input type='number' id='discVal' class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm' placeholder='${placeholder}' value='${discountData.value}'></div>`;content.innerHTML=`<div class='space-y-md'><h3 class='font-label-md uppercase text-outline'>${discountData.type} Discount</h3>${inputHtml}<div><label class='text-label-sm block mb-xs'>Coupon Code</label><div class='flex gap-xs'><input type='text' id='discCode' class='flex-1 p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm font-bold tracking-widest uppercase' value='${discountData.code||generateCode()}'></div><p class='text-[10px] text-on-surface-variant mt-xs'>Customers enter this code at checkout.</p></div></div>`;}else if(discountStep===2){indicator.innerText='Step 2: Conditions & Validity';content.innerHTML=`<div class='space-y-md'><div><label class='text-label-sm block mb-xs'>Minimum Purchase (₦)</label><input type='number' id='discMin' class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm' value='${discountData.minOrder}'></div><div class='grid grid-cols-2 gap-sm'><div><label class='text-label-sm block mb-xs'>Start Date</label><input type='date' id='discStart' class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm' value='${discountData.start}'></div><div><label class='text-label-sm block mb-xs'>End Date</label><input type='date' id='discEnd' class='w-full p-sm bg-surface border border-outline-variant rounded outline-none text-body-sm' value='${discountData.end}'></div></div></div>`;}else if(discountStep===3){indicator.innerText='Step 3: Review';nextBtn.innerText='Create Discount';content.innerHTML=`<div class='space-y-md'><div class='bg-surface-container rounded p-md space-y-sm'><div class='flex justify-between'><span class='text-outline text-label-sm'>Code</span><span class='font-bold text-primary tracking-widest'>${discountData.code}</span></div><div class='flex justify-between'><span class='text-outline text-label-sm'>Type</span><span class='font-label-md capitalize'>${discountData.type}</span></div><div class='flex justify-between'><span class='text-outline text-label-sm'>Value</span><span class='font-label-md'>${discountData.type==='shipping'?'Free':(discountData.type==='percentage'?discountData.value+'%':'₦'+discountData.value)}</span></div></div></div>`;}}function generateCode(){return 'DISC'+Math.floor(1000+Math.random()*9000);}function discountNext(){if(discountStep===1){discountData.value=document.getElementById('discVal')?.value||'';discountData.code=document.getElementById('discCode').value;discountStep++;renderDiscountStep();}else if(discountStep===2){discountData.minOrder=document.getElementById('discMin').value;discountData.start=document.getElementById('discStart').value;discountData.end=document.getElementById('discEnd').value;discountStep++;renderDiscountStep();}else{createDiscount();}}function discountPrev(){if(discountStep>1){discountStep--;renderDiscountStep();}}function createDiscount(){closeDiscountModal();showToast('Discount Created',`Code ${discountData.code} is now active.`);}</script><div class="fixed inset-0 z-[90] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="couponMgmtModal"><div class="bg-surface-container-lowest w-full max-w-sm rounded-xl shadow-xl p-lg flex flex-col"><div class="flex justify-between items-center mb-md"><h3 class="font-headline-sm text-on-surface" id="mgmtCouponCode">CODE</h3><button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('couponMgmtModal').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="flex flex-col gap-sm"><button class="w-full py-sm rounded-lg border border-outline-variant text-on-surface font-label-md hover:bg-surface-container transition-colors" onclick="editActiveCoupon()">Edit Discount</button><button class="w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" id="toggleStatusBtn" onclick="toggleCouponStatus()">Deactivate</button><button class="w-full py-sm rounded-lg bg-error/10 text-error font-label-md hover:bg-error/20 transition-colors" onclick="deleteCoupon()">Delete Coupon</button></div></div></div><script class="">let activeCouponEl=null;function manageCoupon(el){activeCouponEl=el;const code=el.querySelector('.text-label-sm').innerText;document.getElementById('mgmtCouponCode').innerText=code;document.getElementById('couponMgmtModal').classList.remove('hidden');}function deleteCoupon(){if(confirm('Are you sure you want to delete this coupon?')){activeCouponEl.remove();document.getElementById('couponMgmtModal').classList.add('hidden');showToast('Coupon Deleted','The discount code has been removed.');}}</script><script class="">let wizardStep = 1; let wizardType = ''; function openDiscountWizard(type) { const list = document.getElementById('active-coupons-list'); if (list.children.length >= 2) { showToast('Limit Reached', 'Maximum 2 active coupons allowed. Deactivate one to add more.'); return; } wizardType = type; wizardStep = 1; document.getElementById('discount-wizard-modal').classList.remove('hidden'); renderWizardStep(); } function renderWizardStep() { const content = document.getElementById('wizard-step-content'); const nextBtn = document.getElementById('wizard-next-btn'); if (wizardStep === 1) { content.innerHTML = `<div class='space-y-md'><p class='text-label-sm text-outline uppercase'>Step 1: Value</p><label class='block text-body-sm mb-xs'>Enter ${wizardType === 'percentage' ? 'Percentage' : (wizardType === 'fixed' ? 'Amount' : 'Shipping Rule')}</label><input type='text' id='wizard-val' class='w-full p-sm bg-surface border border-outline-variant rounded' placeholder='e.g. 20'></div>`; nextBtn.innerText = 'Next'; } else if (wizardStep === 2) { content.innerHTML = `<div class='space-y-md'><p class='text-label-sm text-outline uppercase'>Step 2: Code</p><label class='block text-body-sm mb-xs'>Coupon Code</label><input type='text' id='wizard-code' class='w-full p-sm bg-surface border border-outline-variant rounded font-bold tracking-widest' value='NEWCODE${Math.floor(Math.random()*99)}'></div>`; nextBtn.innerText = 'Activate'; } } function handleWizardNext() { if (wizardStep === 1) { wizardStep = 2; renderWizardStep(); } else { activateNewCoupon(); } } function activateNewCoupon() { const code = document.getElementById('wizard-code').value; const val = document.getElementById('wizard-val').value; const list = document.getElementById('active-coupons-list'); const div = document.createElement('div'); div.className = 'flex justify-between items-center p-xs bg-surface-container/30 border border-outline-variant/10 rounded group'; div.innerHTML = `<div class='flex items-center gap-xs text-on-surface'><span class='material-symbols-outlined text-[14px]'>local_offer</span><span class='text-label-sm font-semibold tracking-wide'>${code}</span><span class='text-[10px] font-semibold text-on-surface bg-surface px-xs py-[2px] border border-outline-variant/20 rounded ml-xs'>${val}</span></div><div class='flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity'><button onclick="editCoupon('${code}')" class='text-[10px] font-bold text-[#728156] hover:underline'>Edit</button><button onclick='deactivateCoupon(this)' class='text-[10px] font-bold text-error hover:underline'>Deactivate</button></div>`; list.appendChild(div); document.getElementById('discount-wizard-modal').classList.add('hidden'); showToast('Coupon Active', 'New discount has been activated.'); } function deactivateCoupon(btn) { btn.closest('.group').remove(); showToast('Deactivated', 'Coupon is no longer active.'); } function editCoupon(code) { showToast('Edit Mode', 'Editing ' + code); }</script><div class="fixed inset-0 z-[100] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="discount-wizard-modal"><div class="bg-surface-container-lowest w-full max-w-sm rounded-xl shadow-2xl p-lg flex flex-col"><div class="flex justify-between items-center mb-md"><h3 class="font-headline-sm text-on-surface">Create Discount</h3><button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="document.getElementById('discount-wizard-modal').classList.add('hidden')"><span class="material-symbols-outlined">close</span></button></div><div class="mb-lg" id="wizard-step-content"></div><button class="w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" id="wizard-next-btn" onclick="handleWizardNext()">Next</button></div></div><!-- Quick Discount Modal -->
+<div class="fixed inset-0 z-[100] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md" id="quickDiscountModal"><div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-2xl flex flex-col overflow-hidden"><div class="px-lg py-md bg-surface border-b border-outline-variant/30 flex justify-between items-center"><h2 class="font-headline-sm text-on-surface" id="qdModalTitle">Free Shipping</h2><button class="p-xs rounded-full hover:bg-surface-container text-on-surface-variant" onclick="closeQuickDiscount()"><span class="material-symbols-outlined">close</span></button></div><div class="p-lg space-y-md"><div id="qdValueSection">
+      <div class="p-sm bg-surface-container rounded border border-outline-variant/30">
+        <p class="text-body-sm text-on-surface-variant">This coupon will remove all shipping costs from the customer's order at checkout.</p>
+      </div>
+      <input type="hidden" id="qdValue" value="SHIPPING">
+    </div><div class="space-y-sm"><p class="text-label-sm text-outline uppercase">Coupon Code</p><div class="flex flex-col gap-sm"><label class="flex items-center gap-sm cursor-pointer"><input checked="" class="accent-[#728156]" name="codeType" onchange="toggleCodeInput(false)" type="radio" value="generate"><span class="text-body-sm">Generate Code (e.g., SUMMER20)</span></label><label class="flex items-center gap-sm cursor-pointer"><input class="accent-[#728156]" name="codeType" onchange="toggleCodeInput(true)" type="radio" value="manual"><span class="text-body-sm">Create My Own Code</span></label><input class="w-full p-sm bg-surface border border-outline-variant rounded font-bold tracking-widest uppercase" id="qdManualCode" placeholder="free Dilivery" type="text"></div></div></div><div class="px-lg py-md bg-surface border-t border-outline-variant/30"><button class="w-full py-sm rounded-lg bg-[#728156] text-white font-label-md shadow-sm hover:bg-surface-tint transition-colors" onclick="createQuickCoupon()">Create Coupon</button></div></div></div>
+<!-- Delete Confirmation Modal -->
+<div class="fixed inset-0 z-[110] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="deleteCouponModal">
+<div class="bg-surface-container-lowest w-full max-w-sm rounded-xl shadow-xl p-lg text-center">
+<div class="w-16 h-16 bg-error/10 text-error rounded-full flex items-center justify-center mx-auto mb-md">
+<span class="material-symbols-outlined text-[32px]">delete_forever</span>
+</div>
+<h3 class="font-headline-sm text-on-surface mb-xs">Delete this coupon?</h3>
+<p class="text-body-sm text-on-surface-variant mb-lg">This action cannot be undone and the code will stop working immediately.</p>
+<div class="flex gap-sm">
+<button class="flex-1 py-sm rounded-lg border border-outline-variant text-on-surface font-label-md hover:bg-surface-container transition-colors" onclick="closeDeleteModal()">Cancel</button>
+<button class="flex-1 py-sm rounded-lg bg-error text-white font-label-md shadow-sm hover:opacity-90 transition-colors" id="confirmDeleteBtn">Delete</button>
+</div>
+</div>
+</div>
+<script>
+let currentQDType = '';
+let couponToDelete = null;
+
+function openQuickDiscount(type) {
+  const list = document.getElementById('active-coupons-list');
+  if (list.children.length >= 2) {
+    showToast('Maximum Active Coupons Reached', 'Please delete an existing coupon before creating a new one.');
+    return;
+  }
+  
+  currentQDType = type;
+  const modal = document.getElementById('quickDiscountModal');
+  const title = document.getElementById('qdModalTitle');
+  const valueSection = document.getElementById('qdValueSection');
+  
+  modal.classList.remove('hidden');
+  
+  if (type === 'percentage') {
+    title.innerText = 'Percentage Discount';
+    valueSection.innerHTML = `
+      <label class="text-label-sm block mb-xs">Select Percentage</label>
+      <select id="qdValue" class="w-full p-sm bg-surface border border-outline-variant rounded text-body-sm">
+        <option value="5%">5%</option>
+        <option value="10%">10%</option>
+        <option value="15%">15%</option>
+        <option value="20%" selected>20%</option>
+        <option value="25%">25%</option>
+        <option value="30%">30%</option>
+        <option value="40%">40%</option>
+        <option value="50%">50%</option>
+        <option value="custom">Custom %</option>
+      </select>
+      <input type="number" id="qdCustomVal" class="hidden mt-sm w-full p-sm bg-surface border border-outline-variant rounded text-body-sm" placeholder="Enter custom %">
+    `;
+    document.getElementById('qdValue').onchange = (e) => {
+      document.getElementById('qdCustomVal').classList.toggle('hidden', e.target.value !== 'custom');
+    };
+  } else if (type === 'fixed') {
+    title.innerText = 'Fixed Amount Discount';
+    valueSection.innerHTML = `
+      <label class="text-label-sm block mb-xs">Enter Amount (₦)</label>
+      <input type="number" id="qdValue" class="w-full p-sm bg-surface border border-outline-variant rounded text-body-sm" placeholder="e.g. 5000">
+    `;
+  } else if (type === 'shipping') {
+    title.innerText = 'Free Shipping';
+    valueSection.innerHTML = `
+      <div class="p-sm bg-surface-container rounded border border-outline-variant/30">
+        <p class="text-body-sm text-on-surface-variant">This coupon will remove all shipping costs from the customer's order at checkout.</p>
+      </div>
+      <input type="hidden" id="qdValue" value="SHIPPING">
+    `;
+  }
+}
+
+function toggleCodeInput(show) {
+  document.getElementById('qdManualCode').classList.toggle('hidden', !show);
+}
+
+function closeQuickDiscount() {
+  document.getElementById('quickDiscountModal').classList.add('hidden');
+}
+
+function createQuickCoupon() {
+  const list = document.getElementById('active-coupons-list');
+  const codeType = document.querySelector('input[name="codeType"]:checked').value;
+  let code = '';
+  
+  if (codeType === 'generate') {
+    const prefixes = ['SUMMER', 'FLASH', 'SLEEC', 'SAVE'];
+    code = prefixes[Math.floor(Math.random() * prefixes.length)] + Math.floor(10 + Math.random() * 89);
+  } else {
+    code = document.getElementById('qdManualCode').value.toUpperCase() || 'DISCOUNT';
+  }
+  
+  let valDisplay = '';
+  const valInput = document.getElementById('qdValue');
+  if (currentQDType === 'percentage') {
+    valDisplay = valInput.value === 'custom' ? document.getElementById('qdCustomVal').value + '% OFF' : valInput.value + ' OFF';
+  } else if (currentQDType === 'fixed') {
+    valDisplay = '₦' + valInput.value;
+  } else {
+    valDisplay = 'SHIPPING';
+  }
+  
+  const div = document.createElement('div');
+  div.className = 'flex justify-between items-center p-xs bg-surface-container/30 border border-outline-variant/10 rounded group relative overflow-hidden';
+  div.innerHTML = `
+    <div class="flex items-center gap-xs text-on-surface">
+      <span class="material-symbols-outlined text-[14px]">local_offer</span>
+      <span class="text-label-sm font-semibold tracking-wide">${code}</span>
+    </div>
+    <div class="relative h-6 w-20 flex items-center justify-end">
+      <span class="text-[10px] font-semibold text-on-surface bg-surface px-xs py-[2px] border border-outline-variant/20 rounded group-hover:opacity-0 transition-opacity">${valDisplay}</span>
+      <button onclick="confirmDeleteCoupon(this)" class="absolute inset-0 flex items-center justify-center bg-error text-white text-[10px] font-bold rounded opacity-0 group-hover:opacity-100 transition-opacity">DELETE</button>
+    </div>
+  `;
+  
+  list.appendChild(div);
+  closeQuickDiscount();
+  showToast('Coupon Created', 'New discount code is now active.');
+}
+
+function confirmDeleteCoupon(btn) {
+  couponToDelete = btn.closest('.group');
+  document.getElementById('deleteCouponModal').classList.remove('hidden');
+  document.getElementById('confirmDeleteBtn').onclick = () => {
+    couponToDelete.remove();
+    closeDeleteModal();
+    showToast('Coupon Deleted', 'The discount has been removed.');
+  };
+}
+
+function closeDeleteModal() {
+  document.getElementById('deleteCouponModal').classList.add('hidden');
+  couponToDelete = null;
+}
+</script>
+
+</body></html>
