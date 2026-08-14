@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"on-surface":"#121c2a","secondary":"#55633e","surface-container-low":"#eff4ff","on-error":"#ffffff","on-primary-fixed-variant":"#3e4b26","inverse-on-surface":"#eaf1ff","tertiary":"#51613c","on-tertiary-fixed":"#121f03","on-background":"#121c2a","tertiary-container":"#697a52","surface-bright":"#f8f9ff","outline-variant":"#c6c8ba","surface-container-lowest":"#ffffff","tertiary-fixed-dim":"#bacd9f","on-error-container":"#93000a","primary-fixed-dim":"#bccd9c","on-tertiary-container":"#f9ffea","surface-container-highest":"#d9e3f6","surface-variant":"#d9e3f6","error-container":"#ffdad6","surface-dim":"#d0dbed","secondary-container":"#d9e9b9","on-primary":"#ffffff","secondary-fixed-dim":"#bdcc9f","on-secondary-fixed":"#141f03","on-primary-fixed":"#141f01","surface":"#f8f9ff","background":"#f8f9ff","surface-container-high":"#dee9fc","surface-container":"#e6eeff","outline":"#76786d","inverse-primary":"#bccd9c","on-secondary-fixed-variant":"#3e4b28","on-surface-variant":"#45483e","primary-fixed":"#d8e9b6","tertiary-fixed":"#d6e9b9","on-primary-container":"#faffe8","error":"#ba1a1a","secondary-fixed":"#d9e9b9","on-secondary-container":"#5b6943","on-secondary":"#ffffff","primary":"#536139","inverse-surface":"#27313f","on-tertiary":"#ffffff","surface-tint":"#55633b","primary-container":"#6b7a50","on-tertiary-fixed-variant":"#3c4c28"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"xxl":"48px","margin-mobile":"16px","xs":"4px","xl":"32px","base":"8px","gutter":"24px","sm":"12px","lg":"24px","margin-desktop":"40px","md":"16px"},"fontFamily":{"headline-md":["Inter"],"label-md":["Inter"],"body-md":["Inter"],"headline-lg":["Inter"],"label-sm":["Inter"],"headline-lg-mobile":["Inter"],"body-sm":["Inter"],"headline-xl":["Inter"],"body-lg":["Inter"],"headline-sm":["Inter"]},"fontSize":{"headline-md":["24px",{"lineHeight":"32px","fontWeight":"600"}],"label-md":["14px",{"lineHeight":"16px","fontWeight":"500"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"700"}],"label-sm":["12px",{"lineHeight":"16px","fontWeight":"600"}],"headline-lg-mobile":["28px",{"lineHeight":"36px","fontWeight":"700"}],"body-sm":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"headline-sm":["20px",{"lineHeight":"28px","fontWeight":"600"}]}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/></head><body class="bg-background font-body-md text-on-background"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[4px_0_12px_rgba(114,129,86,0.04)]"><div class="h-16 flex items-center px-lg mb-md text-on-surface"><img alt="Sleec Logo" class="h-8 w-auto object-contain mr-sm" src="https://lh3.googleusercontent.com/aida/AP1WRLsP6exljQxcl5lGJC2c3my3SL9Ma_U0m10ZR76s7vm5cdyhwtaOymeaTlQpwhjR6WlXDt42uoUWeYfPlSjzmQwUMfwkcHFWkzOJ71Chkdvcsxj-HZOwxNj4U_EI0zxT9j2LbFmlDK0IONdENgMKzLFmNRZ-krjk20UoiCzjNB-biphxSwpEMbpGkxKgU4fVVV0JK_XtAZe0u9yQkQhIpoKQ7U9Mw-NIb-cFOZCwqS-d9La1aiMsq_ptN8M"/><span class="font-headline-sm text-headline-sm tracking-tight">Sleec</span></div><nav class="flex-1 px-md overflow-y-auto space-y-lg" data-active-classes="bg-primary-container text-on-primary-container font-semibold shadow-sm"><section><p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Business</p><div class="space-y-xs"><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined mr-md">dashboard</span>Dashboard</a><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="products" href="#"><span class="material-symbols-outlined mr-md">inventory_2</span>Products</a><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="orders" href="#"><span class="material-symbols-outlined mr-md">shopping_cart</span>Orders</a><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="customers" href="#"><span class="material-symbols-outlined mr-md">group</span>Customers</a></div></section><section><p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Growth</p><div class="space-y-xs"><a aria-current="page" class="flex items-center px-md py-base rounded-lg transition-all bg-[#728156] text-white font-semibold shadow-sm" data-path="analytics" href="#"><span class="material-symbols-outlined mr-md">leaderboard</span>Analytics</a><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="marketing" href="#"><span class="material-symbols-outlined mr-md">campaign</span>Marketing</a></div></section><section><p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Money</p><div class="space-y-xs"><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="wallet" href="#"><span class="material-symbols-outlined mr-md">account_balance_wallet</span>Wallet</a><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="payouts" href="#"><span class="material-symbols-outlined mr-md">payments</span>Payouts</a></div></section><section><p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Store</p><div class="space-y-xs"><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="my-shop" href="#"><span class="material-symbols-outlined mr-md">storefront</span>My Shop</a><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="settings" href="#"><span class="material-symbols-outlined mr-md">settings</span>Settings</a></div></section></nav></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 px-lg flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex-1 max-w-md"><div class="relative flex items-center group"><span class="material-symbols-outlined absolute left-md text-outline">search</span><input class="w-full bg-surface-container-low border border-transparent focus:border-primary/30 rounded-full py-xs pl-xxl pr-md text-body-sm transition-all focus:outline-none" placeholder="Search..." type="text"/></div></div><div class="flex items-center gap-lg"><button class="text-on-surface-variant hover:text-primary transition-colors p-xs flex items-center justify-center"><span class="material-symbols-outlined">notifications</span></button><div class="flex items-center gap-md pl-md border-l border-outline-variant"><div class="text-right hidden sm:block"><p class="text-label-md font-label-md text-on-surface">Amina Eze</p><p class="text-label-sm font-label-sm text-on-surface-variant">Store Owner</p></div><img alt="Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/10" src="https://lh3.googleusercontent.com/aida/AP1WRLs5nLw4Byt2sjvamH4cojWF3-fM5VKA-oTl3OamQNyMMcROT0TLVQUpd3sAwLJVvzE2SMwalgVoRPjcJ5Tzaq2MdAttmHY7IHMXXC3MBdVgguMWvx4-9R8qn05AVqi24dRnA-NnRKZnfpYUqql0xZYFuXXt1A3bLSoHrAgsyYrOtwdeN4tQOsn0Z33iItvHsnVCBiIyIagvDQHEnnxBa_DFSXCu4lr5nKhi6lUBnK34qZm3sM4ABzYUizo"/></div></div></header><main class="relative pt-16 min-h-screen bg-background"><div class="flex flex-col w-full h-full relative" id="analytics-page">
+<div class="px-gutter py-lg max-w-[1440px] mx-auto w-full space-y-md">
+<!-- Header Controls -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-md">
+<div class="flex flex-col">
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-xs">Analytics Overview</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Track your store's performance and growth.</p>
+</div>
+<div class="flex flex-wrap items-center gap-sm">
+<!-- Date Range Picker (Static Representation) -->
+<div class="relative group">
+<button class="flex items-center gap-xs px-sm py-xs bg-surface-container rounded-lg text-label-md font-label-md text-on-surface hover:bg-surface-container-high transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+                    Last 30 Days
+                    <span class="material-symbols-outlined text-[18px]">arrow_drop_down</span>
+</button>
+<!-- Dropdown Menu -->
+<div class="absolute right-0 mt-2 w-48 bg-surface-container-lowest border border-outline-variant/30 rounded-lg shadow-lg hidden group-hover:block z-50">
+<a class="block px-md py-sm text-body-sm text-on-surface hover:bg-surface-container transition-colors" href="#">Last 7 Days</a>
+<a class="block px-md py-sm text-body-sm text-on-surface hover:bg-surface-container transition-colors" href="#">Last 30 Days</a>
+<a class="block px-md py-sm text-body-sm text-on-surface hover:bg-surface-container transition-colors" href="#">Last 90 Days</a>
+</div>
+</div>
+<!-- Export Button -->
+<div class="relative group">
+<button class="flex items-center gap-xs px-md py-xs bg-primary text-on-primary rounded-lg text-label-md font-label-md hover:bg-surface-tint transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export Report
+                </button>
+<!-- Dropdown Menu -->
+<div class="absolute right-0 mt-2 w-48 bg-surface-container-lowest border border-outline-variant/30 rounded-lg shadow-lg hidden group-hover:block z-50">
+<a class="block px-md py-sm text-body-sm text-on-surface hover:bg-surface-container transition-colors" href="#">Export as PDF</a>
+<a class="block px-md py-sm text-body-sm text-on-surface hover:bg-surface-container transition-colors" href="#">Export as CSV</a>
+<a class="block px-md py-sm text-body-sm text-on-surface hover:bg-surface-container transition-colors" href="#">Export as Excel</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Level Metrics (Compact 4 columns) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-sm">
+<!-- Metric 1: Total Sales -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col relative overflow-hidden group shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Total Sales</span>
+</div>
+<span class="px-xs py-[2px] bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-semibold flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> 12.5%
+                    </span>
+</div>
+<div class="flex items-baseline gap-xs mt-auto">
+<span class="font-headline-md text-on-surface text-headline-sm">₦1,842,500</span>
+</div>
+</div>
+<!-- Metric 2: Net Profit -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col relative overflow-hidden group shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Net Profit</span>
+</div>
+<span class="px-xs py-[2px] bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-semibold flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> 8.2%
+                    </span>
+</div>
+<div class="flex items-baseline gap-xs mt-auto">
+<span class="font-headline-md text-on-surface text-headline-sm">₦486,200</span>
+</div>
+</div>
+<!-- Metric 3: Total Orders -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col relative overflow-hidden group shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Total Orders</span>
+</div>
+<span class="px-xs py-[2px] bg-error-container text-on-error-container rounded-full text-[10px] font-semibold flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[12px]">trending_down</span> 2.1%
+                    </span>
+</div>
+<div class="flex items-baseline gap-xs mt-auto">
+<span class="font-headline-md text-on-surface text-headline-sm">42</span>
+</div>
+</div>
+<!-- Metric 4: Customers -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col relative overflow-hidden group shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Customers</span>
+</div>
+<span class="px-xs py-[2px] bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-semibold flex items-center gap-[2px]">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> 5.4%
+                    </span>
+</div>
+<div class="flex items-baseline gap-xs mt-auto">
+<span class="font-headline-md text-on-surface text-headline-sm">842</span>
+</div>
+</div>
+</div>
+<!-- Main Content Area: Charts & Lists -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-sm">
+<!-- Sales Over Time Area Chart (Spans 2 columns on lg) -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.04)] lg:col-span-2">
+<div class="flex justify-between items-center mb-md pb-sm">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Performance</h2>
+<div class="flex gap-sm">
+<button class="px-sm py-[2px] rounded-full bg-primary-container text-on-primary-container text-label-sm font-label-sm">Sales</button>
+<button class="px-sm py-[2px] rounded-full hover:bg-surface-container text-on-surface-variant text-label-sm font-label-sm">Orders</button>
+<button class="px-sm py-[2px] rounded-full hover:bg-surface-container text-on-surface-variant text-label-sm font-label-sm">Profit</button>
+</div>
+</div>
+<!-- Mock Area Chart -->
+<div class="flex-1 relative w-full min-h-[250px] flex items-end pt-lg">
+<!-- Y-Axis Labels -->
+<div class="absolute left-0 top-0 h-full flex flex-col justify-between text-[10px] text-outline pb-lg">
+<span class="">₦100k</span>
+<span class="">₦80k</span>
+<span class="">₦60k</span>
+<span class="">₦40k</span>
+<span class="">₦20k</span>
+<span class="">₦0</span>
+</div>
+<!-- Grid Lines -->
+<div class="absolute left-10 right-0 top-0 h-full flex flex-col justify-between pb-lg opacity-20">
+<div class="w-full border-b border-outline-variant"></div>
+<div class="w-full border-b border-outline-variant"></div>
+<div class="w-full border-b border-outline-variant"></div>
+<div class="w-full border-b border-outline-variant"></div>
+<div class="w-full border-b border-outline-variant"></div>
+<div class="w-full border-b border-on-surface"></div>
+</div>
+<!-- The Chart Line (SVG) -->
+<div class="absolute left-10 right-0 top-0 h-full pb-lg z-10 overflow-visible">
+<svg class="w-full h-full text-[#728156] overflow-visible" preserveaspectratio="none" viewbox="0 0 1000 300">
+<defs>
+<lineargradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="currentColor" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="currentColor" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path class="opacity-80" d="M0,250 C100,250 150,150 250,180 C350,210 400,100 500,80 C600,60 700,140 800,90 C900,40 950,20 1000,50 L1000,300 L0,300 Z" fill="url(#areaGradient)"></path>
+<path d="M0,250 C100,250 150,150 250,180 C350,210 400,100 500,80 C600,60 700,140 800,90 C900,40 950,20 1000,50" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Data Points (Circles) -->
+<circle class="ring-4 ring-surface-container-lowest" cx="250" cy="180" fill="currentColor" r="4"></circle>
+<!-- Highlighted Point -->
+<g transform="translate(500,80)">
+<circle class="ring-4 ring-primary-container" cx="0" cy="0" fill="currentColor" r="6"></circle>
+<rect class="fill-surface shadow-sm drop-shadow" height="24" rx="4" width="70" x="-35" y="-36"></rect>
+<text class="fill-on-surface text-[10px] font-bold" text-anchor="middle" x="0" y="-19">₦84,500</text>
+<path class="fill-surface" d="M -5 -12 L 0 -5 L 5 -12 Z"></path>
+</g>
+<circle class="ring-4 ring-surface-container-lowest" cx="800" cy="90" fill="currentColor" r="4"></circle>
+<circle class="ring-4 ring-surface-container-lowest" cx="1000" cy="50" fill="currentColor" r="4"></circle>
+</svg>
+</div>
+<!-- X-Axis Labels -->
+<div class="absolute bottom-0 left-10 right-0 flex justify-between text-[10px] text-outline pt-xs">
+<span class="">May 1</span>
+<span class="">May 8</span>
+<span class="">May 15</span>
+<span class="">May 22</span>
+<span class="">May 29</span>
+</div>
+</div>
+</div>
+<!-- Fulfillment Breakdown (Donut Chart) -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-center mb-md">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Fulfillment</h2>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-xs flex items-center justify-center rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center relative min-h-[160px]">
+<!-- Mock Donut Chart (SVG) -->
+<svg class="w-40 h-40 -rotate-90 transform" viewbox="0 0 100 100">
+<!-- Background Circle -->
+<circle class="text-surface-variant" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-width="12"></circle>
+<!-- Business Delivery Segment (40%) -->
+<circle class="text-[#536139] transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" id="donut-segment-1" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="150.72" stroke-width="12" style="stroke-dashoffset: 150.72;"></circle>
+<!-- Third-Party Delivery Segment (25%) -->
+<circle class="text-[#728156] transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="188.4" stroke-width="12" transform="rotate(144 50 50)"></circle>
+<!-- Pickup Segment (20%) -->
+<circle class="text-[#9cb077] transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="200.96" stroke-width="12" transform="rotate(234 50 50)"></circle>
+<!-- Walk-in Segment (15%) -->
+<circle class="text-[#c5d6a1] transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="213.52" stroke-width="12" transform="rotate(306 50 50)"></circle>
+</svg>
+<!-- Center Text -->
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-headline-sm font-headline-sm text-on-surface">₦1.8M</span>
+<span class="text-[10px] text-on-surface-variant">Total</span>
+</div>
+</div>
+<!-- Legend -->
+<div class="mt-auto pt-sm flex flex-col gap-xs">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-[#536139]"></div>
+<span class="text-label-sm font-label-sm text-on-surface">Business Delivery</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">40%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-[#728156]"></div>
+<span class="text-label-sm font-label-sm text-on-surface">Third-Party Delivery</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">25%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-[#9cb077]"></div>
+<span class="text-label-sm font-label-sm text-on-surface">Pickup</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">20%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-[#c5d6a1]"></div>
+<span class="text-label-sm font-label-sm text-on-surface">Walk-in</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface">15%</span>
+</div>
+</div>
+</div>
+<!-- Order Performance Distribution -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.04)] lg:col-span-3">
+<div class="flex justify-between items-center mb-sm">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Order Pipeline</h2>
+</div>
+<div class="flex w-full h-4 rounded-full overflow-hidden mb-xs">
+<a class="bg-surface-variant h-full hover:opacity-80 transition-opacity cursor-pointer block" href="#" style="width: 17%;" title="Awaiting Processing (8)"></a>
+<a class="bg-[#c5d6a1] h-full hover:opacity-80 transition-opacity cursor-pointer block" href="#" style="width: 11%;" title="Processing (5)"></a>
+<a class="bg-[#728156] h-full hover:opacity-80 transition-opacity cursor-pointer block" href="#" style="width: 11%" title="Ready (5)"></a>
+<a class="bg-[#6b7a50] h-full hover:opacity-80 transition-opacity cursor-pointer block" href="#" style="width: 13%" title="Delivering (6)"></a>
+<a class="bg-[#536139] h-full hover:opacity-80 transition-opacity cursor-pointer block" href="#" style="width: 48%" title="Completed (23)"></a>
+</div>
+<div class="flex flex-wrap gap-md text-label-sm text-on-surface-variant">
+<a class="flex items-center gap-xs hover:text-primary transition-colors cursor-pointer" href="#"><div class="w-2 h-2 rounded-full bg-[#d0dbed]"></div>Awaiting (8)</a>
+<a class="flex items-center gap-xs hover:text-primary transition-colors cursor-pointer" href="#"><div class="w-2 h-2 rounded-full bg-[#9cb077]"></div>Processing (5)</a>
+<a class="flex items-center gap-xs hover:text-primary transition-colors cursor-pointer" href="#"><div class="w-2 h-2 rounded-full bg-[#728156]"></div>Ready (5)</a>
+<a class="flex items-center gap-xs hover:text-primary transition-colors cursor-pointer" href="#"><div class="w-2 h-2 rounded-full bg-[#6b7a50]"></div>Delivering (6)</a>
+<a class="flex items-center gap-xs hover:text-primary transition-colors cursor-pointer" href="#"><div class="w-2 h-2 rounded-full bg-[#536139]"></div>Completed (23)</a>
+</div>
+</div>
+<!-- Top Categories & Products Row -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-sm lg:col-span-3">
+<!-- Top Categories (Bar Chart) -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant/30 pb-sm">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Top Categories</h2>
+</div>
+<div class="flex-1 flex flex-col justify-center gap-sm">
+<!-- Bar 1 -->
+<a class="flex flex-col gap-[2px] group cursor-pointer" href="#">
+<div class="flex justify-between text-label-sm text-on-surface group-hover:text-primary transition-colors">
+<span class="">Electronics</span>
+<span class="font-semibold">₦450,000</span>
+</div>
+<div class="w-full h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-[#536139] rounded-full w-[85%] group-hover:opacity-80 transition-opacity"></div>
+</div>
+</a>
+<!-- Bar 2 -->
+<a class="flex flex-col gap-[2px] group cursor-pointer" href="#">
+<div class="flex justify-between text-label-sm text-on-surface group-hover:text-primary transition-colors">
+<span class="">Apparel</span>
+<span class="font-semibold">₦280,000</span>
+</div>
+<div class="w-full h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-[#536139] rounded-full w-[60%] group-hover:opacity-80 transition-opacity"></div>
+</div>
+</a>
+<!-- Bar 3 -->
+<a class="flex flex-col gap-[2px] group cursor-pointer" href="#">
+<div class="flex justify-between text-label-sm text-on-surface group-hover:text-primary transition-colors">
+<span class="">Home &amp; Garden</span>
+<span class="font-semibold">₦180,000</span>
+</div>
+<div class="w-full h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-[#536139] rounded-full w-[40%] group-hover:opacity-80 transition-opacity"></div>
+</div>
+</a>
+<!-- Bar 4 -->
+<a class="flex flex-col gap-[2px] group cursor-pointer" href="#">
+<div class="flex justify-between text-label-sm text-on-surface group-hover:text-primary transition-colors">
+<span class="">Beauty</span>
+<span class="font-semibold">₦120,000</span>
+</div>
+<div class="w-full h-1.5 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-[#76786d] rounded-full w-[25%] group-hover:opacity-80 transition-opacity"></div>
+</div>
+</a>
+</div>
+</div>
+<!-- Top Products List -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.04)] overflow-hidden">
+<div class="flex justify-between items-center p-md border-b border-outline-variant/30 pb-sm">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Top Products</h2>
+<a class="text-label-sm text-[#536139] hover:text-primary-container transition-colors" href="#">View All</a>
+</div>
+<div class="flex flex-col w-full">
+<!-- Table Header -->
+<div class="grid grid-cols-[3fr_1fr_1.5fr] px-md py-xs bg-surface-container/30 text-[10px] text-outline uppercase tracking-wider">
+<div class="">Product</div>
+<div class="text-right">Sales</div>
+<div class="text-right">Revenue</div>
+</div>
+<!-- Product Row 1 -->
+<a class="grid grid-cols-[3fr_1fr_1.5fr] items-center px-md py-xs hover:bg-surface-container/50 transition-colors border-b border-outline-variant/10 cursor-pointer" href="#">
+<div class="flex items-center gap-sm">
+<img class="w-8 h-8 rounded bg-surface object-cover" data-alt="A small, sleek, modern smartwatch with a dark green band on a white background, highly detailed, soft studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhJGyPfrU5G4F7sR82jRt-kdXuqlH8VIMQvCirGMOXthQT5PhD9LAUEcuHSblNQIeoL4zltT9OEFLgNJRihvuQfZp91sZdLcM3Nz9PJoiPqT1YsNGXwGzPHhe-qdGIBN1KX88R-NyWHoEqryrWi325KwVLa7umzx7CW2I627thKTaO8lzekzyzgV3aBnLeqrrkvvujbBtRgEzUgV3_HGwSKNiLMHWxfjGAuBBq_o1BgE9AmLR-HKKj"/>
+<div class="flex flex-col">
+<span class="text-label-sm text-on-surface line-clamp-1">Aero Smartwatch Pro</span>
+<span class="text-[10px] text-on-surface-variant">Electronics</span>
+</div>
+</div>
+<div class="text-right text-label-sm text-on-surface">428</div>
+<div class="text-right text-label-sm font-semibold text-on-surface">₦851,720</div>
+</a>
+<!-- Product Row 2 -->
+<a class="grid grid-cols-[3fr_1fr_1.5fr] items-center px-md py-xs hover:bg-surface-container/50 transition-colors border-b border-outline-variant/10 cursor-pointer" href="#">
+<div class="flex items-center gap-sm">
+<img class="w-8 h-8 rounded bg-surface object-cover" data-alt="A minimalist ceramic coffee mug in an earthy sage green color, soft shadows, photorealistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7uHseyh0_Ia1nty8ZmNun0cltDz9zU8cuoL9ajBpbuzUbJ9Sjum8Mwrrbgi1QY1FPsrI2yvgI-ZrFkjOlxcTmsfX8ri7Pvp6bc_A2oTGhBdMxNnuyym0bC4TiHLxRgC7GV-xb9SZ968-BwHmetsFUovcZvSp8UXz1smAI4MznPIQ1VCwHo1XEUASnOZRp4tXkUsQF6L4kne-ywYq3Mr-pv5O6P_mqZAnFH0Z8EbKagSfm5SdAsoWL"/>
+<div class="flex flex-col">
+<span class="text-label-sm text-on-surface line-clamp-1">Artisan Ceramic Mug</span>
+<span class="text-[10px] text-on-surface-variant">Home Goods</span>
+</div>
+</div>
+<div class="text-right text-label-sm text-on-surface">312</div>
+<div class="text-right text-label-sm font-semibold text-on-surface">₦74,880</div>
+</a>
+</div>
+</div>
+</div>
+<!-- Insights & Top Customers Row -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-sm lg:col-span-3">
+<!-- Insights -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-md flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant/30 pb-sm">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Business Insights</h2>
+</div>
+<div class="flex flex-col gap-sm">
+<a class="flex flex-col gap-xs p-sm rounded border border-outline-variant/30 hover:bg-surface-container/30 transition-colors cursor-pointer group" href="#">
+<div class="flex items-center gap-xs text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-[#536139]">group</span>
+<h3 class="text-label-sm font-semibold">Customer Insight</h3>
+</div>
+<p class="text-[12px] text-on-surface-variant leading-tight">Repeat customers generated 45% of sales this month. Consider launching a loyalty program to boost this further.</p>
+<span class="text-[10px] font-semibold group-hover:underline text-[#728156]">Go to Marketing →</span>
+</a>
+<a class="flex flex-col gap-xs p-sm rounded border border-outline-variant/30 hover:bg-surface-container/30 transition-colors cursor-pointer group" href="#">
+<div class="flex items-center gap-xs text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-[#536139]">local_shipping</span>
+<h3 class="text-label-sm font-semibold">Delivery Insight</h3>
+</div>
+<p class="text-[12px] text-on-surface-variant leading-tight">Third-party delivery used more frequently than in-house this week. Review rates to ensure profitability.</p>
+<span class="text-[10px] font-semibold group-hover:underline text-[#728156]">Go to Settings →</span>
+</a>
+<a class="flex flex-col gap-xs p-sm rounded border border-outline-variant/30 hover:bg-surface-container/30 transition-colors cursor-pointer group" href="#">
+<div class="flex items-center gap-xs text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-[#536139]">trending_up</span>
+<h3 class="text-label-sm font-semibold">Product Insight</h3>
+</div>
+<p class="text-[12px] text-on-surface-variant leading-tight">Artisan Ceramic Mug is selling quickly. Stock is running low based on current sales velocity.</p>
+<span class="text-[10px] font-semibold group-hover:underline text-[#728156]">Go to Products →</span>
+</a>
+</div>
+</div>
+<!-- Top Customers List -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg flex flex-col shadow-[0_2px_8px_rgba(0,0,0,0.04)] overflow-hidden">
+<div class="flex justify-between items-center p-md border-b border-outline-variant/30 pb-sm">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Top Customers</h2>
+<a class="text-label-sm text-[#536139] hover:text-primary-container transition-colors" href="#">View All</a>
+</div>
+<div class="flex flex-col w-full p-sm gap-xs">
+<a class="flex items-center justify-between p-xs hover:bg-surface-container/50 rounded transition-colors cursor-pointer" href="#">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-[#536139] flex items-center justify-center text-white text-label-sm font-semibold">AE</div>
+<div>
+<p class="text-label-sm text-on-surface">Amina Eze</p>
+<p class="text-[10px] text-on-surface-variant">12 Orders</p>
+</div>
+</div>
+<div class="text-label-sm font-semibold text-on-surface">₦450,000</div>
+</a>
+<a class="flex items-center justify-between p-xs hover:bg-surface-container/50 rounded transition-colors cursor-pointer" href="#">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-[#536139] flex items-center justify-center text-white text-label-sm font-semibold">DO</div>
+<div>
+<p class="text-label-sm text-on-surface">David Okafor</p>
+<p class="text-[10px] text-on-surface-variant">8 Orders</p>
+</div>
+</div>
+<div class="text-label-sm font-semibold text-on-surface">₦320,500</div>
+</a>
+<a class="flex items-center justify-between p-xs hover:bg-surface-container/50 rounded transition-colors cursor-pointer" href="#">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-[#536139] flex items-center justify-center text-white text-label-sm font-semibold">CO</div>
+<div>
+<p class="text-label-sm text-on-surface">Chioma Okeke</p>
+<p class="text-[10px] text-on-surface-variant">5 Orders</p>
+</div>
+</div>
+<div class="text-label-sm font-semibold text-on-surface">₦210,000</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Simple script to trigger the donut chart animation on load
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const donutSegment = document.getElementById('donut-segment-1');
+            if(donutSegment) {
+                // Animate to 40%
+                donutSegment.style.strokeDashoffset = '150.72';
+            }
+        }, 100);
+    });
+</script></div></div></main></div>
+</body></html>
