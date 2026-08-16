@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#bccd9c",
+                "surface-container-high": "#dee9fc",
+                "outline-variant": "#c6c8ba",
+                "secondary-fixed": "#d9e9b9",
+                "surface-container-low": "#eff4ff",
+                "tertiary-fixed": "#d6e9b9",
+                "surface-container": "#e6eeff",
+                "error-container": "#ffdad6",
+                "on-primary-container": "#faffe8",
+                "on-tertiary-fixed": "#121f03",
+                "inverse-primary": "#bccd9c",
+                "tertiary-container": "#697a52",
+                "on-surface-variant": "#45483e",
+                "on-primary-fixed-variant": "#3e4b26",
+                "primary": "#728156",
+                "surface-variant": "#d9e3f6",
+                "surface-container-highest": "#d9e3f6",
+                "secondary-container": "#d9e9b9",
+                "secondary-fixed-dim": "#bdcc9f",
+                "on-primary": "#ffffff",
+                "on-secondary-fixed-variant": "#3e4b28",
+                "secondary": "#55633e",
+                "outline": "#76786d",
+                "tertiary-fixed-dim": "#bacd9f",
+                "on-error": "#ffffff",
+                "error": "#ba1a1a",
+                "background": "#f8f9ff",
+                "tertiary": "#51613c",
+                "on-tertiary-container": "#f9ffea",
+                "on-surface": "#121c2a",
+                "on-tertiary-fixed-variant": "#3c4c28",
+                "on-secondary": "#ffffff",
+                "on-secondary-container": "#5b6943",
+                "surface": "#f8f9ff",
+                "surface-bright": "#f8f9ff",
+                "on-error-container": "#93000a",
+                "on-tertiary": "#ffffff",
+                "on-background": "#121c2a",
+                "primary-container": "#6b7a50",
+                "on-secondary-fixed": "#141f03",
+                "primary-fixed": "#d8e9b6",
+                "surface-tint": "#728156",
+                "surface-dim": "#d0dbed",
+                "on-primary-fixed": "#141f01",
+                "inverse-on-surface": "#eaf1ff",
+                "inverse-surface": "#27313f"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "base": "8px",
+                "margin-mobile": "16px",
+                "gutter": "24px",
+                "sm": "12px",
+                "xl": "32px",
+                "xxl": "48px",
+                "xs": "4px",
+                "margin-desktop": "40px",
+                "md": "16px",
+                "lg": "24px"
+        },
+        "fontFamily": {
+                "headline-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-sm": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-lg": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "headline-xl": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "headline-sm": [
+                        "Plus Jakarta Sans"
+                ]
+        },
+        "fontSize": {
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-xl": [
+                        "40px",
+                        {
+                                "lineHeight": "48px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "16px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-sm": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/></head><body class="bg-background font-body-md text-on-background"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[4px_0_12px_rgba(114,129,86,0.04)]"><div class="h-16 flex items-center px-lg mb-md text-on-surface"><img alt="Sleec Logo" class="h-8 w-auto object-contain mr-sm" src="https://lh3.googleusercontent.com/aida/AP1WRLsP6exljQxcl5lGJC2c3my3SL9Ma_U0m10ZR76s7vm5cdyhwtaOymeaTlQpwhjR6WlXDt42uoUWeYfPlSjzmQwUMfwkcHFWkzOJ71Chkdvcsxj-HZOwxNj4U_EI0zxT9j2LbFmlDK0IONdENgMKzLFmNRZ-krjk20UoiCzjNB-biphxSwpEMbpGkxKgU4fVVV0JK_XtAZe0u9yQkQhIpoKQ7U9Mw-NIb-cFOZCwqS-d9La1aiMsq_ptN8M"/><span class="font-headline-sm text-headline-sm tracking-tight">Sleec</span></div><nav class="flex-1 px-md overflow-y-auto space-y-lg" data-active-classes="bg-primary-container text-on-primary-container font-semibold shadow-sm"><section><p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Business</p><div class="space-y-xs"><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined mr-md">dashboard</span>Dashboard</a><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="products" href="#"><span class="material-symbols-outlined mr-md">inventory_2</span>Products</a><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="orders" href="#"><span class="material-symbols-outlined mr-md">shopping_cart</span>Orders</a><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="customers" href="#"><span class="material-symbols-outlined mr-md">group</span>Customers</a></div></section><section><p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Growth</p><div class="space-y-xs"><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="analytics" href="#"><span class="material-symbols-outlined mr-md">leaderboard</span>Analytics</a><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="marketing" href="#"><span class="material-symbols-outlined mr-md">campaign</span>Marketing</a></div></section><section><p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Money</p><div class="space-y-xs"><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="wallet" href="#"><span class="material-symbols-outlined mr-md">account_balance_wallet</span>Wallet</a></div></section><section><p class="px-md text-label-sm font-label-sm text-outline uppercase tracking-widest mb-base">Store</p><div class="space-y-xs"><a class="flex items-center px-md py-base rounded-lg text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container-high transition-all" data-path="my-shop" href="#"><span class="material-symbols-outlined mr-md">storefront</span>My Shop</a></div></section><hr class="border-outline-variant mx-md"/><a aria-current="page" class="flex items-center px-md py-base rounded-lg transition-all bg-[#728156] text-white font-semibold shadow-sm" data-path="settings" href="#"><span class="material-symbols-outlined mr-md">settings</span>Settings</a></nav></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl z-40 px-lg flex items-center justify-between shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex-1 max-w-md"><div class="relative flex items-center group"><span class="material-symbols-outlined absolute left-md text-outline">search</span><input class="w-full bg-surface-container-low border border-transparent focus:border-primary/30 rounded-full py-xs pl-xxl pr-md text-body-sm transition-all focus:outline-none" placeholder="Search..." type="text"/></div></div><div class="flex items-center gap-lg"><button class="text-on-surface-variant hover:text-primary transition-colors p-xs flex items-center justify-center"><span class="material-symbols-outlined">notifications</span></button><div class="flex items-center gap-md pl-md border-l border-outline-variant"><div class="text-right hidden sm:block"><p class="text-label-md font-label-md text-on-surface">James Wilson</p><p class="text-label-sm font-label-sm text-on-surface-variant">Admin</p></div><img alt="Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/10" src="https://lh3.googleusercontent.com/aida/AP1WRLs5nLw4Byt2sjvamH4cojWF3-fM5VKA-oTl3OamQNyMMcROT0TLVQUpd3sAwLJVvzE2SMwalgVoRPjcJ5Tzaq2MdAttmHY7IHMXXC3MBdVgguMWvx4-9R8qn05AVqi24dRnA-NnRKZnfpYUqql0xZYFuXXt1A3bLSoHrAgsyYrOtwdeN4tQOsn0Z33iItvHsnVCBiIyIagvDQHEnnxBa_DFSXCu4lr5nKhi6lUBnK34qZm3sM4ABzYUizo"/></div></div></header><main class="relative pt-16 min-h-screen bg-background"><div class="flex flex-col w-full">
+<!-- Page Header -->
+<div class="relative px-md lg:px-lg py-xl overflow-hidden bg-surface shadow-[0_4px_24px_rgba(114,129,86,0.04)] rounded-b-[32px] mb-lg">
+<!-- Decorative abstract background element -->
+<div class="absolute -top-24 -right-24 w-96 h-96 bg-secondary-container/40 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-0 right-1/4 w-64 h-64 bg-primary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-lg">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-base">Settings</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Manage your business profile, store, payments, notifications, security, and other account preferences.</p>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-lg py-sm rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high hover:shadow-md transition-all shadow-sm">Discard</button>
+<button class="px-lg py-sm rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:shadow-[0_8px_24px_rgba(114,129,86,0.25)] transition-all shadow-md">Save Changes</button>
+</div>
+</div>
+</div>
+<!-- Main Content Area with integrated navigation -->
+<div class="px-md lg:px-lg pb-xxl max-w-6xl mx-auto w-full">
+<!-- Horizontal Navigation Tabs -->
+<div class="flex overflow-x-auto border-b border-outline-variant mb-xl no-scrollbar gap-lg">
+<button class="pb-sm border-b-2 border-primary text-primary font-label-md text-label-md whitespace-nowrap px-xs">General &amp; Business</button>
+<button class="pb-sm border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap px-xs transition-colors">Storefront, Fulfillment &amp; Communication</button>
+<button class="pb-sm border-b-2 border-transparent text-on-surface-variant hover:text-on-surface font-label-md text-label-md whitespace-nowrap px-xs transition-colors">Notifications &amp; Security</button>
+</div>
+<div class="space-y-xl">
+<!-- 1. GENERAL & BUSINESS -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_12px_rgba(114,129,86,0.06)] p-lg lg:p-xl flex flex-col gap-lg border border-outline-variant/30">
+<div class="flex items-center justify-between mb-xs">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">domain</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">General Information &amp; Profile</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Update your business details and public profile.</p>
+</div>
+</div>
+<span class="px-sm py-xs bg-[#728156]/10 text-[#728156] font-label-sm text-label-sm rounded-full flex items-center gap-xs"><span class="material-symbols-outlined text-[16px]">verified</span>Verified</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Business Name</label>
+<input class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full" type="text" value="Sleec Commerce Ltd."/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Username (@)</label>
+<input class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full" type="text" value="sleecpremium"/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Contact Email</label>
+<input class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full" type="email" value="hello@sleec.app"/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Business Phone</label>
+<input class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full" type="tel" value="+234 800 000 0000"/>
+</div>
+<div class="flex flex-col gap-base md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Bio</label>
+<textarea class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full h-24 resize-none">Premium SaaS commerce tools and digital products.</textarea>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Business Category</label>
+<div class="relative">
+<select class="appearance-none bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full cursor-pointer pr-xl">
+<option>Software &amp; Digital Services</option>
+<option>Physical Goods</option>
+<option>Consulting</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<hr class="border-outline-variant/50 my-md"/>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Location</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-base md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Business Address</label>
+<input class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full" type="text" value="142 Innovation Drive"/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">City</label>
+<input class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full" type="text" value="Lagos"/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">State/Province</label>
+<input class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full" type="text" value="Lagos"/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Country</label>
+<div class="relative">
+<select class="appearance-none bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full cursor-pointer pr-xl">
+<option>Nigeria</option>
+<option>Kenya</option>
+<option>South Africa</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<hr class="border-outline-variant/50 my-md"/>
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Social Accounts</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest flex items-center gap-xs"><svg class="w-4 h-4 text-on-surface-variant" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg> Instagram</label>
+<input class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full" placeholder="https://instagram.com/yourhandle" type="url"/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest flex items-center gap-xs"><svg class="w-4 h-4 text-on-surface-variant" fill="currentColor" viewbox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v7.2c0 1.95-.57 3.89-1.6 5.5-1.01 1.62-2.48 2.92-4.22 3.68-1.74.77-3.69 1.05-5.58.78-1.89-.28-3.65-1.07-5.06-2.27-1.42-1.2-2.45-2.78-2.98-4.6-.53-1.82-.54-3.75-.02-5.57.51-1.82 1.54-3.41 2.96-4.61 1.43-1.2 3.19-1.99 5.08-2.28 1.1-.16 2.21-.18 3.32-.05v4.06c-.66-.18-1.36-.21-2.03-.09-.67.12-1.31.39-1.87.79-.55.39-1.01.91-1.33 1.5-.32.6-.5 1.25-.53 1.93-.03.67.11 1.34.4 1.95.29.6.72 1.12 1.25 1.52.52.39 1.15.65 1.82.76.67.11 1.35.08 2.01-.1.66-.17 1.27-.49 1.77-.92.5-.42.9-1 1.16-1.62.25-.63.38-1.3.36-1.98v-11.8c0-1.88.02-3.75 0-5.63z"></path></svg> TikTok</label>
+<input class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full" placeholder="https://tiktok.com/@yourhandle" type="url"/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest flex items-center gap-xs"><svg class="w-4 h-4 text-on-surface-variant" fill="currentColor" viewbox="0 0 24 24"><path d="M12.183.003c2.723-.008 6.446 0 7.625 2.112.524.957.558 1.966.558 1.966l-2.016 1.886c0 0-.256-.708-.686-1.077-.665-.56-2.29-.687-4.103-.687-2.906 0-5.267.876-6.425 2.502-1.42 1.996-1.47 5.174-.183 7.377 1.348 2.292 4.195 3.393 7.218 2.76 1.705-.355 2.87-1.365 3.513-3.13l.035-.122h-3.955v-2.77h7.24v6.62c-1.344 1.554-3.528 2.705-6.242 3.197-2.074.38-4.577.108-6.424-1.12-2.164-1.433-3.794-4.22-3.96-6.906-.178-2.825 1.157-5.918 3.574-7.514C9.56 3.996 11.233.004 12.183.003z"></path></svg> Snapchat</label>
+<input class="bg-surface-container-low border border-outline-variant/50 text-on-surface font-body-md text-body-md px-md py-sm rounded-lg focus:outline-none focus:border-[#728156] transition-all w-full" placeholder="https://snapchat.com/add/yourhandle" type="url"/>
+</div>
+</div>
+</section>
+<!-- 2. STOREFRONT, FULFILLMENT & COMMUNICATION -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_12px_rgba(114,129,86,0.06)] p-lg lg:p-xl flex flex-col gap-lg border border-outline-variant/30">
+<div class="flex items-center gap-md mb-xs">
+<div class="w-10 h-10 rounded-full bg-primary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">storefront</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Storefront, Fulfillment &amp; Communication</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Configure how you operate and interact with customers.</p>
+</div>
+</div>
+<div class="space-y-md">
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-sm">Fulfillment Methods</h3>
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">shopping_bag</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">In-Store Pickup</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Allow customers to pick up orders from your location.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-[#728156] relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-on-primary rounded-full shadow-sm transform translate-x-6 transition-transform duration-300"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">local_shipping</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Seller Delivery</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">You manage and fulfill deliveries yourself.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-[#728156] relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-on-primary rounded-full shadow-sm transform translate-x-6 transition-transform duration-300"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline-variant">two_wheeler</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Third-Party Delivery</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Integrate with external logistics providers.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-outline-variant relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-1 transition-transform duration-300"></span>
+</button>
+</div>
+</div>
+<hr class="border-outline-variant/50 my-xs"/>
+<div class="space-y-md">
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-sm">Payments</h3>
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">payments</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Pay on Delivery</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Accept cash or card payments upon delivery.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-[#728156] relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-on-primary rounded-full shadow-sm transform translate-x-6 transition-transform duration-300"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">credit_card</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Pay on Sleec</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Process secure payments via Sleec Pay.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-[#728156] relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-on-primary rounded-full shadow-sm transform translate-x-6 transition-transform duration-300"></span>
+</button>
+</div>
+</div>
+<hr class="border-outline-variant/50 my-xs"/>
+<div class="space-y-md">
+<h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-sm">Communication Methods</h3>
+<div class="flex flex-col gap-md">
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">call</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Phone/Call</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Allow customers to call your business phone.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-[#728156] relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-on-primary rounded-full shadow-sm transform translate-x-6 transition-transform duration-300"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">mail</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Email</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Receive inquiries via contact email.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-[#728156] relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-on-primary rounded-full shadow-sm transform translate-x-6 transition-transform duration-300"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline-variant">forum</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">WhatsApp</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Chat with customers on WhatsApp.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-outline-variant relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-1 transition-transform duration-300"></span>
+</button>
+</div>
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<svg class="w-6 h-6 text-primary" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Instagram DMs</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Connect Instagram for direct messaging.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-[#728156] relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-on-primary rounded-full shadow-sm transform translate-x-6 transition-transform duration-300"></span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. NOTIFICATIONS & SECURITY -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_12px_rgba(114,129,86,0.06)] p-lg lg:p-xl flex flex-col gap-lg border border-outline-variant/30">
+<div class="flex items-center gap-md mb-xs">
+<div class="w-10 h-10 rounded-full bg-primary-container/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Notifications</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Control how and when you receive system alerts.</p>
+</div>
+</div>
+<div class="flex flex-col gap-md">
+<!-- Toggle Item 1 -->
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">mail</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Email Notifications</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Daily summaries and critical alerts.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-[#728156] relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-on-primary rounded-full shadow-sm transform translate-x-6 transition-transform duration-300"></span>
+</button>
+</div>
+<!-- Toggle Item 2 -->
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">smartphone</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Push Notifications</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time updates on your device.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-[#728156] relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-on-primary rounded-full shadow-sm transform translate-x-6 transition-transform duration-300"></span>
+</button>
+</div>
+<!-- Toggle Item 3 -->
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-xl border border-outline-variant/20">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline-variant">forum</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">WhatsApp Alerts</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Instant messages for order confirmations.</p>
+</div>
+</div>
+<button class="w-12 h-6 rounded-full bg-outline-variant relative shadow-sm cursor-pointer transition-colors" onclick="this.classList.toggle('bg-[#728156]'); this.classList.toggle('bg-outline-variant'); this.firstElementChild.classList.toggle('translate-x-6'); this.firstElementChild.classList.toggle('translate-x-1');">
+<span class="absolute top-1 left-0 w-4 h-4 bg-surface-container-lowest rounded-full shadow-sm transform translate-x-1 transition-transform duration-300"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- Security Section -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_12px_rgba(114,129,86,0.06)] p-lg lg:p-xl flex flex-col gap-lg border border-outline-variant/30">
+<div class="flex items-center gap-md mb-xs">
+<div class="w-10 h-10 rounded-full bg-error-container/30 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">shield_lock</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Security</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Protect your account and transactions.</p>
+</div>
+</div>
+<div class="flex flex-col gap-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between p-md bg-surface-container-low rounded-xl gap-md border border-outline-variant/20">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Password</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Last changed 3 months ago.</p>
+</div>
+<button class="px-md py-sm bg-surface-container-lowest text-primary font-label-md text-label-md rounded-lg border border-outline-variant hover:bg-surface-container transition-all self-start md:self-auto shadow-sm">Change Password</button>
+</div>
+<div class="flex flex-col md:flex-row md:items-center justify-between p-md bg-surface-container-low rounded-xl gap-md border border-outline-variant/20">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<p class="font-label-md text-label-md text-on-surface">Two-Factor Authentication</p>
+<span class="px-sm py-xs bg-primary/10 text-primary font-label-sm text-label-sm rounded-full tracking-wide">ENABLED</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Adds an extra layer of security via SMS or Authenticator app.</p>
+</div>
+<button class="px-md py-sm bg-surface-container-lowest text-error font-label-md text-label-md rounded-lg border border-outline-variant hover:bg-error-container hover:text-on-error-container hover:border-error-container transition-all self-start md:self-auto shadow-sm">Disable 2FA</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div></main></div></body></html>
