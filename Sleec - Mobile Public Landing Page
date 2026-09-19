@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Sleec - Sell, Manage &amp; Grow</title>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        background-color: #f8f9ff;
+        color: #121c2a;
+        -webkit-tap-highlight-color: transparent;
+      }
+      h1, h2, h3, h4, .font-heading {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Modal Animation */
+    .modal-backdrop {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-sheet {
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-backdrop.active .modal-sheet {
+      transform: translateY(0);
+    }
+
+    /* Subtle float motion for hero mockup */
+    @keyframes subtleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .animate-subtle-float {
+      animation: subtleFloat 5s ease-in-out infinite;
+    }
+
+    /* Drawer menu */
+    .mobile-drawer {
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-drawer.open {
+      transform: translateX(0);
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#728156",
+            "primary-hover": "#5f6c47",
+            "primary-container": "#6b7a50",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#faffe8",
+            secondary: "#55633e",
+            "secondary-container": "#d9e9b9",
+            "on-secondary-container": "#141f03",
+            surface: "#f8f9ff",
+            "surface-dim": "#d0dbed",
+            "surface-container": "#eff4ff",
+            "surface-container-low": "#f4f7fc",
+            "surface-container-lowest": "#ffffff",
+            "surface-variant": "#d9e3f6",
+            "on-surface": "#121c2a",
+            "on-surface-variant": "#45483e",
+            outline: "#76786d",
+            "outline-variant": "#c6c8ba",
+            error: "#ba1a1a",
+            "error-container": "#ffdad6"
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-surface text-on-surface antialiased selection:bg-primary/20 selection:text-primary min-h-screen flex flex-col justify-between" data-restored="true">
+<!-- Mobile Top Bar Navigation (Fixed Mobile 390px Fluid Header) -->
+<header class="fixed top-0 inset-x-0 h-16 bg-surface/95 backdrop-blur-md z-40 border-b border-outline-variant/30 px-4 flex items-center justify-between transition-all" id="top-nav">
+<a class="flex items-center gap-2" href="#">
+<!-- Sleec Logo Mark -->
+<div class="w-8 h-8 rounded-xl bg-primary flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-[20px]">spa</span>
+</div>
+<span class="text-xl font-extrabold tracking-tight font-heading text-on-surface">Sleec</span>
+</a>
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-full bg-primary text-white text-xs font-semibold hover:bg-primary-hover shadow-sm transition-all active:scale-95" onclick="openWaitlistModal()">
+        Join Waitlist
+      </button>
+<button aria-label="Open navigation menu" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface active:bg-surface-variant transition-colors" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-[22px]" id="menu-icon">menu</span>
+</button>
+</div>
+</header>
+<!-- Mobile Drawer Menu -->
+<div class="mobile-drawer fixed inset-y-0 right-0 w-[290px] bg-surface-container-lowest z-50 shadow-2xl border-l border-outline-variant/30 flex flex-col p-6" id="mobile-drawer">
+<div class="flex items-center justify-between pb-5 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[16px]">spa</span>
+</div>
+<span class="font-heading font-extrabold text-lg text-on-surface">Sleec</span>
+</div>
+<button aria-label="Close menu" class="p-1.5 rounded-full text-on-surface-variant hover:bg-surface-container active:scale-90 transition-transform" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-2 py-6 font-medium text-sm text-on-surface">
+<a class="py-2.5 px-3 rounded-xl hover:bg-surface-container transition-colors flex items-center gap-3" href="#about" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-outline text-[20px]">info</span> About
+      </a>
+<a class="py-2.5 px-3 rounded-xl hover:bg-surface-container transition-colors flex items-center gap-3" href="#how-it-works" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-outline text-[20px]">timeline</span> How It Works
+      </a>
+<a class="py-2.5 px-3 rounded-xl hover:bg-surface-container transition-colors flex items-center gap-3" href="#features" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-outline text-[20px]">grid_view</span> Features
+      </a>
+<a class="py-2.5 px-3 rounded-xl hover:bg-surface-container transition-colors flex items-center gap-3" href="#dashboard-preview" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-outline text-[20px]">dashboard</span> Dashboard Demo
+      </a>
+<a class="py-2.5 px-3 rounded-xl hover:bg-surface-container transition-colors flex items-center gap-3" href="#faq" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-outline text-[20px]">help</span> FAQ
+      </a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/20 space-y-3">
+<button class="w-full py-3.5 rounded-xl bg-primary text-white font-semibold text-sm shadow-md hover:bg-primary-hover transition-all flex items-center justify-center gap-2 active:scale-95" onclick="toggleMobileMenu(); openWaitlistModal();">
+<span>Join Waitlist</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<p class="text-[11px] text-center text-outline">Empowering African commerce • Early Access</p>
+</div>
+</div>
+<!-- Drawer Backdrop Overlay -->
+<div class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 opacity-0 pointer-events-none transition-opacity duration-300" id="drawer-backdrop" onclick="toggleMobileMenu()"></div>
+<!-- Fluid Mobile Main Wrapper (Full width mobile container) -->
+<main class="w-full pt-20 pb-16 flex flex-col gap-12 overflow-x-hidden">
+<!-- 1. HERO SECTION -->
+<section class="px-5 pt-3 text-center flex flex-col items-center gap-4 w-full" id="about">
+<div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide border border-primary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        EARLY ACCESS
+      </div>
+<h1 class="text-3xl font-extrabold tracking-tight font-heading text-on-surface leading-[1.2]">
+        The simpler way to sell, manage and grow your business.
+      </h1>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+        Sleec gives African businesses one simple place to sell online, manage operations, get paid, and scale without chaos.
+      </p>
+<div class="w-full flex flex-col gap-2.5 pt-1">
+<button class="w-full py-3.5 rounded-xl bg-primary text-white font-semibold text-sm shadow-[0_4px_16px_rgba(114,129,86,0.3)] hover:bg-primary-hover transition-all flex items-center justify-center gap-2 active:scale-[0.98]" onclick="openWaitlistModal()">
+<span>Join the Waitlist</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<a class="w-full py-3 rounded-xl bg-surface-container hover:bg-surface-variant text-on-surface font-semibold text-sm transition-colors flex items-center justify-center gap-1.5 border border-outline-variant/30" href="#how-it-works">
+<span>See How It Works</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</a>
+</div>
+<!-- Mobile Commerce Card Preview -->
+<div class="w-full mt-3 relative animate-subtle-float">
+<div class="bg-surface-container-lowest rounded-2xl p-4 shadow-[0_12px_36px_rgba(114,129,86,0.12)] border border-outline-variant/40 text-left space-y-3.5">
+<!-- Mockup Header -->
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary/15 text-primary flex items-center justify-center font-bold text-xs">
+                FS
+              </div>
+<div>
+<p class="text-xs font-bold leading-tight text-on-surface">Fuad Supermarket</p>
+<p class="text-[10px] text-outline font-mono">sleec.app/fuadshop</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#dcfce7] text-[#166534] text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#166534]"></span> Verified
+            </span>
+</div>
+<!-- Quick Metrics Row in Mockup -->
+<div class="grid grid-cols-2 gap-2.5">
+<div class="bg-surface-container-low p-2.5 rounded-xl border border-outline-variant/20">
+<span class="text-[10px] text-outline uppercase font-semibold">Today's Sales</span>
+<p class="text-base font-extrabold text-on-surface mt-0.5">₦452,500</p>
+<span class="text-[10px] text-primary font-semibold flex items-center gap-0.5 mt-0.5">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> +12.5%
+              </span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-xl border border-outline-variant/20">
+<span class="text-[10px] text-outline uppercase font-semibold">Available Balance</span>
+<p class="text-base font-extrabold text-primary mt-0.5">₦782,450</p>
+<span class="text-[10px] text-outline font-medium mt-0.5 block">Instant withdrawal</span>
+</div>
+</div>
+<!-- Recent Customer Order Pill -->
+<div class="p-2.5 rounded-xl bg-surface-container border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-lowest flex items-center justify-center text-primary text-xs font-bold shadow-xs">
+                OA
+              </div>
+<div>
+<p class="text-[11px] font-semibold text-on-surface leading-tight">Oluwaseun Adebayo</p>
+<p class="text-[10px] text-on-surface-variant">3 items • ₦145,400</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[9px] font-bold">
+              Processing
+            </span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. THE PROBLEM VS SOLUTION -->
+<section class="px-5 w-full">
+<div class="text-center mb-5">
+<span class="text-[11px] font-bold text-outline uppercase tracking-wider">UNIFY YOUR BUSINESS</span>
+<h2 class="text-2xl font-bold font-heading tracking-tight text-on-surface mt-1 leading-snug">
+          Stop juggling 6 different apps just to fulfill a single order.
+        </h2>
+<p class="text-xs text-on-surface-variant mt-2 leading-relaxed">
+          African business owners waste hours manually validating screenshots, tracking inventory in WhatsApp chats, and calculating payouts by hand.
+        </p>
+</div>
+<div class="space-y-3.5">
+<!-- Fragmented Way -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 border border-error/20 shadow-sm relative overflow-hidden">
+<div class="flex items-center gap-2 mb-3">
+<div class="w-6 h-6 rounded-full bg-error-container text-error flex items-center justify-center text-xs font-bold">✕</div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-error">The Fragmented Way</h3>
+</div>
+<ul class="space-y-2 text-xs text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="text-error font-bold text-sm leading-none">•</span>
+<span>Screenshots of fake bank alerts lost in flooded WhatsApp chats.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-error font-bold text-sm leading-none">•</span>
+<span>Out-of-sync inventory leading to double selling products.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-error font-bold text-sm leading-none">•</span>
+<span>Messy Excel sheets or paper books to track debtors &amp; repeat buyers.</span>
+</li>
+</ul>
+<div class="mt-3 pt-2.5 border-t border-outline-variant/20 text-[11px] text-error font-medium flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">warning</span> Result: Lost revenue and delayed orders.
+          </div>
+</div>
+<!-- Sleec Unified System -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 border-2 border-primary/40 shadow-sm relative overflow-hidden">
+<div class="flex items-center gap-2 mb-3">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-xs font-bold">✓</div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-primary">The Sleec Unified System</h3>
+</div>
+<ul class="space-y-2 text-xs text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="text-primary font-bold text-sm leading-none">✓</span>
+<span><strong class="text-on-surface">Storefront + Social Sync:</strong> Branded storefront syncing directly with WhatsApp orders.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary font-bold text-sm leading-none">✓</span>
+<span><strong class="text-on-surface">Automated Verification:</strong> Direct settlements &amp; instant bank transfer confirmation without receipts.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-primary font-bold text-sm leading-none">✓</span>
+<span><strong class="text-on-surface">Real-Time Wallet:</strong> Immediate withdrawal into any local bank account whenever you want.</span>
+</li>
+</ul>
+<div class="mt-3 pt-2.5 border-t border-primary/20 text-[11px] text-primary font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">verified</span> Result: 3x faster processing, zero headaches.
+          </div>
+</div>
+</div>
+</section>
+<!-- 3. HOW IT WORKS -->
+<section class="px-5 w-full" id="how-it-works">
+<div class="text-center mb-5">
+<span class="text-[11px] font-bold text-primary uppercase tracking-wider">HOW IT WORKS</span>
+<h2 class="text-2xl font-bold font-heading tracking-tight text-on-surface mt-1">
+          Launch and scale in three simple steps
+        </h2>
+<p class="text-xs text-on-surface-variant mt-2 leading-relaxed">
+          No coding, no lengthy setup. From inventory upload to your first checkout in under ten minutes.
+        </p>
+</div>
+<div class="space-y-3">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 shadow-sm flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-primary/10 text-primary font-heading font-extrabold text-sm flex items-center justify-center shrink-0 border border-primary/20">
+            01
+          </div>
+<div class="flex-1">
+<h3 class="text-sm font-bold font-heading text-on-surface">Create your shop</h3>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">
+              Set up your business identity, select curated templates (Fashion, Grocery, Tech, Beauty), and upload catalog with stock counts in minutes.
+            </p>
+<div class="mt-2 flex items-center gap-1 text-[10px] text-primary font-semibold">
+<span class="material-symbols-outlined text-[14px]">link</span> sleec.app/yourname
+            </div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 shadow-sm flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-primary/10 text-primary font-heading font-extrabold text-sm flex items-center justify-center shrink-0 border border-primary/20">
+            02
+          </div>
+<div class="flex-1">
+<h3 class="text-sm font-bold font-heading text-on-surface">Share and sell</h3>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">
+              Put your store link on your WhatsApp bio, Instagram, or TikTok. Customers browse clearly and order directly with automated receipts.
+            </p>
+<div class="mt-2 flex items-center gap-1 text-[10px] text-primary font-semibold">
+<span class="material-symbols-outlined text-[14px]">chat</span> Social &amp; WhatsApp Ready
+            </div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 shadow-sm flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-primary/10 text-primary font-heading font-extrabold text-sm flex items-center justify-center shrink-0 border border-primary/20">
+            03
+          </div>
+<div class="flex-1">
+<h3 class="text-sm font-bold font-heading text-on-surface">Manage and grow</h3>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">
+              Fulfill pickups or local deliveries, monitor revenue charts, track repeat buyers, and withdraw earnings straight to your bank account anytime.
+            </p>
+<div class="mt-2 flex items-center gap-1 text-[10px] text-primary font-semibold">
+<span class="material-symbols-outlined text-[14px]">account_balance_wallet</span> Instant Wallet Settlement
+            </div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. PLATFORM CAPABILITIES (FEATURES GRID) -->
+<section class="px-5 w-full" id="features">
+<div class="text-center mb-5">
+<span class="text-[11px] font-bold text-primary uppercase tracking-wider">PLATFORM CAPABILITIES</span>
+<h2 class="text-2xl font-bold font-heading tracking-tight text-on-surface mt-1">
+          Built to help your business move forward
+        </h2>
+<p class="text-xs text-on-surface-variant mt-2">
+          Every feature is designed specifically around the daily realities of African commerce.
+        </p>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Feature 1 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-2.5">
+<span class="material-symbols-outlined text-[18px]">storefront</span>
+</div>
+<div>
+<h3 class="text-xs font-bold font-heading text-on-surface">Curated Storefront</h3>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+              Fast, zero-code mobile shop with customizable hero banners &amp; store policies.
+            </p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-2.5">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+</div>
+<div>
+<h3 class="text-xs font-bold font-heading text-on-surface">Smart Inventory</h3>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+              Track stock levels, low-inventory triggers, and multi-variant attributes with ease.
+            </p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-2.5">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+</div>
+<div>
+<h3 class="text-xs font-bold font-heading text-on-surface">Order Management</h3>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+              Filter by pending, paid, or dispatched. Assign local dispatch riders instantly.
+            </p>
+</div>
+</div>
+<!-- Feature 4 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-2.5">
+<span class="material-symbols-outlined text-[18px]">group</span>
+</div>
+<div>
+<h3 class="text-xs font-bold font-heading text-on-surface">Customer CRM</h3>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+              Lifetime spend logs, purchase frequency, debt ledger, and customer rewards.
+            </p>
+</div>
+</div>
+<!-- Feature 5 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-2.5">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</div>
+<div>
+<h3 class="text-xs font-bold font-heading text-on-surface">Sleec Pay</h3>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+              Accept cards, instant bank transfers, and automated reconciliation without fake alerts.
+            </p>
+</div>
+</div>
+<!-- Feature 6 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-2.5">
+<span class="material-symbols-outlined text-[18px]">insights</span>
+</div>
+<div>
+<h3 class="text-xs font-bold font-heading text-on-surface">Growth Analytics</h3>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+              Visualize average order value, daily gross margin, storefront visits &amp; conversion rate.
+            </p>
+</div>
+</div>
+<!-- Feature 7 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-2.5">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+</div>
+<div>
+<h3 class="text-xs font-bold font-heading text-on-surface">Marketing &amp; Deals</h3>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+              Run flash discounts, custom promo codes, and referral links for customer ambassadors.
+            </p>
+</div>
+</div>
+<!-- Feature 8 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col justify-between">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-2.5">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+</div>
+<div>
+<h3 class="text-xs font-bold font-heading text-on-surface">WhatsApp Commerce</h3>
+<p class="text-[11px] text-on-surface-variant mt-1 leading-snug">
+              Automated order notifications, payment confirmation links, and one-tap customer triggers.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. INTERACTIVE DASHBOARD SHOWCASE -->
+<section class="px-5 w-full" id="dashboard-preview">
+<div class="text-center mb-5">
+<span class="text-[11px] font-bold text-primary uppercase tracking-wider">COMMAND CENTER</span>
+<h2 class="text-2xl font-bold font-heading tracking-tight text-on-surface mt-1">
+          Your entire business. One dashboard.
+        </h2>
+<p class="text-xs text-on-surface-variant mt-2 leading-relaxed">
+          Tap the tabs below to explore how Sleec powers everyday retail operations.
+        </p>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 shadow-lg space-y-3.5">
+<!-- Touch-switchable tabs -->
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
+<button class="hotspot-tab px-3 py-1.5 rounded-full bg-primary text-white text-xs font-semibold whitespace-nowrap shadow-sm" id="tab-sales" onclick="selectHotspot('sales')">
+            1. Sales Chart
+          </button>
+<button class="hotspot-tab px-3 py-1.5 rounded-full bg-surface-container text-on-surface text-xs font-semibold whitespace-nowrap" id="tab-wallet" onclick="selectHotspot('wallet')">
+            2. Wallet Balance
+          </button>
+<button class="hotspot-tab px-3 py-1.5 rounded-full bg-surface-container text-on-surface text-xs font-semibold whitespace-nowrap" id="tab-orders" onclick="selectHotspot('orders')">
+            3. Orders Flow
+          </button>
+<button class="hotspot-tab px-3 py-1.5 rounded-full bg-surface-container text-on-surface text-xs font-semibold whitespace-nowrap" id="tab-crm" onclick="selectHotspot('crm')">
+            4. Customer CRM
+          </button>
+</div>
+<!-- Dashboard preview display -->
+<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/30 space-y-3">
+<div class="p-3 bg-surface-container-lowest rounded-xl border border-primary/30 shadow-sm transition-all duration-300" id="hotspot-description">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[10px] font-bold uppercase text-primary tracking-wider" id="hotspot-title">LIVE SALES TRACKING</span>
+<span class="material-symbols-outlined text-primary text-[16px]">show_chart</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed" id="hotspot-text">
+              Visual revenue tracking across 7-day and 30-day windows to monitor daily sales peaks and seasonal buyer trends.
+            </p>
+</div>
+<!-- Dynamic Display Box -->
+<div class="p-3 bg-surface-container-lowest rounded-xl border border-outline-variant/20 flex items-center justify-between">
+<div>
+<span class="text-[9px] text-outline uppercase font-semibold" id="dash-metric-label">Sales Overview (7 Days)</span>
+<p class="text-lg font-extrabold text-on-surface leading-tight" id="dash-metric-value">₦1.8M <span class="text-[11px] text-primary font-semibold">+18.4%</span></p>
+</div>
+<svg class="w-20 h-7 text-primary" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 100 30">
+<path d="M0 25 Q 25 20, 50 12 T 100 5" stroke-linecap="round"></path>
+</svg>
+</div>
+<div class="grid grid-cols-2 gap-2 text-left">
+<div class="p-2.5 bg-surface-container-lowest rounded-xl border border-outline-variant/20">
+<span class="text-[9px] text-outline uppercase font-semibold" id="dash-sub-label-1">Wallet Available</span>
+<p class="text-xs font-bold text-on-surface mt-0.5" id="dash-sub-val-1">₦782,450</p>
+<span class="text-[9px] text-primary font-medium">Clear in 24h</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest rounded-xl border border-outline-variant/20">
+<span class="text-[9px] text-outline uppercase font-semibold" id="dash-sub-label-2">Avg. Order Value</span>
+<p class="text-xs font-bold text-on-surface mt-0.5" id="dash-sub-val-2">₦24,500</p>
+<span class="text-[9px] text-outline">128 Customers</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. TAILORED FOR AFRICAN BUSINESSES -->
+<section class="px-5 w-full">
+<div class="text-center mb-5">
+<span class="text-[11px] font-bold text-primary uppercase tracking-wider">BUILT FOR LOCAL REALITIES</span>
+<h2 class="text-2xl font-bold font-heading tracking-tight text-on-surface mt-1">
+          Built for the way African businesses sell
+        </h2>
+<p class="text-xs text-on-surface-variant mt-2 leading-relaxed">
+          We didn't just replicate Western platforms. Sleec embraces local bank transfers, conversational chat commerce, dispatch riders, and trust verification.
+        </p>
+</div>
+<div class="space-y-2.5">
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-start gap-3 shadow-sm">
+<div class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</div>
+<div>
+<h3 class="text-sm font-bold font-heading text-on-surface">WhatsApp First</h3>
+<p class="text-xs text-on-surface-variant mt-0.5 leading-relaxed">
+              Customers love chatting before buying. Sleec turns casual chats into structured checkouts with live links.
+            </p>
+</div>
+</div>
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-start gap-3 shadow-sm">
+<div class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div>
+<h3 class="text-sm font-bold font-heading text-on-surface">Instant Transfers</h3>
+<p class="text-xs text-on-surface-variant mt-0.5 leading-relaxed">
+              Accept direct bank transfers that reconcile immediately. Say goodbye to waiting for fake paper teller slips.
+            </p>
+</div>
+</div>
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-start gap-3 shadow-sm">
+<div class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">two_wheeler</span>
+</div>
+<div>
+<h3 class="text-sm font-bold font-heading text-on-surface">Flexible Logistics</h3>
+<p class="text-xs text-on-surface-variant mt-0.5 leading-relaxed">
+              Support in-store pickup, seller delivery via local dispatch riders, and nationwide courier tracking for buyers.
+            </p>
+</div>
+</div>
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest border border-outline-variant/30 flex items-start gap-3 shadow-sm">
+<div class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<div>
+<h3 class="text-sm font-bold font-heading text-on-surface">Verified Badges</h3>
+<p class="text-xs text-on-surface-variant mt-0.5 leading-relaxed">
+              CAC business verification badges and digital receipts build instant trust so online shoppers order confidently.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. WHO IS SLEEC FOR? (INDUSTRY ADAPTABILITY) -->
+<section class="px-5 w-full">
+<div class="text-center mb-5">
+<span class="text-[11px] font-bold text-primary uppercase tracking-wider">INDUSTRY ADAPTABILITY</span>
+<h2 class="text-2xl font-bold font-heading tracking-tight text-on-surface mt-1">
+          Tailored for your specific retail niche
+        </h2>
+<p class="text-xs text-on-surface-variant mt-1.5">
+          Tap an industry to preview custom workflows and tools.
+        </p>
+</div>
+<!-- Industry Pills -->
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-2">
+<button class="ind-pill px-3 py-1.5 rounded-full bg-primary text-white text-xs font-semibold whitespace-nowrap shadow-sm" id="ind-electronics" onclick="setIndustry('electronics')">
+          Electronics &amp; Gadgets
+        </button>
+<button class="ind-pill px-3 py-1.5 rounded-full bg-surface-container text-on-surface text-xs font-semibold whitespace-nowrap" id="ind-fashion" onclick="setIndustry('fashion')">
+          Fashion &amp; Apparel
+        </button>
+<button class="ind-pill px-3 py-1.5 rounded-full bg-surface-container text-on-surface text-xs font-semibold whitespace-nowrap" id="ind-beauty" onclick="setIndustry('beauty')">
+          Beauty &amp; Skincare
+        </button>
+<button class="ind-pill px-3 py-1.5 rounded-full bg-surface-container text-on-surface text-xs font-semibold whitespace-nowrap" id="ind-grocery" onclick="setIndustry('grocery')">
+          Food &amp; Grocery
+        </button>
+</div>
+<!-- Dynamic Industry Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 shadow-sm mt-1 transition-all duration-300" id="industry-content-card">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" id="industry-icon">devices</span>
+</div>
+<div>
+<span class="text-[10px] font-bold uppercase text-outline tracking-wide" id="industry-tag">ELECTRONICS &amp; GADGETS</span>
+<h3 class="text-sm font-bold font-heading text-on-surface" id="industry-heading">Serial tracking, warranty badges &amp; high-value protection</h3>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant mt-2 leading-relaxed" id="industry-desc">
+          Sell phones, smart gadgets, and audio gear with instant bank transfer verification, warranty tags, and customer authenticity receipts.
+        </p>
+<div class="grid grid-cols-2 gap-2 mt-3 pt-3 border-t border-outline-variant/20 text-left">
+<div class="p-2.5 bg-surface-container rounded-xl">
+<span class="text-[9px] text-outline uppercase font-semibold">Typical Merchant Result</span>
+<p class="text-sm font-extrabold text-primary" id="industry-stat">0% Chargebacks</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5" id="industry-substat">Instant verified bank settlements.</p>
+</div>
+<div class="p-2.5 bg-surface-container rounded-xl">
+<span class="text-[9px] text-outline uppercase font-semibold">Key Advantage</span>
+<p class="text-xs font-bold text-on-surface" id="industry-advantage">Automated Warranties</p>
+<p class="text-[10px] text-on-surface-variant mt-0.5">Instant digital receipt &amp; IMEI stamp.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. BOTTOM WAITLIST CALL TO ACTION BANNER -->
+<section class="px-5 w-full">
+<div class="bg-primary text-white rounded-3xl p-6 text-center shadow-lg relative overflow-hidden">
+<div class="relative z-10 space-y-3">
+<span class="inline-block px-3 py-1 rounded-full bg-white/15 text-white text-[11px] font-bold tracking-wider uppercase border border-white/20">
+            EARLY ACCESS AVAILABLE
+          </span>
+<h2 class="text-2xl font-extrabold font-heading tracking-tight leading-snug">
+            Your business deserves a simpler way to sell.
+          </h2>
+<p class="text-xs text-white/90 leading-relaxed">
+            Be among the first African businesses to experience Sleec when we open access. Unlock your free storefront, automated ledger, and wallet settlements.
+          </p>
+<div class="pt-2">
+<button class="w-full py-3.5 rounded-xl bg-white text-primary font-bold text-sm shadow-md hover:bg-white/95 transition-all active:scale-95" onclick="openWaitlistModal()">
+              Join the Waitlist Now
+            </button>
+<p class="text-[10px] text-white/70 mt-2">✓ No credit card required • Free onboarding support</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. FAQ ACCORDION -->
+<section class="px-5 w-full" id="faq">
+<div class="text-center mb-5">
+<span class="text-[11px] font-bold text-primary uppercase tracking-wider">GOT QUESTIONS?</span>
+<h2 class="text-2xl font-bold font-heading tracking-tight text-on-surface mt-1">
+          Frequently Asked Questions
+        </h2>
+<p class="text-xs text-on-surface-variant mt-1.5">
+          Everything you need to know about Sleec and our upcoming rollout.
+        </p>
+</div>
+<div class="space-y-2.5">
+<!-- FAQ 1 -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-sm">
+<button class="w-full p-4 text-left flex items-center justify-between text-xs font-bold font-heading text-on-surface gap-2" onclick="toggleFAQ(this)">
+<span>What is Sleec?</span>
+<span class="material-symbols-outlined text-[18px] text-outline transition-transform duration-200">expand_more</span>
+</button>
+<div class="px-4 pb-4 text-xs text-on-surface-variant hidden border-t border-outline-variant/10 pt-2.5 leading-relaxed">
+            Sleec is an all-in-one African commerce operating platform. It provides businesses with a customizable storefront, automated payment reconciliation, inventory tracking, and wallet payouts in one place.
+          </div>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-sm">
+<button class="w-full p-4 text-left flex items-center justify-between text-xs font-bold font-heading text-on-surface gap-2" onclick="toggleFAQ(this)">
+<span>Who is Sleec for?</span>
+<span class="material-symbols-outlined text-[18px] text-outline transition-transform duration-200">expand_more</span>
+</button>
+<div class="px-4 pb-4 text-xs text-on-surface-variant hidden border-t border-outline-variant/10 pt-2.5 leading-relaxed">
+            Sleec is designed for retailers, independent merchants, creators, and online brands across Africa—spanning fashion, groceries, electronics, beauty, home goods, and services.
+          </div>
+</div>
+<!-- FAQ 3 -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-sm">
+<button class="w-full p-4 text-left flex items-center justify-between text-xs font-bold font-heading text-on-surface gap-2" onclick="toggleFAQ(this)">
+<span>Can I create an online shop with Sleec?</span>
+<span class="material-symbols-outlined text-[18px] text-outline transition-transform duration-200">expand_more</span>
+</button>
+<div class="px-4 pb-4 text-xs text-on-surface-variant hidden border-t border-outline-variant/10 pt-2.5 leading-relaxed">
+            Yes! You can choose from pre-built, high-converting retail templates, customize your brand banner, list products, and share your unique link anywhere (e.g. on Instagram and WhatsApp bio).
+          </div>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-sm">
+<button class="w-full p-4 text-left flex items-center justify-between text-xs font-bold font-heading text-on-surface gap-2" onclick="toggleFAQ(this)">
+<span>How do payments and payouts work?</span>
+<span class="material-symbols-outlined text-[18px] text-outline transition-transform duration-200">expand_more</span>
+</button>
+<div class="px-4 pb-4 text-xs text-on-surface-variant hidden border-t border-outline-variant/10 pt-2.5 leading-relaxed">
+            Sleec supports instant local bank transfers and debit card payments. Funds settle into your unified Sleec Wallet, from which you can withdraw to your commercial bank account anytime or schedule automatic payouts.
+          </div>
+</div>
+<!-- FAQ 5 -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-sm">
+<button class="w-full p-4 text-left flex items-center justify-between text-xs font-bold font-heading text-on-surface gap-2" onclick="toggleFAQ(this)">
+<span>Can I use Sleec with WhatsApp?</span>
+<span class="material-symbols-outlined text-[18px] text-outline transition-transform duration-200">expand_more</span>
+</button>
+<div class="px-4 pb-4 text-xs text-on-surface-variant hidden border-t border-outline-variant/10 pt-2.5 leading-relaxed">
+            Absolutely. Sleec sends automated order notifications, delivery dispatch tracking, and digital receipt confirmations directly into customer chats on WhatsApp.
+          </div>
+</div>
+<!-- FAQ 6 -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-sm">
+<button class="w-full p-4 text-left flex items-center justify-between text-xs font-bold font-heading text-on-surface gap-2" onclick="toggleFAQ(this)">
+<span>When will Sleec be available?</span>
+<span class="material-symbols-outlined text-[18px] text-outline transition-transform duration-200">expand_more</span>
+</button>
+<div class="px-4 pb-4 text-xs text-on-surface-variant hidden border-t border-outline-variant/10 pt-2.5 leading-relaxed">
+            We are currently rolling out access in waves to waitlist members. Joining the waitlist guarantees priority onboarding and exclusive launch perks.
+          </div>
+</div>
+</div>
+</section>
+<!-- 10. CLEAN MOBILE FOOTER -->
+<footer class="px-5 pt-8 border-t border-outline-variant/30 text-left space-y-6 w-full">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[16px]">spa</span>
+</div>
+<span class="font-heading font-extrabold text-lg text-on-surface">Sleec</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+        Empowering African merchants with unified digital tools to sell, verify, manage and scale without operational chaos.
+      </p>
+<div class="grid grid-cols-2 gap-4 text-xs">
+<div class="space-y-2">
+<p class="font-bold text-on-surface uppercase tracking-wider text-[10px]">PLATFORM</p>
+<p><a class="text-on-surface-variant hover:text-primary" href="#about">About Sleec</a></p>
+<p><a class="text-on-surface-variant hover:text-primary" href="#how-it-works">How It Works</a></p>
+<p><a class="text-on-surface-variant hover:text-primary" href="#features">Features</a></p>
+<p><a class="text-on-surface-variant hover:text-primary" href="#faq">FAQ</a></p>
+</div>
+<div class="space-y-2">
+<p class="font-bold text-on-surface uppercase tracking-wider text-[10px]">SUPPORT &amp; CONTACT</p>
+<p class="text-on-surface-variant">Lagos, Nigeria</p>
+<p class="text-on-surface-variant">support@sleec.app</p>
+<p class="text-primary font-semibold">CAC Verification Ready</p>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/20 flex flex-col gap-3 text-[11px] text-outline">
+<div class="flex gap-4">
+<a class="hover:underline" href="#">Privacy Policy</a>
+<a class="hover:underline" href="#">Terms of Service</a>
+<a class="hover:underline" href="#">Security</a>
+</div>
+<p>© 2025 Sleec Technologies Ltd. All rights reserved.</p>
+</div>
+</footer>
+</main>
+<!-- WORKING WAITLIST BOTTOM SHEET / MODAL -->
+<div class="modal-backdrop fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-end justify-center p-0" id="waitlist-modal">
+<div class="modal-sheet w-full bg-surface-container-lowest rounded-t-3xl shadow-2xl p-6 border-t border-outline-variant/30 flex flex-col max-h-[92vh] overflow-y-auto">
+<!-- Drag handle for native mobile app feel -->
+<div class="w-12 h-1.5 bg-outline-variant/60 rounded-full mx-auto mb-4"></div>
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-wider text-primary">Sleec Waitlist</span>
+</div>
+<button aria-label="Close modal" class="w-8 h-8 rounded-full flex items-center justify-center text-outline hover:bg-surface-container transition-colors" onclick="closeWaitlistModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Form View -->
+<div class="space-y-4 pt-1" id="waitlist-form-container">
+<div class="space-y-1">
+<h3 class="text-xl font-bold font-heading text-on-surface">Be first to experience Sleec.</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Join the waitlist and we'll let you know when Sleec is ready for you.
+          </p>
+</div>
+<form class="space-y-3 pt-1" onsubmit="handleWaitlistSubmit(event)">
+<div class="space-y-1 text-left">
+<label class="text-[11px] font-bold text-on-surface uppercase tracking-wide">Full Name *</label>
+<input class="w-full px-3.5 py-3 rounded-xl bg-surface-container border border-outline-variant/40 text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all" placeholder="e.g. Oluwaseun Adebayo" required="" type="text"/>
+</div>
+<div class="space-y-1 text-left">
+<label class="text-[11px] font-bold text-on-surface uppercase tracking-wide">Email Address *</label>
+<input class="w-full px-3.5 py-3 rounded-xl bg-surface-container border border-outline-variant/40 text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all" placeholder="seun@example.com" required="" type="email"/>
+</div>
+<div class="space-y-1 text-left">
+<label class="text-[11px] font-bold text-on-surface uppercase tracking-wide">Business Name</label>
+<input class="w-full px-3.5 py-3 rounded-xl bg-surface-container border border-outline-variant/40 text-xs text-on-surface focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all" placeholder="e.g. Adebayo Organics" type="text"/>
+</div>
+<div class="pt-2">
+<button class="w-full py-3.5 rounded-xl bg-primary text-white font-semibold text-sm shadow-md hover:bg-primary-hover transition-all flex items-center justify-center gap-2 active:scale-95" id="waitlist-submit-btn" type="submit">
+<span>Join Waitlist</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<p class="text-[10px] text-center text-outline mt-2">Zero spam. Only launch notifications and early seller perks.</p>
+</div>
+</form>
+</div>
+<!-- Success State View (Hidden initially) -->
+<div class="hidden text-center py-6 space-y-3.5" id="waitlist-success-container">
+<div class="w-14 h-14 rounded-full bg-primary/10 text-primary mx-auto flex items-center justify-center ring-8 ring-primary/5">
+<span class="material-symbols-outlined text-[32px]">check_circle</span>
+</div>
+<h3 class="text-xl font-bold font-heading text-on-surface">You're on the list!</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed max-w-xs mx-auto">
+          Thanks for joining the Sleec waitlist. We've reserved your early access spot and will be in touch when we're ready for you.
+        </p>
+<div class="pt-2">
+<button class="w-full py-3 rounded-xl bg-surface-container text-on-surface font-semibold text-xs hover:bg-surface-variant transition-colors" onclick="closeWaitlistModal()">
+            Back to Website
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- JavaScript Interactivity -->
+<script>
+    // Mobile Drawer navigation
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const backdrop = document.getElementById('drawer-backdrop');
+      const isOpen = drawer.classList.contains('open');
+
+      if (isOpen) {
+        drawer.classList.remove('open');
+        backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+        backdrop.classList.add('opacity-0', 'pointer-events-none');
+        document.body.style.overflow = '';
+      } else {
+        drawer.classList.add('open');
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        backdrop.classList.add('opacity-100', 'pointer-events-auto');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // Waitlist Modal
+    function openWaitlistModal() {
+      const modal = document.getElementById('waitlist-modal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeWaitlistModal() {
+      const modal = document.getElementById('waitlist-modal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        document.getElementById('waitlist-form-container').classList.remove('hidden');
+        document.getElementById('waitlist-success-container').classList.add('hidden');
+      }, 300);
+    }
+
+    // Backdrop click close for modal
+    document.getElementById('waitlist-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'waitlist-modal') {
+        closeWaitlistModal();
+      }
+    });
+
+    function handleWaitlistSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('waitlist-submit-btn');
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span> Submitting...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        document.getElementById('waitlist-form-container').classList.add('hidden');
+        document.getElementById('waitlist-success-container').classList.remove('hidden');
+        btn.innerHTML = '<span>Join Waitlist</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span>';
+        btn.disabled = false;
+      }, 800);
+    }
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeWaitlistModal();
+        const drawer = document.getElementById('mobile-drawer');
+        if (drawer.classList.contains('open')) toggleMobileMenu();
+      }
+    });
+
+    // FAQ Accordion
+    function toggleFAQ(button) {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector('.material-symbols-outlined');
+      const isHidden = content.classList.contains('hidden');
+
+      document.querySelectorAll('#faq .bg-surface-container-lowest > div').forEach(div => {
+        div.classList.add('hidden');
+      });
+      document.querySelectorAll('#faq button .material-symbols-outlined').forEach(i => {
+        i.style.transform = 'rotate(0deg)';
+      });
+
+      if (isHidden) {
+        content.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        content.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // Interactive Dashboard Showcase Tabs
+    const hotspotsData = {
+      sales: {
+        title: "LIVE SALES TRACKING",
+        text: "Visual revenue tracking across 7-day and 30-day windows to monitor daily sales peaks and seasonal buyer trends.",
+        metricLabel: "Sales Overview (7 Days)",
+        metricVal: "₦1.8M <span class=\"text-[11px] text-primary font-semibold\">+18.4%</span>",
+        sub1Label: "Wallet Available",
+        sub1Val: "₦782,450",
+        sub2Label: "Avg. Order Value",
+        sub2Val: "₦24,500"
+      },
+      wallet: {
+        title: "AUTOMATED WALLET & TRANSFERS",
+        text: "Instant settlement of bank transfer payments directly into your Sleec wallet with one-tap withdrawal to any Nigerian bank.",
+        metricLabel: "Instant Payout Balance",
+        metricVal: "₦782,450 <span class=\"text-[11px] text-primary font-semibold\">Available</span>",
+        sub1Label: "Pending Settlement",
+        sub1Val: "₦0.00",
+        sub2Label: "Last Withdrawal",
+        sub2Val: "₦350,000 (Today)"
+      },
+      orders: {
+        title: "ORDER PIPELINE COMMAND",
+        text: "Track incoming orders from payment receipt to rider dispatch, pickup status, and automated customer notifications.",
+        metricLabel: "Active Orders Today",
+        metricVal: "24 Orders <span class=\"text-[11px] text-primary font-semibold\">9 Dispatched</span>",
+        sub1Label: "Awaiting Pickup",
+        sub1Val: "4 Orders",
+        sub2Label: "Avg Delivery Time",
+        sub2Val: "38 Mins"
+      },
+      crm: {
+        title: "CUSTOMER INTELLIGENCE",
+        text: "Keep historical ledgers of buyers, average basket sizes, and repeat customer retention without maintaining manual spreadsheets.",
+        metricLabel: "Repeat Customer Rate",
+        metricVal: "68.2% <span class=\"text-[11px] text-primary font-semibold\">High Loyalty</span>",
+        sub1Label: "Total Profiles",
+        sub1Val: "412 Buyers",
+        sub2Label: "VIP Segments",
+        sub2Val: "48 Accounts"
+      }
+    };
+
+    function selectHotspot(key) {
+      document.querySelectorAll('.hotspot-tab').forEach(btn => {
+        btn.classList.remove('bg-primary', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-surface-container', 'text-on-surface');
+      });
+      const activeBtn = document.getElementById('tab-' + key);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-surface-container', 'text-on-surface');
+        activeBtn.classList.add('bg-primary', 'text-white', 'shadow-sm');
+      }
+
+      const data = hotspotsData[key];
+      if (data) {
+        document.getElementById('hotspot-title').innerText = data.title;
+        document.getElementById('hotspot-text').innerText = data.text;
+        document.getElementById('dash-metric-label').innerText = data.metricLabel;
+        document.getElementById('dash-metric-value').innerHTML = data.metricVal;
+        document.getElementById('dash-sub-label-1').innerText = data.sub1Label;
+        document.getElementById('dash-sub-val-1').innerText = data.sub1Val;
+        document.getElementById('dash-sub-label-2').innerText = data.sub2Label;
+        document.getElementById('dash-sub-val-2').innerText = data.sub2Val;
+      }
+    }
+
+    // Industry Niche Selector
+    const industryData = {
+      electronics: {
+        tag: "ELECTRONICS & GADGETS",
+        heading: "Serial tracking, warranty badges & high-value protection",
+        desc: "Sell phones, smart gadgets, and audio gear with instant bank transfer verification, warranty tags, and customer authenticity receipts.",
+        icon: "devices",
+        stat: "0% Chargebacks",
+        substat: "Instant verified bank settlements.",
+        advantage: "Automated Warranties"
+      },
+      fashion: {
+        tag: "FASHION & APPAREL",
+        heading: "Size matrices, color variants & lookbook collections",
+        desc: "Display apparel, shoes, and luxury bags with multi-attribute sizing, Instagram lookbooks, and instant WhatsApp cart checkout.",
+        icon: "checkroom",
+        stat: "3.2x Conversions",
+        substat: "Direct social-to-store checkout links.",
+        advantage: "Multi-Variant Grid"
+      },
+      beauty: {
+        tag: "BEAUTY & COSMETICS",
+        heading: "Ingredient clarity, bundle discounts & repeat reorders",
+        desc: "Offer skincare routines, haircare bundles, and makeup shades with automated replenishment reminders and loyalty perks.",
+        icon: "face",
+        stat: "42% Reorders",
+        substat: "Automated WhatsApp repeat triggers.",
+        advantage: "Bundle Pricing"
+      },
+      grocery: {
+        tag: "FOOD & GROCERY",
+        heading: "Weight options, shelf-life alerts & swift local dispatch",
+        desc: "Manage fresh provisions, perishables, and pantry staples with neighborhood pickup points and rapid courier dispatch.",
+        icon: "restaurant",
+        stat: "Under 45 Mins",
+        substat: "Integrated rider delivery callbacks.",
+        advantage: "Batch Expiry Sync"
+      }
+    };
+
+    function setIndustry(key) {
+      document.querySelectorAll('.ind-pill').forEach(btn => {
+        btn.classList.remove('bg-primary', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-surface-container', 'text-on-surface');
+      });
+      const activeBtn = document.getElementById('ind-' + key);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-surface-container', 'text-on-surface');
+        activeBtn.classList.add('bg-primary', 'text-white', 'shadow-sm');
+      }
+
+      const item = industryData[key];
+      if (item) {
+        document.getElementById('industry-tag').innerText = item.tag;
+        document.getElementById('industry-heading').innerText = item.heading;
+        document.getElementById('industry-desc').innerText = item.desc;
+        document.getElementById('industry-icon').innerText = item.icon;
+        document.getElementById('industry-stat').innerText = item.stat;
+        document.getElementById('industry-substat').innerText = item.substat;
+        document.getElementById('industry-advantage').innerText = item.advantage;
+      }
+    }
+  </script>
+</body></html>
