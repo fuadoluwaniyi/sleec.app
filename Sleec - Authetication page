@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sleec - Authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "primary": "#728156",
+          "primary-container": "#6b7a50",
+          "primary-hover": "#5f6c47",
+          "secondary": "#55633e",
+          "secondary-container": "#d9e9b9",
+          "surface": "#f8f9f6",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-low": "#eff4ff",
+          "surface-container": "#f4f5f1",
+          "surface-container-high": "#e8e9e4",
+          "surface-container-highest": "#e2e3df",
+          "outline": "#76786d",
+          "outline-variant": "#e2e4db",
+          "on-surface": "#1a1c18",
+          "on-surface-variant": "#45483e",
+          "on-primary": "#ffffff",
+          "error": "#ba1a1a",
+          "error-container": "#ffdad6",
+          "on-error": "#ffffff",
+          "success": "#2e7d32",
+          "success-container": "#dcfce7"
+        },
+        fontFamily: {
+          sans: ["Plus Jakarta Sans", "Inter", "sans-serif"]
+        }
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    background-color: #f8f9f6;
+    color: #1a1c18;
+    overflow-x: hidden;
+  }
+  .otp-input:focus {
+    border-color: #728156;
+    box-shadow: 0 0 0 2px rgba(114, 129, 86, 0.2);
+  }
+  .role-card.active {
+    border-color: #728156;
+    background-color: #f4f6f0;
+    box-shadow: 0 4px 14px -2px rgba(114, 129, 86, 0.15);
+  }
+  .role-card.active .role-radio {
+    border-color: #728156;
+    background-color: #728156;
+  }
+  .role-card.active .role-radio::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 9999px;
+  }
+  .pill-badge {
+    transition: all 0.2s ease;
+  }
+  .pill-badge.selected {
+    background-color: #728156;
+    color: #ffffff;
+    border-color: #728156;
+  }
+
+  /* Floating background commerce elements animation */
+  @keyframes floatSlow1 {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-16px) rotate(1deg); }
+  }
+  @keyframes floatSlow2 {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(14px) rotate(-1.5deg); }
+  }
+  @keyframes floatSlow3 {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-12px) scale(1.03); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 0.65; transform: scale(1.05); }
+  }
+
+  .floating-element-1 {
+    animation: floatSlow1 7.5s ease-in-out infinite;
+  }
+  .floating-element-2 {
+    animation: floatSlow2 8.5s ease-in-out infinite;
+  }
+  .floating-element-3 {
+    animation: floatSlow3 6.8s ease-in-out infinite;
+  }
+  .floating-element-4 {
+    animation: floatSlow1 9.2s ease-in-out infinite 1.2s;
+  }
+  .floating-element-5 {
+    animation: floatSlow2 7.8s ease-in-out infinite 0.8s;
+  }
+  .ambient-particle {
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+</style>
+</head>
+<body class="min-h-screen flex flex-col justify-between bg-surface selection:bg-secondary-container relative overflow-x-hidden">
+<!-- ================= BACKGROUND FLOATING COMMERCE CANVAS ================= -->
+<div aria-hidden="true" class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<!-- Ambient subtle glow spots -->
+<div class="absolute -top-24 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl ambient-particle"></div>
+<div class="absolute bottom-10 right-1/4 w-[28rem] h-[28rem] bg-secondary-container/20 rounded-full blur-3xl ambient-particle" style="animation-delay: 2s;"></div>
+<!-- Floating Item 1: Top-Left New Order Pill -->
+<div class="absolute top-28 left-4 lg:left-14 xl:left-24 floating-element-1 opacity-45 sm:opacity-65 transition-all">
+<div class="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/85 backdrop-blur-md border border-outline-variant/60 shadow-sm text-xs">
+<div class="w-7 h-7 rounded-lg bg-emerald-50 text-success flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[16px]">shopping_cart_checkout</span>
+</div>
+<div>
+<div class="font-bold text-on-surface text-[12px] flex items-center gap-1.5">
+<span>New Order #8921</span>
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+</div>
+<span class="text-primary font-bold text-[11px]">₦45,000</span>
+</div>
+</div>
+</div>
+<!-- Floating Item 2: Top-Right Today's Sales Card -->
+<div class="absolute top-32 right-4 lg:right-12 xl:right-24 floating-element-2 opacity-40 sm:opacity-60 transition-all">
+<div class="p-3.5 rounded-2xl bg-white/85 backdrop-blur-md border border-outline-variant/60 shadow-sm text-xs w-48 space-y-1">
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant font-medium">
+<span>Today's Sales</span>
+<span class="text-success font-semibold flex items-center text-[10px] bg-success-container/70 px-1.5 py-0.5 rounded-md">
+<span class="material-symbols-outlined text-[11px]">trending_up</span> +12.5%
+          </span>
+</div>
+<p class="text-sm font-extrabold text-on-surface tracking-tight">₦452,500</p>
+<!-- Mini sparkline SVG -->
+<svg class="w-full h-5 stroke-primary fill-none pt-1" viewbox="0 0 100 20">
+<path d="M0 16 Q 18 14, 32 8 T 65 11 T 100 3" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Floating Item 3: Bottom-Left Product Inventory Card (below/beside card) -->
+<div class="absolute bottom-28 left-4 lg:left-16 xl:left-28 floating-element-3 opacity-45 sm:opacity-65 transition-all">
+<div class="flex items-center gap-3 px-3.5 py-2.5 rounded-2xl bg-white/85 backdrop-blur-md border border-outline-variant/60 shadow-sm text-xs">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary text-[18px]">
+<span class="material-symbols-outlined text-[20px]">coffee</span>
+</div>
+<div>
+<p class="font-bold text-on-surface text-[12px]">Ceramic Mug Set</p>
+<div class="flex items-center gap-1.5 text-[11px] text-outline">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+<span class="font-medium text-on-surface-variant">In Stock • 24 units</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Item 4: Bottom-Right Payment Received Notification -->
+<div class="absolute bottom-32 right-4 lg:right-16 xl:right-28 floating-element-4 opacity-45 sm:opacity-65 transition-all">
+<div class="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-white/85 backdrop-blur-md border border-outline-variant/60 shadow-sm text-xs">
+<div class="w-7 h-7 rounded-full bg-secondary-container text-primary flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</div>
+<div>
+<p class="font-bold text-on-surface text-[12px]">Payment Received</p>
+<p class="text-[11px] text-primary font-bold">₦18,500 <span class="text-outline font-normal">• Instant Settlement</span></p>
+</div>
+</div>
+</div>
+<!-- Floating Item 5: Center-Left Customers metric pill -->
+<div class="hidden xl:flex absolute top-1/2 left-8 -translate-y-1/2 floating-element-5 opacity-40 items-center gap-2 px-3.5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-outline-variant/50 shadow-sm text-xs font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">groups</span>
+<span>128 Customers</span>
+</div>
+<!-- Floating Item 6: Center-Right Storefront Badge -->
+<div class="hidden xl:flex absolute top-1/2 right-8 -translate-y-1/2 floating-element-1 opacity-40 items-center gap-2 px-3.5 py-2 rounded-full bg-white/80 backdrop-blur-md border border-outline-variant/50 shadow-sm text-xs font-semibold text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-secondary">store</span>
+<span>sleec.app/shop</span>
+</div>
+</div>
+<!-- Top Header Navigation -->
+<header class="w-full h-20 px-6 sm:px-12 flex items-center justify-between border-b border-outline-variant/30 bg-surface/90 backdrop-blur-md sticky top-0 z-30">
+<div class="flex items-center gap-3 cursor-pointer" onclick="goToView('entry')">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center font-bold text-xl shadow-sm">
+<span class="material-symbols-outlined text-[24px]">eco</span>
+</div>
+<span class="text-2xl font-extrabold tracking-tight text-on-surface">Sleec</span>
+</div>
+<div class="flex items-center gap-4 text-sm font-medium">
+<span class="text-on-surface-variant hidden sm:inline" id="top-help-text">Need assistance?</span>
+<button class="text-primary hover:underline font-semibold flex items-center gap-1" onclick="showToast('Support team: support@sleec.app')">
+<span class="material-symbols-outlined text-[18px]">help</span> Help
+      </button>
+</div>
+</header>
+<!-- Main Content Flow Container -->
+<main class="flex-1 flex items-center justify-center p-4 sm:p-8 relative z-10">
+<div class="w-full max-w-xl bg-surface-container-lowest rounded-2xl border border-outline-variant/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-6 sm:p-10 relative overflow-hidden transition-all duration-300">
+<!-- Back button (for secondary views) -->
+<button class="hidden mb-6 flex items-center gap-1.5 text-xs font-semibold text-on-surface-variant hover:text-primary transition-colors" id="back-nav-btn" onclick="handleBackNav()">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span> Back
+      </button>
+<!-- VIEW 1: AUTHENTICATION ENTRY (Role & Intent Selection) -->
+<section class="space-y-6" id="view-entry">
+<div class="text-center space-y-2">
+<div class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-secondary-container/40 text-secondary text-xs font-semibold uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-[14px]">lock_open</span> Early Access Portal
+          </div>
+<h1 class="text-3xl sm:text-4xl font-extrabold text-on-surface tracking-tight">Welcome to Sleec</h1>
+<p class="text-on-surface-variant text-sm sm:text-base max-w-md mx-auto">The simpler way to sell, manage and grow your commerce.</p>
+</div>
+<div class="space-y-3 pt-2">
+<p class="text-xs font-bold uppercase tracking-wider text-outline">Select your primary role</p>
+<!-- Seller Option -->
+<div class="role-card active p-4 sm:p-5 rounded-xl border-2 border-primary bg-[#f4f6f0] cursor-pointer flex items-center justify-between transition-all" id="role-seller" onclick="selectRole('seller')">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[28px]">storefront</span>
+</div>
+<div>
+<h3 class="font-bold text-base sm:text-lg text-on-surface">Seller</h3>
+<p class="text-xs sm:text-sm text-on-surface-variant">I want to sell, manage orders &amp; grow my shop</p>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center role-radio shrink-0"></div>
+</div>
+<!-- Buyer Option -->
+<div class="role-card p-4 sm:p-5 rounded-xl border-2 border-outline-variant/60 bg-surface-container-lowest cursor-pointer flex items-center justify-between hover:border-primary/40 transition-all" id="role-buyer" onclick="selectRole('buyer')">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[28px]">shopping_bag</span>
+</div>
+<div>
+<h3 class="font-bold text-base sm:text-lg text-on-surface">Buyer</h3>
+<p class="text-xs sm:text-sm text-on-surface-variant">I want to discover and shop with Sleec merchants</p>
+</div>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center role-radio shrink-0"></div>
+</div>
+</div>
+<!-- Primary Action buttons -->
+<div class="space-y-3 pt-2">
+<button class="w-full py-3.5 px-6 rounded-xl bg-primary hover:bg-primary-hover text-on-primary font-bold text-sm sm:text-base shadow-sm hover:shadow transition-all flex items-center justify-center gap-2" onclick="startRegistrationFlow()">
+<span>Create Account</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="w-full py-3.5 px-6 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-semibold text-sm sm:text-base transition-all" onclick="startLoginFlow()">
+            Log In to Existing Account
+          </button>
+</div>
+<p class="text-center text-xs text-on-surface-variant pt-2">
+          By continuing, you agree to Sleec's <a class="text-primary underline" href="#">Terms</a> and <a class="text-primary underline" href="#">Privacy Policy</a>.
+        </p>
+</section>
+<!-- VIEW 2: SELLER REGISTRATION (Multi-step) -->
+<section class="hidden space-y-6" id="view-seller-register">
+<!-- Progress Stepper -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-bold uppercase tracking-wider text-primary" id="seller-step-label">Step 1 of 4: Account Details</span>
+<span class="text-xs font-medium text-on-surface-variant" id="seller-step-pct">25%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-300 w-1/4" id="seller-progress-bar"></div>
+</div>
+</div>
+<!-- Seller Step 1: Account -->
+<div class="space-y-5" id="seller-step-1">
+<div>
+<h2 class="text-2xl font-bold text-on-surface">Create your Seller account</h2>
+<p class="text-xs text-on-surface-variant mt-1.5">Start your 14-day free trial on Sleec.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">First Name *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none transition-colors" id="seller-fn" placeholder="Jameson" type="text"/>
+<span class="text-[11px] text-error hidden mt-1" id="err-seller-fn">First name is required.</span>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Last Name *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none transition-colors" id="seller-ln" placeholder="Okoro" type="text"/>
+<span class="text-[11px] text-error hidden mt-1" id="err-seller-ln">Last name is required.</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Email Address *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none transition-colors" id="seller-email" placeholder="jameson@sleecstore.com" type="email"/>
+<span class="text-[11px] text-error hidden mt-1" id="err-seller-email">Please enter a valid email address.</span>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Phone Number *</label>
+<div class="flex gap-2">
+<select class="px-2.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-xs font-semibold outline-none" id="seller-phone-code">
+<option value="+234">🇳🇬 +234</option>
+<option value="+254">🇰🇪 +254</option>
+<option value="+233">🇬🇭 +233</option>
+<option value="+27">🇿🇦 +27</option>
+<option value="+44">🇬🇧 +44</option>
+<option value="+1">🇺🇸 +1</option>
+</select>
+<input class="flex-1 px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="seller-phone" placeholder="801 234 5678" type="tel"/>
+</div>
+<span class="text-[11px] text-error hidden mt-1" id="err-seller-phone">Phone number is required.</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Password *</label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 pr-10 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="seller-pass" oninput="validatePasswordRules(this.value, 'seller')" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePassVisibility('seller-pass', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Confirm Password *</label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 pr-10 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="seller-pass-confirm" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePassVisibility('seller-pass-confirm', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<span class="text-[11px] text-error hidden mt-1" id="err-seller-pass-match">Passwords do not match.</span>
+</div>
+</div>
+<!-- Live password criteria & strength indicator -->
+<div class="p-3.5 bg-surface-container-low/60 rounded-xl space-y-2 text-xs text-on-surface-variant border border-outline-variant/40">
+<div class="flex items-center justify-between mb-1">
+<span class="font-bold text-[11px] uppercase tracking-wider text-outline">Password Strength:</span>
+<span class="text-[11px] font-bold text-outline" id="seller-strength-text">Not entered</span>
+</div>
+<!-- Strength Bar -->
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-outline/40 transition-all duration-300 w-0" id="seller-strength-bar"></div>
+</div>
+<div class="pt-1.5 space-y-1.5">
+<div class="flex items-center gap-1.5" id="seller-req-len">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span>At least 8 characters</span>
+</div>
+<div class="flex items-center gap-1.5" id="seller-req-up">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span>At least one uppercase letter (A-Z)</span>
+</div>
+<div class="flex items-center gap-1.5" id="seller-req-num">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span>At least one numeric digit (0-9)</span>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full py-3.5 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" onclick="nextSellerStep(1)">
+<span>Continue to Business Details</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Seller Step 2: Business Info -->
+<div class="hidden space-y-5" id="seller-step-2">
+<div>
+<h2 class="text-2xl font-bold text-on-surface">Business Information</h2>
+<p class="text-xs text-on-surface-variant mt-1.5">Tell us about your brand and storefront identity.</p>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Business / Store Name *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="seller-biz-name" oninput="autoSuggestHandle(this.value)" placeholder="Jameson Provisions" type="text"/>
+<span class="text-[11px] text-error hidden mt-1" id="err-seller-biz">Store name is required.</span>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<label class="text-xs font-bold text-on-surface">Store Username / Handle *</label>
+<span class="text-xs font-semibold text-primary hidden" id="handle-feedback">Username available ✓</span>
+</div>
+<div class="flex items-center">
+<span class="px-3 py-2.5 bg-surface-container-high border border-r-0 border-outline-variant/60 rounded-l-lg text-xs font-mono text-outline">sleec.app/</span>
+<input class="flex-1 px-3.5 py-2.5 rounded-r-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm font-mono focus:border-primary focus:bg-white outline-none" id="seller-handle" oninput="checkHandleAvailability(this.value)" placeholder="jameson" type="text"/>
+</div>
+<span class="text-[11px] text-error hidden mt-1" id="err-seller-handle">Handle is already taken or invalid.</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Business Category *</label>
+<select class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="seller-category">
+<option value="Home &amp; Kitchen">Home &amp; Kitchen</option>
+<option value="Fashion">Fashion &amp; Apparel</option>
+<option value="Beauty">Beauty &amp; Cosmetics</option>
+<option value="Food &amp; Restaurant">Food &amp; Restaurant</option>
+<option value="Electronics">Electronics &amp; Gadgets</option>
+<option value="Grocery">Supermarket &amp; Grocery</option>
+<option value="Accessories">Accessories &amp; Jewelry</option>
+<option value="Health &amp; Wellness">Health &amp; Wellness</option>
+<option value="Services">Services</option>
+<option value="Other">Other</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Primary Location *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="seller-location" placeholder="Lagos, Nigeria" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Store Tagline / Bio (Optional)</label>
+<textarea class="w-full px-3.5 py-2 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none resize-none" id="seller-bio" placeholder="Curated modern goods crafted with quality materials..." rows="2"></textarea>
+</div>
+<div class="flex gap-3 pt-3">
+<button class="py-3 px-5 border border-outline-variant/60 text-on-surface-variant font-semibold rounded-xl hover:bg-surface-container transition-all" onclick="prevSellerStep(2)">Back</button>
+<button class="flex-1 py-3 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" onclick="nextSellerStep(2)">
+<span>Next: Store Preferences</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Seller Step 3: Store Preferences -->
+<div class="hidden space-y-5" id="seller-step-3">
+<div>
+<h2 class="text-2xl font-bold text-on-surface">Store Preferences</h2>
+<p class="text-xs text-on-surface-variant mt-1.5">Configure your currency and active selling channels.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Store Currency</label>
+<select class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary outline-none" id="seller-currency">
+<option selected="" value="NGN">NGN (₦) - Nigerian Naira</option>
+<option value="KES">KES (KSh) - Kenyan Shilling</option>
+<option value="GHS">GHS (GH₵) - Ghanaian Cedi</option>
+<option value="ZAR">ZAR (R) - South African Rand</option>
+<option value="USD">USD ($) - US Dollar</option>
+<option value="GBP">GBP (£) - British Pound</option>
+</select>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Timezone</label>
+<select class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary outline-none" id="seller-tz">
+<option selected="" value="WAT">WAT (Lagos, GMT+1)</option>
+<option value="EAT">EAT (Nairobi, GMT+3)</option>
+<option value="GMT">GMT (Accra, GMT+0)</option>
+<option value="SAST">SAST (Johannesburg, GMT+2)</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-2">Where do you currently sell? (Select all that apply)</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="seller-channels">
+<div class="pill-badge selected px-3 py-2 rounded-lg border border-primary bg-primary text-white text-xs font-semibold cursor-pointer text-center" onclick="togglePill(this)">WhatsApp</div>
+<div class="pill-badge selected px-3 py-2 rounded-lg border border-primary bg-primary text-white text-xs font-semibold cursor-pointer text-center" onclick="togglePill(this)">Instagram</div>
+<div class="pill-badge px-3 py-2 rounded-lg border border-outline-variant/60 text-on-surface-variant text-xs font-semibold cursor-pointer text-center hover:border-primary/40" onclick="togglePill(this)">Physical Shop</div>
+<div class="pill-badge px-3 py-2 rounded-lg border border-outline-variant/60 text-on-surface-variant text-xs font-semibold cursor-pointer text-center hover:border-primary/40" onclick="togglePill(this)">Existing Website</div>
+<div class="pill-badge px-3 py-2 rounded-lg border border-outline-variant/60 text-on-surface-variant text-xs font-semibold cursor-pointer text-center hover:border-primary/40" onclick="togglePill(this)">TikTok Shop</div>
+<div class="pill-badge px-3 py-2 rounded-lg border border-outline-variant/60 text-on-surface-variant text-xs font-semibold cursor-pointer text-center hover:border-primary/40" onclick="togglePill(this)">Starting Fresh</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-2">Fulfillment preference</label>
+<div class="grid grid-cols-2 gap-2.5 text-xs">
+<label class="flex items-center gap-2 p-3 rounded-lg border border-outline-variant/60 bg-surface cursor-pointer">
+<input checked="" class="accent-primary rounded" type="checkbox"/>
+<span>In-Store Pickup</span>
+</label>
+<label class="flex items-center gap-2 p-3 rounded-lg border border-outline-variant/60 bg-surface cursor-pointer">
+<input checked="" class="accent-primary rounded" type="checkbox"/>
+<span>Local Dispatch / Courier</span>
+</label>
+</div>
+</div>
+<div class="flex gap-3 pt-3">
+<button class="py-3 px-5 border border-outline-variant/60 text-on-surface-variant font-semibold rounded-xl hover:bg-surface-container transition-all" onclick="prevSellerStep(3)">Back</button>
+<button class="flex-1 py-3 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" onclick="nextSellerStep(3)">
+<span>Continue to Email Verification</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Seller Step 4: OTP Verification -->
+<div class="hidden space-y-6" id="seller-step-4">
+<div class="text-center space-y-1.5">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-2">
+<span class="material-symbols-outlined text-[28px]">mark_email_read</span>
+</div>
+<h2 class="text-2xl font-bold text-on-surface">Verify your email</h2>
+<p class="text-xs text-on-surface-variant">We've sent a 6-digit code to <strong class="text-on-surface" id="otp-target-email">seller@domain.com</strong></p>
+<button class="text-xs text-primary underline font-medium" onclick="prevSellerStep(4)">Change email address</button>
+</div>
+<!-- 6-digit OTP Inputs -->
+<div class="flex justify-center gap-2 sm:gap-3 py-2" id="seller-otp-container">
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="0" maxlength="1" type="text"/>
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="1" maxlength="1" type="text"/>
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="2" maxlength="1" type="text"/>
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="3" maxlength="1" type="text"/>
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="4" maxlength="1" type="text"/>
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="5" maxlength="1" type="text"/>
+</div>
+<div class="text-center">
+<p class="text-xs text-error font-medium hidden" id="otp-error-seller">Incorrect verification code. Try code: 123456</p>
+<p class="text-[11px] text-outline mt-1" id="otp-demo-hint-seller">Prototype verification code: <code class="bg-surface-container px-1 py-0.5 rounded font-bold text-on-surface">123456</code></p>
+</div>
+<div class="flex items-center justify-between text-xs pt-1">
+<span class="text-on-surface-variant">Didn't receive a code?</span>
+<button class="text-primary font-bold hover:underline disabled:text-outline disabled:no-underline cursor-pointer disabled:cursor-not-allowed" id="resend-btn-seller" onclick="resendOtp('seller')">
+              Resend in <span id="resend-countdown-seller">00:30</span>
+</button>
+</div>
+<button class="w-full py-3.5 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" onclick="verifyOtpAndComplete('seller')">
+<span>Verify &amp; Create Store</span>
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</button>
+</div>
+</section>
+<!-- VIEW 3: BUYER REGISTRATION (Multi-step with Password & Shopping Preferences) -->
+<section class="hidden space-y-6" id="view-buyer-register">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-bold uppercase tracking-wider text-primary" id="buyer-step-label">Step 1 of 3: Profile Details</span>
+<span class="text-xs font-medium text-on-surface-variant" id="buyer-step-pct">33%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary transition-all duration-300 w-1/3" id="buyer-progress-bar"></div>
+</div>
+</div>
+<!-- Buyer Step 1: Account -->
+<div class="space-y-5" id="buyer-step-1">
+<div>
+<h2 class="text-2xl font-bold text-on-surface">Join Sleec as a Buyer</h2>
+<p class="text-xs text-on-surface-variant mt-1.5">Discover verified merchants, fast local delivery, and secure checkouts.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">First Name *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="buyer-fn" placeholder="Amina" type="text"/>
+<span class="text-[11px] text-error hidden mt-1" id="err-buyer-fn">First name is required.</span>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Last Name *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="buyer-ln" placeholder="Eze" type="text"/>
+<span class="text-[11px] text-error hidden mt-1" id="err-buyer-ln">Last name is required.</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Email Address *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="buyer-email" placeholder="amina.eze@example.com" type="email"/>
+<span class="text-[11px] text-error hidden mt-1" id="err-buyer-email">Please enter a valid email address.</span>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Phone Number (Optional)</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="buyer-phone" placeholder="+234 801 234 5678" type="tel"/>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Password *</label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 pr-10 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="buyer-pass" oninput="validatePasswordRules(this.value, 'buyer')" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePassVisibility('buyer-pass', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Confirm Password *</label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 pr-10 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="buyer-pass-confirm" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePassVisibility('buyer-pass-confirm', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<span class="text-[11px] text-error hidden mt-1" id="err-buyer-pass-match">Passwords do not match.</span>
+</div>
+</div>
+<!-- Live password criteria & strength indicator for Buyer -->
+<div class="p-3.5 bg-surface-container-low/60 rounded-xl space-y-2 text-xs text-on-surface-variant border border-outline-variant/40">
+<div class="flex items-center justify-between mb-1">
+<span class="font-bold text-[11px] uppercase tracking-wider text-outline">Password Strength:</span>
+<span class="text-[11px] font-bold text-outline" id="buyer-strength-text">Not entered</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-outline/40 transition-all duration-300 w-0" id="buyer-strength-bar"></div>
+</div>
+<div class="pt-1.5 space-y-1.5">
+<div class="flex items-center gap-1.5" id="buyer-req-len">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span>At least 8 characters</span>
+</div>
+<div class="flex items-center gap-1.5" id="buyer-req-up">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span>At least one uppercase letter (A-Z)</span>
+</div>
+<div class="flex items-center gap-1.5" id="buyer-req-num">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span>At least one numeric digit (0-9)</span>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full py-3.5 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" onclick="nextBuyerStep(1)">
+<span>Continue to Preferences</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Buyer Step 2: Shopping Preferences -->
+<div class="hidden space-y-5" id="buyer-step-2">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-2xl font-bold text-on-surface">What are you interested in?</h2>
+<p class="text-xs text-on-surface-variant mt-1.5">Select items you love to shop so we can personalize your feed.</p>
+</div>
+<button class="text-xs font-bold text-outline hover:text-primary transition-colors" onclick="nextBuyerStep(2)">Skip for now</button>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="buyer-interests">
+<div class="pill-badge selected px-3 py-3 rounded-xl border border-primary bg-primary text-white text-xs font-semibold cursor-pointer text-center flex flex-col items-center gap-1" onclick="togglePill(this)">
+<span class="material-symbols-outlined text-[20px]">checkroom</span> Fashion &amp; Shoes
+            </div>
+<div class="pill-badge selected px-3 py-3 rounded-xl border border-primary bg-primary text-white text-xs font-semibold cursor-pointer text-center flex flex-col items-center gap-1" onclick="togglePill(this)">
+<span class="material-symbols-outlined text-[20px]">kitchen</span> Home &amp; Kitchen
+            </div>
+<div class="pill-badge px-3 py-3 rounded-xl border border-outline-variant/60 text-on-surface-variant text-xs font-semibold cursor-pointer text-center hover:border-primary/40 flex flex-col items-center gap-1" onclick="togglePill(this)">
+<span class="material-symbols-outlined text-[20px]">devices</span> Electronics
+            </div>
+<div class="pill-badge px-3 py-3 rounded-xl border border-outline-variant/60 text-on-surface-variant text-xs font-semibold cursor-pointer text-center hover:border-primary/40 flex flex-col items-center gap-1" onclick="togglePill(this)">
+<span class="material-symbols-outlined text-[20px]">face_retouching_natural</span> Beauty &amp; Skincare
+            </div>
+<div class="pill-badge px-3 py-3 rounded-xl border border-outline-variant/60 text-on-surface-variant text-xs font-semibold cursor-pointer text-center hover:border-primary/40 flex flex-col items-center gap-1" onclick="togglePill(this)">
+<span class="material-symbols-outlined text-[20px]">local_mall</span> Groceries
+            </div>
+<div class="pill-badge px-3 py-3 rounded-xl border border-outline-variant/60 text-on-surface-variant text-xs font-semibold cursor-pointer text-center hover:border-primary/40 flex flex-col items-center gap-1" onclick="togglePill(this)">
+<span class="material-symbols-outlined text-[20px]">watch</span> Accessories
+            </div>
+</div>
+<div class="flex gap-3 pt-3">
+<button class="py-3 px-5 border border-outline-variant/60 text-on-surface-variant font-semibold rounded-xl hover:bg-surface-container transition-all" onclick="prevBuyerStep(2)">Back</button>
+<button class="flex-1 py-3 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" onclick="nextBuyerStep(2)">
+<span>Continue to Verification</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Buyer Step 3: OTP Verification -->
+<div class="hidden space-y-6" id="buyer-step-3">
+<div class="text-center space-y-1.5">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-2">
+<span class="material-symbols-outlined text-[28px]">mark_email_read</span>
+</div>
+<h2 class="text-2xl font-bold text-on-surface">Verify your email</h2>
+<p class="text-xs text-on-surface-variant">We've sent a 6-digit code to <strong class="text-on-surface" id="otp-target-email-buyer">buyer@domain.com</strong></p>
+<button class="text-xs text-primary underline font-medium" onclick="prevBuyerStep(3)">Change email</button>
+</div>
+<!-- 6-digit OTP Inputs -->
+<div class="flex justify-center gap-2 sm:gap-3 py-2" id="buyer-otp-container">
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="0" maxlength="1" type="text"/>
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="1" maxlength="1" type="text"/>
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="2" maxlength="1" type="text"/>
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="3" maxlength="1" type="text"/>
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="4" maxlength="1" type="text"/>
+<input class="otp-input w-11 sm:w-12 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="5" maxlength="1" type="text"/>
+</div>
+<div class="text-center">
+<p class="text-xs text-error font-medium hidden" id="otp-error-buyer">Incorrect verification code. Try code: 123456</p>
+<p class="text-[11px] text-outline mt-1">Prototype verification code: <code class="bg-surface-container px-1 py-0.5 rounded font-bold text-on-surface">123456</code></p>
+</div>
+<div class="flex items-center justify-between text-xs pt-1">
+<span class="text-on-surface-variant">Didn't receive a code?</span>
+<button class="text-primary font-bold hover:underline disabled:text-outline disabled:no-underline cursor-pointer disabled:cursor-not-allowed" id="resend-btn-buyer" onclick="resendOtp('buyer')">
+              Resend in <span id="resend-countdown-buyer">00:30</span>
+</button>
+</div>
+<button class="w-full py-3.5 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" onclick="verifyOtpAndComplete('buyer')">
+<span>Verify &amp; Complete Registration</span>
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</button>
+</div>
+</section>
+<!-- VIEW 4: LOGIN FLOW (Seller Password / Buyer Password or OTP) -->
+<section class="hidden space-y-6" id="view-login">
+<div class="text-center space-y-1.5">
+<h2 class="text-2xl sm:text-3xl font-bold text-on-surface">Log in to Sleec</h2>
+<p class="text-xs sm:text-sm text-on-surface-variant">Choose your role to access your account</p>
+</div>
+<!-- Role Toggle Pills -->
+<div class="flex p-1 bg-surface-container-low rounded-xl border border-outline-variant/40">
+<button class="flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white shadow-sm text-primary transition-all" id="login-role-seller-btn" onclick="setLoginRole('seller')">
+            Seller Account
+          </button>
+<button class="flex-1 py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-on-surface-variant hover:text-on-surface transition-all" id="login-role-buyer-btn" onclick="setLoginRole('buyer')">
+            Buyer Account
+          </button>
+</div>
+<!-- SELLER LOGIN FORM -->
+<form class="space-y-4" id="seller-login-form" onsubmit="event.preventDefault(); submitSellerLogin();">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Seller Email Address *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="login-seller-email" placeholder="store@example.com" required="" type="email" value="jameson@sleecstore.com"/>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<label class="text-xs font-bold text-on-surface">Password *</label>
+<button class="text-xs text-primary font-semibold hover:underline" onclick="goToForgotPassword('seller')" type="button">Forgot password?</button>
+</div>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 pr-10 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="login-seller-pass" placeholder="••••••••" required="" type="password" value="SleecPass2025"/>
+<button class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePassVisibility('login-seller-pass', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<input checked="" class="accent-primary rounded" id="remember-seller" type="checkbox"/>
+<label class="text-xs text-on-surface-variant cursor-pointer" for="remember-seller">Remember me on this browser</label>
+</div>
+<div class="pt-2">
+<button class="w-full py-3.5 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" type="submit">
+<span>Log In to Dashboard</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- BUYER LOGIN FORM (Standard Password Login + Optional OTP login option) -->
+<form class="space-y-4 hidden" id="buyer-login-form" onsubmit="event.preventDefault(); submitBuyerLogin();">
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Buyer Email Address *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="login-buyer-email" placeholder="name@example.com" required="" type="email" value="amina.eze@example.com"/>
+</div>
+<div id="buyer-password-section">
+<div class="flex justify-between items-center mb-1.5">
+<label class="text-xs font-bold text-on-surface">Password *</label>
+<button class="text-xs text-primary font-semibold hover:underline" onclick="goToForgotPassword('buyer')" type="button">Forgot password?</button>
+</div>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 pr-10 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="login-buyer-pass" placeholder="••••••••" required="" type="password" value="SleecShop2025"/>
+<button class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePassVisibility('login-buyer-pass', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs pt-1">
+<div class="flex items-center gap-2">
+<input checked="" class="accent-primary rounded" id="remember-buyer" type="checkbox"/>
+<label class="text-on-surface-variant cursor-pointer" for="remember-buyer">Remember me</label>
+</div>
+<button class="text-primary font-semibold hover:underline flex items-center gap-1" onclick="loginBuyerViaOtpInstant()" type="button">
+<span class="material-symbols-outlined text-[16px]">key</span> Or sign in with OTP
+            </button>
+</div>
+<div class="pt-2">
+<button class="w-full py-3.5 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" type="submit">
+<span>Sign In</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</form>
+<div class="relative flex py-2 items-center">
+<div class="flex-grow border-t border-outline-variant/40"></div>
+<span class="flex-shrink mx-4 text-xs font-semibold text-outline uppercase tracking-wider">or</span>
+<div class="flex-grow border-t border-outline-variant/40"></div>
+</div>
+<button class="w-full py-3 border border-outline-variant/60 rounded-xl bg-white hover:bg-surface-container-low text-xs sm:text-sm font-semibold text-on-surface flex items-center justify-center gap-2 transition-all" onclick="showToast('Social Auth initialized: connected with Google ✓'); setTimeout(() =&gt; completeLoginSuccess(currentLoginRole), 1000);" type="button">
+<svg class="w-4 h-4" viewbox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path></svg>
+<span>Continue with Google</span>
+</button>
+<p class="text-center text-xs text-on-surface-variant pt-1">
+          Don't have an account? <button class="text-primary font-bold hover:underline" onclick="goToRegistrationFromLogin()" type="button">Create an account</button>
+</p>
+</section>
+<!-- VIEW 5: FORGOT PASSWORD FLOW -->
+<section class="hidden space-y-6" id="view-forgot-password">
+<div class="space-y-5" id="forgot-step-1">
+<div class="text-center space-y-1.5">
+<h2 class="text-2xl font-bold text-on-surface">Reset your password</h2>
+<p class="text-xs text-on-surface-variant">Enter your account email to receive a password reset verification code.</p>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Email Address *</label>
+<input class="w-full px-3.5 py-2.5 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="reset-email" type="email" value="jameson@sleecstore.com"/>
+</div>
+<div class="pt-1">
+<button class="w-full py-3.5 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" onclick="sendResetCode()">
+<span>Send Reset Code</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+<div class="hidden space-y-6" id="forgot-step-2">
+<div class="text-center space-y-1.5">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-2">
+<span class="material-symbols-outlined text-[28px]">pin</span>
+</div>
+<h2 class="text-2xl font-bold text-on-surface">Enter verification code</h2>
+<p class="text-xs text-on-surface-variant">Enter the 6-digit code sent to <strong class="text-on-surface" id="reset-target-email-display">your email</strong></p>
+</div>
+<div class="flex justify-center gap-2 sm:gap-3 py-2" id="reset-otp-container">
+<input class="otp-input w-11 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="0" maxlength="1" type="text"/>
+<input class="otp-input w-11 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="1" maxlength="1" type="text"/>
+<input class="otp-input w-11 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="2" maxlength="1" type="text"/>
+<input class="otp-input w-11 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="3" maxlength="1" type="text"/>
+<input class="otp-input w-11 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="4" maxlength="1" type="text"/>
+<input class="otp-input w-11 h-14 text-center text-xl font-bold border-2 border-outline-variant/60 rounded-xl bg-surface-container-low/30 outline-none" data-index="5" maxlength="1" type="text"/>
+</div>
+<div class="text-center">
+<p class="text-xs text-error font-medium hidden" id="otp-error-reset">Invalid code. Try prototype code 123456</p>
+<p class="text-[11px] text-outline">Prototype code: <code class="bg-surface-container px-1 py-0.5 rounded font-bold text-on-surface">123456</code></p>
+</div>
+<div class="flex items-center justify-between text-xs pt-1">
+<span class="text-on-surface-variant">Didn't receive a code?</span>
+<button class="text-primary font-bold hover:underline disabled:text-outline disabled:no-underline cursor-pointer disabled:cursor-not-allowed" id="resend-btn-reset" onclick="resendOtp('reset')">
+              Resend in <span id="resend-countdown-reset">00:30</span>
+</button>
+</div>
+<button class="w-full py-3.5 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" onclick="verifyResetCode()">
+<span>Verify Code</span>
+<span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+</div>
+<div class="hidden space-y-5" id="forgot-step-3">
+<div class="text-center space-y-1.5">
+<h2 class="text-2xl font-bold text-on-surface">Set new password</h2>
+<p class="text-xs text-on-surface-variant">Create a secure new password for your Sleec account.</p>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">New Password *</label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 pr-10 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="reset-new-pass" oninput="validatePasswordRules(this.value, 'reset')" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePassVisibility('reset-new-pass', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface mb-1.5">Confirm New Password *</label>
+<div class="relative">
+<input class="w-full px-3.5 py-2.5 pr-10 rounded-lg border border-outline-variant/60 bg-surface-container-low/40 text-sm focus:border-primary focus:bg-white outline-none" id="reset-confirm-pass" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-2.5 text-outline hover:text-on-surface" onclick="togglePassVisibility('reset-confirm-pass', this)" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<span class="text-[11px] text-error hidden mt-1" id="err-reset-match">Passwords do not match.</span>
+</div>
+<!-- Password requirements & strength indicator for Reset Password -->
+<div class="p-3.5 bg-surface-container-low/60 rounded-xl space-y-2 text-xs text-on-surface-variant border border-outline-variant/40">
+<div class="flex items-center justify-between mb-1">
+<span class="font-bold text-[11px] uppercase tracking-wider text-outline">Password Strength:</span>
+<span class="text-[11px] font-bold text-outline" id="reset-strength-text">Not entered</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-outline/40 transition-all duration-300 w-0" id="reset-strength-bar"></div>
+</div>
+<div class="pt-1.5 space-y-1.5">
+<div class="flex items-center gap-1.5" id="reset-req-len">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span>At least 8 characters</span>
+</div>
+<div class="flex items-center gap-1.5" id="reset-req-up">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span>At least one uppercase letter (A-Z)</span>
+</div>
+<div class="flex items-center gap-1.5" id="reset-req-num">
+<span class="material-symbols-outlined text-[16px] text-outline">radio_button_unchecked</span>
+<span>At least one numeric digit (0-9)</span>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full py-3.5 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" onclick="saveNewPassword()">
+<span>Reset Password</span>
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</button>
+</div>
+</div>
+</section>
+<!-- VIEW 6: REGISTRATION SUCCESS (Role-Specific) -->
+<section class="hidden text-center space-y-6 py-4" id="view-success">
+<div class="w-20 h-20 rounded-full bg-success-container text-success flex items-center justify-center mx-auto shadow-sm">
+<span class="material-symbols-outlined text-[48px]">check_circle</span>
+</div>
+<div class="space-y-2">
+<span class="px-3 py-1 bg-primary/10 text-primary font-bold text-xs rounded-full uppercase tracking-wider">Account Active</span>
+<h2 class="text-3xl font-extrabold text-on-surface" id="success-title">Welcome to Sleec</h2>
+<p class="text-sm text-on-surface-variant max-w-sm mx-auto" id="success-desc">Your account has been created and verified successfully.</p>
+</div>
+<div class="bg-surface-container-low/60 rounded-xl p-4 border border-outline-variant/40 max-w-sm mx-auto text-left space-y-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm" id="success-avatar">J</div>
+<div>
+<p class="font-bold text-sm text-on-surface" id="success-user-name">Jameson Provisions</p>
+<p class="text-xs text-on-surface-variant font-mono" id="success-user-handle">@jameson</p>
+</div>
+</div>
+<div class="pt-2 border-t border-outline-variant/30 flex justify-between text-xs text-on-surface-variant">
+<span>Status</span>
+<span class="font-semibold text-primary" id="success-badge-status">Verified Merchant ✓</span>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full py-3.5 bg-primary hover:bg-primary-hover text-on-primary font-bold rounded-xl shadow-sm transition-all flex items-center justify-center gap-2" id="success-continue-btn" onclick="navigateFinalDestination()">
+<span id="success-btn-text">Continue to Seller Dashboard</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Prototype Live Sleec Toast Notification Component -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-on-surface text-white px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 text-xs max-w-md pointer-events-none" id="toast-message">
+<div class="w-7 h-7 rounded-lg bg-primary text-white flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">mark_email_read</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-[13px] text-white" id="toast-title">Notification</p>
+<p class="text-gray-300 text-[11px]" id="toast-text">Action completed successfully.</p>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-6 text-center text-xs text-outline border-t border-outline-variant/30 bg-surface relative z-10">
+<p>© 2025 Sleec Technologies Ltd. Unified commerce infrastructure for emerging markets.</p>
+</footer>
+<script>
+    // State Tracker
+    let selectedRole = 'seller'; // 'seller' or 'buyer'
+    let currentLoginRole = 'seller';
+    let sellerStep = 1;
+    let buyerStep = 1;
+    let countdownIntervals = {};
+    let toastTimeout;
+
+    function showToast(message, title = 'Notification') {
+      const toast = document.getElementById('toast-message');
+      const textEl = document.getElementById('toast-text');
+      const titleEl = document.getElementById('toast-title');
+
+      if (message.includes('—')) {
+        const parts = message.split('—');
+        titleEl.innerText = parts[0].trim();
+        textEl.innerText = parts[1].trim();
+      } else {
+        titleEl.innerText = title;
+        textEl.innerText = message;
+      }
+
+      clearTimeout(toastTimeout);
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    function togglePassVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerText = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.innerText = 'visibility';
+      }
+    }
+
+    function selectRole(role) {
+      selectedRole = role;
+      const sellerCard = document.getElementById('role-seller');
+      const buyerCard = document.getElementById('role-buyer');
+
+      sellerCard.classList.toggle('active', role === 'seller');
+      sellerCard.classList.toggle('border-primary', role === 'seller');
+      sellerCard.classList.toggle('bg-[#f4f6f0]', role === 'seller');
+      sellerCard.classList.toggle('border-outline-variant/60', role !== 'seller');
+      sellerCard.classList.toggle('bg-surface-container-lowest', role !== 'seller');
+      
+      buyerCard.classList.toggle('active', role === 'buyer');
+      buyerCard.classList.toggle('border-primary', role === 'buyer');
+      buyerCard.classList.toggle('bg-[#f4f6f0]', role === 'buyer');
+      buyerCard.classList.toggle('border-outline-variant/60', role !== 'buyer');
+      buyerCard.classList.toggle('bg-surface-container-lowest', role !== 'buyer');
+    }
+
+    function goToView(view) {
+      ['view-entry', 'view-seller-register', 'view-buyer-register', 'view-login', 'view-forgot-password', 'view-success'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+
+      const backBtn = document.getElementById('back-nav-btn');
+
+      if (view === 'entry') {
+        document.getElementById('view-entry').classList.remove('hidden');
+        backBtn.classList.add('hidden');
+      } else if (view === 'seller-register') {
+        document.getElementById('view-seller-register').classList.remove('hidden');
+        backBtn.classList.remove('hidden');
+        updateSellerStepView();
+      } else if (view === 'buyer-register') {
+        document.getElementById('view-buyer-register').classList.remove('hidden');
+        backBtn.classList.remove('hidden');
+        updateBuyerStepView();
+      } else if (view === 'login') {
+        document.getElementById('view-login').classList.remove('hidden');
+        backBtn.classList.remove('hidden');
+      } else if (view === 'forgot') {
+        document.getElementById('view-forgot-password').classList.remove('hidden');
+        backBtn.classList.remove('hidden');
+      } else if (view === 'success') {
+        document.getElementById('view-success').classList.remove('hidden');
+        backBtn.classList.add('hidden');
+      }
+    }
+
+    function handleBackNav() {
+      if (!document.getElementById('view-seller-register').classList.contains('hidden')) {
+        if (sellerStep > 1) {
+          prevSellerStep(sellerStep);
+        } else {
+          goToView('entry');
+        }
+      } else if (!document.getElementById('view-buyer-register').classList.contains('hidden')) {
+        if (buyerStep > 1) {
+          prevBuyerStep(buyerStep);
+        } else {
+          goToView('entry');
+        }
+      } else if (!document.getElementById('view-forgot-password').classList.contains('hidden')) {
+        goToView('login');
+      } else {
+        goToView('entry');
+      }
+    }
+
+    function startRegistrationFlow() {
+      if (selectedRole === 'seller') {
+        sellerStep = 1;
+        goToView('seller-register');
+      } else {
+        buyerStep = 1;
+        goToView('buyer-register');
+      }
+    }
+
+    function startLoginFlow() {
+      setLoginRole(selectedRole);
+      goToView('login');
+    }
+
+    function goToRegistrationFromLogin() {
+      goToView(currentLoginRole === 'seller' ? 'seller-register' : 'buyer-register');
+    }
+
+    // --- LIVE PASSWORD VALIDATION & STRENGTH INDICATOR ---
+    function validatePasswordRules(val, type) {
+      const hasLen = val.length >= 8;
+      const hasUp = /[A-Z]/.test(val);
+      const hasNum = /[0-9]/.test(val);
+
+      function updateReq(elId, pass) {
+        const el = document.getElementById(elId);
+        if (!el) return;
+        const icon = el.querySelector('.material-symbols-outlined');
+        if (pass) {
+          icon.innerText = 'check_circle';
+          icon.className = 'material-symbols-outlined text-[16px] text-primary';
+          el.classList.add('text-primary');
+          el.classList.remove('text-on-surface-variant');
+        } else {
+          icon.innerText = 'radio_button_unchecked';
+          icon.className = 'material-symbols-outlined text-[16px] text-outline';
+          el.classList.remove('text-primary');
+          el.classList.add('text-on-surface-variant');
+        }
+      }
+
+      updateReq(`${type}-req-len`, hasLen);
+      updateReq(`${type}-req-up`, hasUp);
+      updateReq(`${type}-req-num`, hasNum);
+
+      // Strength evaluation
+      let score = 0;
+      if (hasLen) score++;
+      if (hasUp) score++;
+      if (hasNum) score++;
+      if (val.length >= 10 && /[^A-Za-z0-9]/.test(val)) score++;
+
+      const strengthBar = document.getElementById(`${type}-strength-bar`);
+      const strengthText = document.getElementById(`${type}-strength-text`);
+
+      if (!strengthBar || !strengthText) return;
+
+      if (!val) {
+        strengthBar.style.width = '0%';
+        strengthBar.className = 'h-full bg-outline/40 transition-all duration-300';
+        strengthText.innerText = 'Not entered';
+        strengthText.className = 'text-[11px] font-bold text-outline';
+      } else if (score <= 1) {
+        strengthBar.style.width = '30%';
+        strengthBar.className = 'h-full bg-error transition-all duration-300';
+        strengthText.innerText = 'Weak';
+        strengthText.className = 'text-[11px] font-bold text-error';
+      } else if (score === 2) {
+        strengthBar.style.width = '65%';
+        strengthBar.className = 'h-full bg-amber-500 transition-all duration-300';
+        strengthText.innerText = 'Fair';
+        strengthText.className = 'text-[11px] font-bold text-amber-600';
+      } else {
+        strengthBar.style.width = '100%';
+        strengthBar.className = 'h-full bg-primary transition-all duration-300';
+        strengthText.innerText = 'Strong';
+        strengthText.className = 'text-[11px] font-bold text-primary';
+      }
+
+      return hasLen && hasUp && hasNum;
+    }
+
+    // --- SELLER MULTI-STEP LOGIC ---
+    function updateSellerStepView() {
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById(`seller-step-${i}`).classList.toggle('hidden', i !== sellerStep);
+      }
+      const labels = [
+        "Step 1 of 4: Account Details",
+        "Step 2 of 4: Business Information",
+        "Step 3 of 4: Store Preferences",
+        "Step 4 of 4: Email Verification"
+      ];
+      const pcts = ["25%", "50%", "75%", "100%"];
+      document.getElementById('seller-step-label').innerText = labels[sellerStep - 1];
+      document.getElementById('seller-step-pct').innerText = pcts[sellerStep - 1];
+      document.getElementById('seller-progress-bar').style.width = pcts[sellerStep - 1];
+    }
+
+    function nextSellerStep(current) {
+      if (current === 1) {
+        const fn = document.getElementById('seller-fn').value.trim();
+        const ln = document.getElementById('seller-ln').value.trim();
+        const em = document.getElementById('seller-email').value.trim();
+        const ph = document.getElementById('seller-phone').value.trim();
+        const p1 = document.getElementById('seller-pass').value;
+        const p2 = document.getElementById('seller-pass-confirm').value;
+
+        let valid = true;
+        document.getElementById('err-seller-fn').classList.toggle('hidden', fn !== '');
+        if (!fn) valid = false;
+        document.getElementById('err-seller-ln').classList.toggle('hidden', ln !== '');
+        if (!ln) valid = false;
+        document.getElementById('err-seller-email').classList.toggle('hidden', em.includes('@') && em.includes('.'));
+        if (!em.includes('@')) valid = false;
+        document.getElementById('err-seller-phone').classList.toggle('hidden', ph !== '');
+        if (!ph) valid = false;
+
+        const pValid = validatePasswordRules(p1, 'seller');
+        document.getElementById('err-seller-pass-match').classList.toggle('hidden', p1 === p2 && pValid);
+        if (p1 !== p2 || !pValid) valid = false;
+
+        if (!valid) {
+          showToast('Please fix highlighted fields and meet password requirements', 'Action Required');
+          return;
+        }
+
+        sellerStep = 2;
+        updateSellerStepView();
+      } else if (current === 2) {
+        const biz = document.getElementById('seller-biz-name').value.trim();
+        const hdl = document.getElementById('seller-handle').value.trim();
+        if (!biz || !hdl) {
+          showToast('Please provide your Store Name and Username', 'Incomplete details');
+          return;
+        }
+        sellerStep = 3;
+        updateSellerStepView();
+      } else if (current === 3) {
+        const emailVal = document.getElementById('seller-email').value.trim() || 'seller@sleecstore.com';
+        document.getElementById('otp-target-email').innerText = emailVal;
+        sellerStep = 4;
+        updateSellerStepView();
+        initOtpInputs('seller-otp-container');
+        startCountdown('seller');
+      }
+    }
+
+    function prevSellerStep(current) {
+      if (current > 1) {
+        sellerStep = current - 1;
+        updateSellerStepView();
+      }
+    }
+
+    function autoSuggestHandle(name) {
+      const handleInput = document.getElementById('seller-handle');
+      const clean = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (clean.length > 2 && !handleInput.dataset.manual) {
+        handleInput.value = clean;
+        checkHandleAvailability(clean);
+      }
+    }
+
+    function checkHandleAvailability(hdl) {
+      const feedback = document.getElementById('handle-feedback');
+      const err = document.getElementById('err-seller-handle');
+      if (hdl.toLowerCase() === 'taken' || hdl.toLowerCase() === 'admin') {
+        feedback.classList.add('hidden');
+        err.classList.remove('hidden');
+      } else if (hdl.length >= 3) {
+        feedback.classList.remove('hidden');
+        err.classList.add('hidden');
+      } else {
+        feedback.classList.add('hidden');
+        err.classList.add('hidden');
+      }
+    }
+
+    function togglePill(el) {
+      el.classList.toggle('selected');
+      if (el.classList.contains('selected')) {
+        el.classList.add('bg-primary', 'text-white', 'border-primary');
+        el.classList.remove('bg-surface-container-lowest', 'text-on-surface-variant');
+      } else {
+        el.classList.remove('bg-primary', 'text-white', 'border-primary');
+        el.classList.add('text-on-surface-variant');
+      }
+    }
+
+    // --- BUYER MULTI-STEP LOGIC ---
+    function updateBuyerStepView() {
+      for (let i = 1; i <= 3; i++) {
+        document.getElementById(`buyer-step-${i}`).classList.toggle('hidden', i !== buyerStep);
+      }
+      const labels = [
+        "Step 1 of 3: Profile Details",
+        "Step 2 of 3: Shopping Preferences",
+        "Step 3 of 3: Email Verification"
+      ];
+      const pcts = ["33%", "66%", "100%"];
+      document.getElementById('buyer-step-label').innerText = labels[buyerStep - 1];
+      document.getElementById('buyer-step-pct').innerText = pcts[buyerStep - 1];
+      document.getElementById('buyer-progress-bar').style.width = pcts[buyerStep - 1];
+    }
+
+    function nextBuyerStep(current) {
+      if (current === 1) {
+        const fn = document.getElementById('buyer-fn').value.trim();
+        const ln = document.getElementById('buyer-ln').value.trim();
+        const em = document.getElementById('buyer-email').value.trim();
+        const p1 = document.getElementById('buyer-pass').value;
+        const p2 = document.getElementById('buyer-pass-confirm').value;
+
+        let valid = true;
+        document.getElementById('err-buyer-fn').classList.toggle('hidden', fn !== '');
+        if (!fn) valid = false;
+        document.getElementById('err-buyer-ln').classList.toggle('hidden', ln !== '');
+        if (!ln) valid = false;
+        document.getElementById('err-buyer-email').classList.toggle('hidden', em.includes('@'));
+        if (!em.includes('@')) valid = false;
+
+        const pValid = validatePasswordRules(p1, 'buyer');
+        document.getElementById('err-buyer-pass-match').classList.toggle('hidden', p1 === p2 && pValid);
+        if (p1 !== p2 || !pValid) valid = false;
+
+        if (!valid) {
+          showToast('Please fill in required fields and satisfy password requirements', 'Action Required');
+          return;
+        }
+        buyerStep = 2;
+        updateBuyerStepView();
+      } else if (current === 2) {
+        const emailVal = document.getElementById('buyer-email').value.trim() || 'buyer@example.com';
+        document.getElementById('otp-target-email-buyer').innerText = emailVal;
+        buyerStep = 3;
+        updateBuyerStepView();
+        initOtpInputs('buyer-otp-container');
+        startCountdown('buyer');
+      }
+    }
+
+    function prevBuyerStep(current) {
+      if (current > 1) {
+        buyerStep = current - 1;
+        updateBuyerStepView();
+      }
+    }
+
+    // --- OTP INPUT AUTO-ADVANCE & PASTE LOGIC ---
+    function initOtpInputs(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const inputs = container.querySelectorAll('.otp-input');
+
+      inputs.forEach((input, idx) => {
+        input.value = '';
+        input.onkeydown = function(e) {
+          if (e.key === 'Backspace' && !input.value && idx > 0) {
+            inputs[idx - 1].focus();
+          }
+        };
+        input.oninput = function(e) {
+          if (input.value.length >= 1 && idx < inputs.length - 1) {
+            inputs[idx + 1].focus();
+          }
+        };
+        input.onpaste = function(e) {
+          e.preventDefault();
+          const pasted = (e.clipboardData || window.clipboardData).getData('text').trim();
+          if (/^\d+$/.test(pasted)) {
+            for (let i = 0; i < inputs.length; i++) {
+              inputs[i].value = pasted[i] || '';
+            }
+            if (inputs[Math.min(pasted.length, inputs.length) - 1]) {
+              inputs[Math.min(pasted.length, inputs.length) - 1].focus();
+            }
+          }
+        };
+      });
+      if (inputs[0]) setTimeout(() => inputs[0].focus(), 100);
+    }
+
+    function startCountdown(type) {
+      if (countdownIntervals[type]) {
+        clearInterval(countdownIntervals[type]);
+      }
+      let seconds = 30;
+      const countEl = document.getElementById(`resend-countdown-${type}`);
+      const btn = document.getElementById(`resend-btn-${type}`);
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = `Resend in <span id="resend-countdown-${type}">00:30</span>`;
+      }
+
+      countdownIntervals[type] = setInterval(() => {
+        seconds--;
+        const currentCountEl = document.getElementById(`resend-countdown-${type}`);
+        if (currentCountEl) {
+          currentCountEl.innerText = `00:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+        if (seconds <= 0) {
+          clearInterval(countdownIntervals[type]);
+          if (btn) {
+            btn.disabled = false;
+            btn.innerText = 'Resend Code Now';
+          }
+        }
+      }, 1000);
+    }
+
+    function resendOtp(type) {
+      // Sleek toast notification requested: 'Verification code sent — A new verification code has been sent to your email'
+      showToast('Verification code sent — A new verification code has been sent to your email');
+      startCountdown(type);
+    }
+
+    function verifyOtpAndComplete(type) {
+      const container = document.getElementById(`${type}-otp-container`);
+      const inputs = container.querySelectorAll('.otp-input');
+      let code = '';
+      inputs.forEach(i => code += i.value);
+
+      const err = document.getElementById(`otp-error-${type}`);
+      if (code === '123456' || code.length === 6) {
+        if (err) err.classList.add('hidden');
+        showSuccessState(type);
+      } else {
+        if (err) err.classList.remove('hidden');
+        showToast('Invalid verification code. Please try 123456', 'Verification Failed');
+      }
+    }
+
+    function showSuccessState(type) {
+      goToView('success');
+      const title = document.getElementById('success-title');
+      const desc = document.getElementById('success-desc');
+      const name = document.getElementById('success-user-name');
+      const handle = document.getElementById('success-user-handle');
+      const btnText = document.getElementById('success-btn-text');
+      const avatar = document.getElementById('success-avatar');
+      const badge = document.getElementById('success-badge-status');
+
+      if (type === 'seller') {
+        const storeName = document.getElementById('seller-biz-name').value || 'Jameson Provisions';
+        const storeHandle = document.getElementById('seller-handle').value || 'jameson';
+        title.innerText = 'Welcome to Sleec.';
+        desc.innerText = "Your seller account is ready. Let's build and manage your storefront.";
+        name.innerText = storeName;
+        handle.innerText = `@${storeHandle}`;
+        avatar.innerText = storeName.charAt(0).toUpperCase();
+        badge.innerText = 'Verified Merchant ✓';
+        btnText.innerText = 'Continue to Seller Dashboard';
+      } else {
+        const fn = document.getElementById('buyer-fn').value || 'Amina';
+        const ln = document.getElementById('buyer-ln').value || 'Eze';
+        title.innerText = 'Welcome to Sleec.';
+        desc.innerText = 'Your buyer account is ready. Start discovering verified local businesses and products.';
+        name.innerText = `${fn} ${ln}`;
+        handle.innerText = 'Verified Shopper';
+        avatar.innerText = fn.charAt(0).toUpperCase();
+        badge.innerText = 'Registered Shopper ✓';
+        btnText.innerText = 'Start Shopping with Sleec';
+      }
+    }
+
+    function navigateFinalDestination() {
+      if (selectedRole === 'seller') {
+        showToast('Redirecting to Sleec Seller Dashboard...', 'Accessing Storefront');
+        setTimeout(() => {
+          alert('Prototype action: Navigating to Sleec Seller Dashboard (#dashboard)');
+        }, 800);
+      } else {
+        showToast('Redirecting to Sleec Marketplace...', 'Accessing Catalog');
+        setTimeout(() => {
+          alert('Prototype action: Navigating to Sleec Shopping Experience (#storefront)');
+        }, 800);
+      }
+    }
+
+    // --- LOGIN ACTIONS ---
+    function setLoginRole(role) {
+      currentLoginRole = role;
+      const sBtn = document.getElementById('login-role-seller-btn');
+      const bBtn = document.getElementById('login-role-buyer-btn');
+      const sForm = document.getElementById('seller-login-form');
+      const bForm = document.getElementById('buyer-login-form');
+
+      if (role === 'seller') {
+        sBtn.className = "flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white shadow-sm text-primary transition-all";
+        bBtn.className = "flex-1 py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-on-surface-variant hover:text-on-surface transition-all";
+        sForm.classList.remove('hidden');
+        bForm.classList.add('hidden');
+      } else {
+        bBtn.className = "flex-1 py-2.5 text-xs sm:text-sm font-bold rounded-lg bg-white shadow-sm text-primary transition-all";
+        sBtn.className = "flex-1 py-2.5 text-xs sm:text-sm font-semibold rounded-lg text-on-surface-variant hover:text-on-surface transition-all";
+        bForm.classList.remove('hidden');
+        sForm.classList.add('hidden');
+      }
+    }
+
+    function submitSellerLogin() {
+      const email = document.getElementById('login-seller-email').value;
+      const pass = document.getElementById('login-seller-pass').value;
+      if (email && pass) {
+        showToast('Signing into merchant account...', 'Authenticated');
+        setTimeout(() => {
+          completeLoginSuccess('seller');
+        }, 800);
+      }
+    }
+
+    function submitBuyerLogin() {
+      const email = document.getElementById('login-buyer-email').value;
+      const pass = document.getElementById('login-buyer-pass').value;
+      if (email && pass) {
+        showToast('Signing in to your buyer profile...', 'Authenticated');
+        setTimeout(() => {
+          completeLoginSuccess('buyer');
+        }, 800);
+      }
+    }
+
+    function loginBuyerViaOtpInstant() {
+      const email = document.getElementById('login-buyer-email').value;
+      if (email && email.includes('@')) {
+        showToast('Verification code sent — A new verification code has been sent to your email');
+        document.getElementById('otp-target-email-buyer').innerText = email;
+        goToView('buyer-register');
+        buyerStep = 3;
+        updateBuyerStepView();
+        initOtpInputs('buyer-otp-container');
+        startCountdown('buyer');
+      } else {
+        showToast('Please enter a valid email address first');
+      }
+    }
+
+    function completeLoginSuccess(role) {
+      selectedRole = role;
+      showToast('Login successful! Welcome back.');
+      setTimeout(() => {
+        if (role === 'seller') {
+          alert('Welcome back, Jameson Okoro! Entering Sleec Seller Dashboard.');
+        } else {
+          alert('Welcome back, Amina Eze! Entering Sleec Buyer Marketplace.');
+        }
+      }, 700);
+    }
+
+    // --- FORGOT PASSWORD ACTIONS ---
+    function goToForgotPassword(role = 'seller') {
+      const emailVal = role === 'seller' 
+        ? document.getElementById('login-seller-email').value 
+        : document.getElementById('login-buyer-email').value;
+      
+      document.getElementById('reset-email').value = emailVal || '';
+      goToView('forgot');
+      document.getElementById('forgot-step-1').classList.remove('hidden');
+      document.getElementById('forgot-step-2').classList.add('hidden');
+      document.getElementById('forgot-step-3').classList.add('hidden');
+    }
+
+    function sendResetCode() {
+      const email = document.getElementById('reset-email').value;
+      if (email && email.includes('@')) {
+        showToast('Verification code sent — A new verification code has been sent to your email');
+        document.getElementById('reset-target-email-display').innerText = email;
+        document.getElementById('forgot-step-1').classList.add('hidden');
+        document.getElementById('forgot-step-2').classList.remove('hidden');
+        initOtpInputs('reset-otp-container');
+        startCountdown('reset');
+      } else {
+        showToast('Please enter a valid account email', 'Error');
+      }
+    }
+
+    function verifyResetCode() {
+      const container = document.getElementById('reset-otp-container');
+      const inputs = container.querySelectorAll('.otp-input');
+      let code = '';
+      inputs.forEach(i => code += i.value);
+
+      if (code === '123456' || code.length === 6) {
+        document.getElementById('forgot-step-2').classList.add('hidden');
+        document.getElementById('forgot-step-3').classList.remove('hidden');
+      } else {
+        document.getElementById('otp-error-reset').classList.remove('hidden');
+        showToast('Invalid verification code. Please enter 123456', 'Verification Failed');
+      }
+    }
+
+    function saveNewPassword() {
+      const p1 = document.getElementById('reset-new-pass').value;
+      const p2 = document.getElementById('reset-confirm-pass').value;
+      const err = document.getElementById('err-reset-match');
+
+      const pValid = validatePasswordRules(p1, 'reset');
+
+      if (!pValid) {
+        showToast('New password must satisfy all 3 criteria above', 'Requirements Not Met');
+        return;
+      }
+
+      if (p1 !== p2) {
+        err.classList.remove('hidden');
+        showToast('Password confirmation does not match', 'Error');
+        return;
+      }
+      err.classList.add('hidden');
+
+      showToast('Password updated! You can now log in with your new credentials.', 'Success');
+      setTimeout(() => {
+        goToView('login');
+      }, 1200);
+    }
+  </script>
+</body></html>
